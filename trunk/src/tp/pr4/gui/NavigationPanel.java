@@ -122,4 +122,9 @@ public class NavigationPanel extends JPanel {
 		PlaceCell cell=this.cells[row][column];
 		cell.close();
 	}
+	
+	public void updateLog(){
+		PlaceCell cell=this.cells[row][column];
+		this.log.setText(cell.getDescriptionPlace());
+	}
 }
