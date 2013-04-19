@@ -69,6 +69,7 @@ public class PickInstruction implements Instruction
 			if(it!=null && this.robotContainer.addItem(it))
 			{
 				System.out.println("WALL·E says: I am happy! Now I have "+ this.id);
+				this.engine.getNavigationPanel().updateLog();
 			} 
 			else if(it!=null){
 				throw new InstructionExecutionException("WALL·E says: I am stupid! I had already the object "+this.id);
