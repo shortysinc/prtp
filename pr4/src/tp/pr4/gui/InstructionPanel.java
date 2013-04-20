@@ -139,19 +139,14 @@ public class InstructionPanel extends JPanel{
 		Street street = robot.getNavigationModule().getHeadingStreet();
 		Direction direction = robot.getCurrentDirection();
 		if (street==null) 
-		{
 			JOptionPane.showMessageDialog(null, "There is no street in direction "+ direction);
-		} 
 		else 
 		{
 			if (street.isOpen()) 
-			{
 				robot.communicateRobot(move);
-			} 
 			else 
-			{
 				JOptionPane.showMessageDialog(null, "WALL·E says: Arrggg, there is a street but it is closed!");
-			}
+			
 			
 		}
 	}
@@ -166,9 +161,7 @@ public class InstructionPanel extends JPanel{
 		String idItem=this.instructionText.getText();
 		NavigationModule NavMod = robot.getNavigationModule();
 		if (idItem.isEmpty())
-		{
 			JOptionPane.showMessageDialog(null, "no object to pick");
-		}
 		else
 		{
 			if (NavMod.findItemAtCurrentPlace(idItem)) 
@@ -177,9 +170,7 @@ public class InstructionPanel extends JPanel{
 				robot.communicateRobot(pick);
 			} 
 			else 
-			{
 				JOptionPane.showMessageDialog(null, "Ooops, this place has not the object "+idItem);
-			}
 		}
 	}
 	
