@@ -61,7 +61,7 @@ public class RobotEngine {
 	public void addFuel(int fuel)
 	{
 		this.fuel+=fuel;
-		if(this.robotPanel!=null){
+		if(this.isSwingInteface()){
 			this.robotPanel.updateFuel();
 		}
 	}
@@ -118,9 +118,6 @@ public class RobotEngine {
 			{
 				instruction = Interpreter.generateInstruction(sc.nextLine());
 				this.communicateRobot(instruction);
-				
-				//error de fuel
-				
 			} 
 			catch (WrongInstructionFormatException e) 
 			{
@@ -242,14 +239,14 @@ public class RobotEngine {
 	
 	public void outOfFuel (){
 		if (this.fuel<0){
-			if(this.robotPanel!=null){
+			if(this.isSwingInteface()){
 				int exit= JOptionPane.showConfirmDialog(null,"WALL·E says: I run out of fuel", 
 						"Confirmation", JOptionPane.CLOSED_OPTION);
 				if (exit==JOptionPane.YES_OPTION)
 				{
 					QuitInstruction quit=new QuitInstruction();
 					this.communicateRobot(quit);
-					this.closeGUI();
+					//this.closeGUI();
 				}
 			}
 			System.out.println("WALL·E says: I run out of fuel. I cannot move. Shutting down...");
@@ -265,7 +262,7 @@ public class RobotEngine {
 			{
 				QuitInstruction quit=new QuitInstruction();
 				this.communicateRobot(quit);
-				this.closeGUI();
+				//this.closeGUI();
 			}
 		}
 	}
@@ -276,6 +273,10 @@ public class RobotEngine {
 	
 	public void closeGUI(){
 		this.mainWindow.dispose();
+	}
+	
+	public boolean isSwingInteface(){
+		return this.mainWindow!=null;
 	}
 	
 	public void setNavigationPanel(NavigationPanel navPanel){
