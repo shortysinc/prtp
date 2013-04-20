@@ -64,10 +64,10 @@ public class Main
 	        if (cmdLine.hasOption("i")){
 	        	i = cmdLine.getOptionValue("i");
 	        	if(i==null || !i.equalsIgnoreCase("console") && !i.equalsIgnoreCase("swing")){
-	        		throw new org.apache.commons.cli.ParseException("Wrong interface type"); 
+	        		throw new org.apache.commons.cli.ParseException("Wrong type of interface"); 
 	        	}
 	        } else {
-	        	throw new org.apache.commons.cli.ParseException("no interface"); 
+	        	throw new org.apache.commons.cli.ParseException("Interface not specified"); 
 	        }
 	        
 	        
