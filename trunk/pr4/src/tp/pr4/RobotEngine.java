@@ -301,5 +301,10 @@ public class RobotEngine {
 		this.lastInstruction.undo();
 		this.lastInstruction = null;
 	}
+
+	public NavigationModule getNavigationModule() {
+		return navigationModule;
+	}
+	
 	
 }
