@@ -128,22 +128,18 @@ public class InstructionPanel extends JPanel{
 		{
 			QuitInstruction quit=new QuitInstruction();
 			robot.communicateRobot(quit);
-			robot.closeGUI();
 		}
 	}
 	
 	public void moveActionPerformed(ActionEvent arg0){
 		MoveInstruction move=new MoveInstruction();
 		robot.communicateRobot(move);
-		//robot.getNavigationPanel().updateMap(direccion,place);
-		//robot.getRobotPanel().updateFuel();
 	}
 	
 	public void turnActionPerformed(ActionEvent arg0){
 		Rotation rotation = (Rotation) this.turnCombo.getSelectedItem();
 		TurnInstruction turn=new TurnInstruction(rotation);
 		robot.communicateRobot(turn);
-		//robot.getRobotPanel().updateFuel();
 	}
 	
 	public void pickActionPerformed(ActionEvent arg0){
