@@ -148,26 +148,31 @@ public class InstructionPanel extends JPanel{
 	
 	public void pickActionPerformed(ActionEvent arg0){
 		String idItem=this.instructionText.getText();
-		PickInstruction pick=new PickInstruction(idItem);
-		//update de items
-		//robot.getNavigationPanel().updateCell(direction, currentPlace)
-		robot.communicateRobot(pick);
+		if(!idItem.equalsIgnoreCase("")){
+			PickInstruction pick=new PickInstruction(idItem);
+			robot.communicateRobot(pick);
+		} else {
+			JOptionPane.showMessageDialog(null, "no object to pick");
+		}
 	}
 	
 	public void dropActionPerformed(ActionEvent arg0){
 		String idItem=robot.getRobotPanel().getSelectedItem();
-		DropInstruction drop=new DropInstruction(idItem);
-		//update de items
-		robot.communicateRobot(drop);
+		if(idItem!=null){
+			DropInstruction drop=new DropInstruction(idItem);
+			robot.communicateRobot(drop);
+		}else{
+			JOptionPane.showMessageDialog(null, "no object selected");
+		}
 	}
 
 	public void operateActionPerformed(ActionEvent arg0){
 		String idItem=robot.getRobotPanel().getSelectedItem();
-		OperateInstruction operate=new OperateInstruction(idItem);
-		//update de items
-		
-		robot.communicateRobot(operate);
-		//robot.getRobotPanel().updateItems();
-		//robot.getRobotPanel().updateStats();
+		if(idItem!=null){
+			OperateInstruction operate=new OperateInstruction(idItem);
+			robot.communicateRobot(operate);
+		} else {
+			JOptionPane.showMessageDialog(null, "no object selected");
+		}
 	}
 }
