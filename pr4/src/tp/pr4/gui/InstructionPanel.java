@@ -161,7 +161,7 @@ public class InstructionPanel extends JPanel{
 		String idItem=this.instructionText.getText();
 		NavigationModule NavMod = robot.getNavigationModule();
 		if (idItem.isEmpty())
-			JOptionPane.showMessageDialog(null, "no object to pick");
+			JOptionPane.showMessageDialog(null, "No object to pick");
 		else
 		{
 			if (NavMod.findItemAtCurrentPlace(idItem)) 
@@ -180,7 +180,7 @@ public class InstructionPanel extends JPanel{
 			DropInstruction drop=new DropInstruction(idItem);
 			robot.communicateRobot(drop);
 		}else{
-			JOptionPane.showMessageDialog(null, "no object selected");
+			JOptionPane.showMessageDialog(null, "No object selected");
 		}
 	}
 
@@ -190,7 +190,7 @@ public class InstructionPanel extends JPanel{
 			OperateInstruction operate=new OperateInstruction(idItem);
 			robot.communicateRobot(operate);
 		} else {
-			JOptionPane.showMessageDialog(null, "no object selected");
+			JOptionPane.showMessageDialog(null, "No item selected");
 		}
 	}
 }
