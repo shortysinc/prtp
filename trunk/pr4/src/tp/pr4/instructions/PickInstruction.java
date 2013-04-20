@@ -70,7 +70,7 @@ public class PickInstruction implements Instruction
 			{
 				System.out.println("WALL·E says: I am happy! Now I have "+ this.id);
 				//this.engine.getNavigationPanel().updateLog();
-				if(this.engine.getNavigationPanel()!=null)
+				if(this.engine.isSwingInteface())
 				{
 					this.engine.getNavigationPanel().updateLog();
 				}
