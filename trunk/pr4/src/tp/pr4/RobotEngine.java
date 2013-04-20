@@ -255,7 +255,7 @@ public class RobotEngine {
 	}
 	
 	public void atSpaceShip(){
-		if(this.robotPanel!=null){
+		if(this.isSwingInteface()){
 			int exit= JOptionPane.showConfirmDialog(null,"WALL·E says: I am at my spaceship. Bye bye", 
 					"Confirmation", JOptionPane.CLOSED_OPTION);
 			if (exit==JOptionPane.YES_OPTION)
