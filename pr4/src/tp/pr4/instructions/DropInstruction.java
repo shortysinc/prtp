@@ -67,7 +67,7 @@ public class DropInstruction implements Instruction
 				navigation.dropItemAtCurrentPlace(item);
 				System.out.println("Great! I have dropped "+ this.id);
 				//this.engine.getNavigationPanel().updateLog();
-				if (this.engine.getNavigationPanel()!=null) 
+				if (this.engine.isSwingInteface()) 
 				{
 					this.engine.getNavigationPanel().updateLog();
 				}

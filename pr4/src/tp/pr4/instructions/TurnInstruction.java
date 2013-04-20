@@ -90,7 +90,7 @@ public class TurnInstruction implements Instruction
 		try
 		{
 			navigation.rotate(this.rotation);
-			if(this.engine.getNavigationPanel()!=null){
+			if(this.engine.isSwingInteface()){
 				engine.getNavigationPanel().updateDirection(engine.getCurrentDirection());
 			}
 			engine.addFuel(-5);
