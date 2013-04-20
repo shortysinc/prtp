@@ -7,6 +7,7 @@ import java.awt.event.*;
 import javax.swing.*;
 import javax.swing.border.*;
 
+import tp.pr4.NavigationModule;
 import tp.pr4.RobotEngine;
 import tp.pr4.Rotation;
 import tp.pr4.instructions.DropInstruction;
@@ -144,11 +145,22 @@ public class InstructionPanel extends JPanel{
 	
 	public void pickActionPerformed(ActionEvent arg0){
 		String idItem=this.instructionText.getText();
-		if(!idItem.equalsIgnoreCase("")){
-			PickInstruction pick=new PickInstruction(idItem);
-			robot.communicateRobot(pick);
-		} else {
+		NavigationModule NavMod = robot.getNavigationModule();
+		if (idItem.isEmpty())
+		{
 			JOptionPane.showMessageDialog(null, "no object to pick");
+		}
+		else
+		{
+			if (NavMod.findItemAtCurrentPlace(idItem)) 
+			{
+				PickInstruction pick=new PickInstruction(idItem);
+				robot.communicateRobot(pick);
+			} 
+			else 
+			{
+				JOptionPane.showMessageDialog(null, "Ooops, this place has not the object "+idItem);
+			}
 		}
 	}
 	
