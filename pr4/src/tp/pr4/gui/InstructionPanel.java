@@ -7,11 +7,8 @@ import java.awt.event.*;
 import javax.swing.*;
 import javax.swing.border.*;
 
-import tp.pr4.Direction;
-import tp.pr4.NavigationModule;
 import tp.pr4.RobotEngine;
 import tp.pr4.Rotation;
-import tp.pr4.Street;
 import tp.pr4.instructions.DropInstruction;
 import tp.pr4.instructions.MoveInstruction;
 import tp.pr4.instructions.OperateInstruction;
@@ -136,19 +133,7 @@ public class InstructionPanel extends JPanel{
 	
 	public void moveActionPerformed(ActionEvent arg0){
 		MoveInstruction move=new MoveInstruction();
-		Street street = robot.getNavigationModule().getHeadingStreet();
-		Direction direction = robot.getCurrentDirection();
-		if (street==null) 
-			JOptionPane.showMessageDialog(null, "There is no street in direction "+ direction);
-		else 
-		{
-			if (street.isOpen()) 
-				robot.communicateRobot(move);
-			else 
-				JOptionPane.showMessageDialog(null, "WALL·E says: Arrggg, there is a street but it is closed!");
-			
-			
-		}
+		robot.communicateRobot(move);
 	}
 	
 	public void turnActionPerformed(ActionEvent arg0){
@@ -159,18 +144,11 @@ public class InstructionPanel extends JPanel{
 	
 	public void pickActionPerformed(ActionEvent arg0){
 		String idItem=this.instructionText.getText();
-		NavigationModule NavMod = robot.getNavigationModule();
-		if (idItem.isEmpty())
+		if(!idItem.isEmpty()){
+			PickInstruction pick=new PickInstruction(idItem);
+			robot.communicateRobot(pick);
+		} else {
 			JOptionPane.showMessageDialog(null, "No Item to pick");
-		else
-		{
-			if (NavMod.findItemAtCurrentPlace(idItem)) 
-			{
-				PickInstruction pick=new PickInstruction(idItem);
-				robot.communicateRobot(pick);
-			} 
-			else 
-				JOptionPane.showMessageDialog(null, "Ooops, this place has not the object "+idItem);
 		}
 	}
 	
