@@ -1,5 +1,7 @@
 package tp.pr4;
 
+import javax.swing.JOptionPane;
+
 import tp.pr4.gui.NavigationPanel;
 import tp.pr4.instructions.exceptions.InstructionExecutionException;
 import tp.pr4.items.*;
@@ -56,7 +58,11 @@ public class NavigationModule {
 		{
 			Street street=this.getHeadingStreet();
 			if(street==null){
-				throw new InstructionExecutionException("WALL·E says: There is no street in direction "+this.getCurrentHeading());
+				String err="WALL·E says: There is no street in direction "+this.getCurrentHeading();
+				if(isSwing()){
+					JOptionPane.showMessageDialog(null, err);
+				}
+				throw new InstructionExecutionException(err);
 			}
 			
 			Place nextPlace=street.nextPlace(this.currentPlace);
@@ -67,7 +73,11 @@ public class NavigationModule {
 				}
 				
 			}else{
-				throw new InstructionExecutionException("WALL·E says: Arrggg, there is a street but it is closed!");
+				String err="WALL·E says: Arrggg, there is a street but it is closed!";
+				if(isSwing()){
+					JOptionPane.showMessageDialog(null, err);
+				}
+				throw new InstructionExecutionException(err);
 			}
 		}catch (Exception e){
 			throw e;
