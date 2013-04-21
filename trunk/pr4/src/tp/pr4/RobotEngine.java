@@ -238,7 +238,7 @@ public class RobotEngine {
 	}
 	
 	public void outOfFuel (){
-		if (this.fuel<0){
+		if (this.fuel<=0){
 			if(this.isSwingInteface()){
 				int exit= JOptionPane.showConfirmDialog(null,"WALL·E says: I run out of fuel", 
 						"Confirmation", JOptionPane.CLOSED_OPTION);
