@@ -2,6 +2,8 @@ package tp.pr4.instructions;
 
 import java.util.StringTokenizer;
 
+import javax.swing.JOptionPane;
+
 import tp.pr4.*;
 import tp.pr4.instructions.exceptions.*;
 import tp.pr4.items.*;
@@ -76,10 +78,18 @@ public class PickInstruction implements Instruction
 				}
 			} 
 			else if(it!=null){
-				throw new InstructionExecutionException("WALL·E says: I am stupid! I had already the object "+this.id);
+				String err="WALL·E says: I am stupid! I had already the object "+this.id;
+				if(this.engine.isSwingInteface()){
+					JOptionPane.showMessageDialog(null, err);
+				}
+				throw new InstructionExecutionException(err);
 				//throw new InstructionExecutionException();
 			} else {
-				throw new InstructionExecutionException("WALL·E says: Ooops, this place has not the object "+ this.id);
+				String err="WALL·E says: Ooops, this place has not the object "+ this.id;
+				if(this.engine.isSwingInteface()){
+					JOptionPane.showMessageDialog(null, err);
+				}
+				throw new InstructionExecutionException(err);
 				//throw new InstructionExecutionException();
 			}
 		}
