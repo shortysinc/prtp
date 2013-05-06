@@ -1,4 +1,4 @@
-package console;
+package tp.pr5.console;
 
 import tp.pr5.*;
 import tp.pr5.instructions.exceptions.WrongInstructionFormatException;

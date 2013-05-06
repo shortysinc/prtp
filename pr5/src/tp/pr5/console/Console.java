@@ -1,4 +1,4 @@
-package console;
+package tp.pr5.console;
 
 import java.util.List;
 
