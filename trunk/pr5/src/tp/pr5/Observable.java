@@ -1,6 +1,7 @@
 package tp.pr5;
 
-import java.util.ArrayList;
+
+import java.util.Vector;
 
 /**
  * Helper class to create classes that support an observer interface.
@@ -9,16 +10,19 @@ import java.util.ArrayList;
  */
 public class Observable<T> 
 {
-	protected ArrayList<T> observers;
+	protected Vector<T> observers;
 	
-	public Observable() 
-	{
-		this.observers = new ArrayList<>();
+	
+
+	public Observable() {
+		
+		this.observers = new Vector<>();
 	}
 
 	public void addObserver(T observer)
 	{
-		this.observers.add(observer);
+		//if (!this.observers.contains(observer))
+			this.observers.add(observer);
 	}
 	
 	public void removeObserver(T observer)

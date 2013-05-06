@@ -1,8 +1,11 @@
 package tp.pr5.items;
 
+
+
+import tp.pr5.*;
 import tp.pr5.gui.RobotPanel;
 
-public class ItemContainer {
+public class ItemContainer extends Observable<InventoryObserver> {
 	
 	private Item[] items= new Item[0];
 	private RobotPanel robotPanel;

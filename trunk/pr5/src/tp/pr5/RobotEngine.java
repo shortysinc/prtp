@@ -14,7 +14,7 @@ import tp.pr5.items.*;
 /**
  * This class represents the robot engine. It controls robot movements by processing the instructions introduced with the keyboard. The engine stops when the robot arrives at the spaceship or receives a quit instruction.
  */
-public class RobotEngine {
+public class RobotEngine extends Observable<RobotEngineObserver> {
 
 	private NavigationModule navigationModule;
 	private int fuel;
@@ -61,6 +61,9 @@ public class RobotEngine {
 	public void addFuel(int fuel)
 	{
 		this.fuel+=fuel;
+		for (RobotEngineObserver robotEngineObserver : this.observers) {
+			robotEngineObserver.robotUpdate(fuel, recycledMaterial);
+		}
 		if(this.isSwingInteface()){
 			this.robotPanel.updateFuel();
 		}
@@ -83,6 +86,9 @@ public class RobotEngine {
 	public void addRecycledMaterial(int weight)
 	{
 		this.recycledMaterial+=weight;
+		for (RobotEngineObserver robotEngineObserver : this.observers) {
+			robotEngineObserver.robotUpdate(fuel, weight);
+		}
 		if(this.robotPanel!=null){
 			this.robotPanel.updateRecycledMaterial();
 		}
