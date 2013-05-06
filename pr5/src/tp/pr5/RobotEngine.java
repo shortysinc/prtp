@@ -179,7 +179,6 @@ public class RobotEngine extends Observable<RobotEngineObserver> {
 	}
 	
 	
-	
 		
 	/**
 	 * Show the current Direction
@@ -230,7 +229,9 @@ public class RobotEngine extends Observable<RobotEngineObserver> {
 	 */
 	public void requestHelp()
 	{
-		System.out.println(Interpreter.interpreterHelp());
+		for (RobotEngineObserver robotEngineObserver : this.observers) {
+			robotEngineObserver.communicationHelp(Interpreter.interpreterHelp());
+		}
 	}
 	
 	/**
