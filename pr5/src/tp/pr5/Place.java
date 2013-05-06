@@ -11,7 +11,7 @@ import tp.pr5.items.*;
  * It represents a place in the city. Places are connected by streets according to the 4 compass directions: North, East, South and West. Every place has a name and a textual description about itself. This description is displayed when the robot arrives at the place.
  * A place can represent the spaceship where the robot is safe. When the robot arrives at this place, the robot shuts down and the application will finish.
  */
-public class Place 
+public class Place implements PlaceInfo 
 {
 
 	private String name;
@@ -96,6 +96,16 @@ public class Place
 	{
 		return this.items.addItem(it);
 		
+	}
+
+	@Override
+	public String getName() {
+		return this.name;
+	}
+
+	@Override
+	public String getDescription() {
+		return this.description;
 	}
 	
 	
