@@ -11,6 +11,11 @@ public class Observable<T>
 {
 	protected ArrayList<T> observers;
 	
+	public Observable() 
+	{
+		this.observers = new ArrayList<>();
+	}
+
 	public void addObserver(T observer)
 	{
 		this.observers.add(observer);
