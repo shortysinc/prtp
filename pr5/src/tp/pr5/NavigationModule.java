@@ -6,7 +6,8 @@ import tp.pr5.gui.NavigationPanel;
 import tp.pr5.instructions.exceptions.InstructionExecutionException;
 import tp.pr5.items.*;
 
-public class NavigationModule {
+public class NavigationModule extends Observable<NavigationObserver>
+{
 	
 	private City aCity;
 	private Place currentPlace;
