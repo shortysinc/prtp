@@ -29,32 +29,31 @@ public class Console implements NavigationObserver, RobotEngineObserver, Invento
 
 	@Override
 	public void itemEmpty(String itemName) {
-		// TODO Auto-generated method stub
-		
+		System.out.println(Constants.MESSAGE_EMPTY.replace("{ID}", itemName));
 	}
 
 	@Override
 	public void raiseError(String msg) {
-		// TODO Auto-generated method stub
-		
+		System.out.println(msg);		
 	}
 
 	@Override
 	public void communicationHelp(String help) {
-		// TODO Auto-generated method stub
-		
+		System.out.println(help);
 	}
 
 	@Override
 	public void engineOff(boolean atShip) {
-		// TODO Auto-generated method stub
-		
+		if(atShip){
+			System.out.println(Constants.MESSAGE_FIN_SPACESHIP);
+		} else {
+			System.out.println(Constants.MESSAGE_DIE);
+		}
 	}
 
 	@Override
 	public void communicationCompleted() {
-		// TODO Auto-generated method stub
-		
+		System.out.println(Constants.MESSAGE_FIN_QUIT);
 	}
 
 	@Override
@@ -89,8 +88,15 @@ public class Console implements NavigationObserver, RobotEngineObserver, Invento
 
 	@Override
 	public void robotArrivesAtPlace(Direction heading, PlaceInfo place) {
-		// TODO Auto-generated method stub
-		
+		System.out.println(place.getName());
+		System.out.println(place.getDescription());
+		headingChanged(heading);
+		if(((Place) place).getItems().numberOfItems()>0){
+			System.out.println("The place contains these objects:");
+			System.out.println(((Place) place).getItems().toString()+"\n");
+		} else {
+			System.out.println("The place is empty. There are no objects to pick\n");
+		}
 	}
 
 	@Override
