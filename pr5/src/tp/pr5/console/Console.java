@@ -11,20 +11,17 @@ public class Console implements NavigationObserver, RobotEngineObserver, Invento
 
 	@Override
 	public void inventoryChange(List<Item> inventory) {
-		// TODO Auto-generated method stub
-		
+		//
 	}
 
 	@Override
 	public void inventoryScanned(String inventoryDescription) {
-		// TODO Auto-generated method stub
-		
+		System.out.println(inventoryDescription);
 	}
 
 	@Override
 	public void itemScanned(String description) {
-		// TODO Auto-generated method stub
-		
+		System.out.println(description);
 	}
 
 	@Override
@@ -71,8 +68,7 @@ public class Console implements NavigationObserver, RobotEngineObserver, Invento
 	
 	@Override
 	public void robotSays(String message) {
-		System.out.println(Constants.PROMPT+message);
-		
+		System.out.println(message);
 	}
 
 	@Override

@@ -16,7 +16,7 @@ public class Observable<T>
 
 	public Observable() {
 		
-		this.observers = new Vector<>();
+		this.observers = new Vector<T>();
 	}
 
 	public void addObserver(T observer)
