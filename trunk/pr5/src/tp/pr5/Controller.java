@@ -4,12 +4,14 @@ import tp.pr5.items.InventoryObserver;
 
 public abstract class Controller {
 
+	protected RobotEngine game;
+	
 	/**
 	 * Constructor that uses the model
 	 * @param game - The reference to the model
 	 */
 	public Controller(RobotEngine game){
-		
+		this.game=game;
 	}
 	
 	/**
@@ -22,7 +24,7 @@ public abstract class Controller {
 	 * @param gameObserver - The observer that wants to be registered
 	 */
 	public void registerEngineObserver(RobotEngineObserver gameObserver){
-		
+		this.game.addEngineObserver(gameObserver);
 	}
 	
 	/**
@@ -30,7 +32,7 @@ public abstract class Controller {
 	 * @param containerObserver - The observer that wants to be registered
 	 */
 	public void registerItemContainerObserver(InventoryObserver containerObserver){
-		
+		this.game.addItemContainerObserver(containerObserver);
 	}
 	
 	/**
@@ -38,6 +40,6 @@ public abstract class Controller {
 	 * @param playerObserver - The observer that wants to be registered
 	 */
 	public void registerRobotObserver(NavigationObserver playerObserver){
-		
+		this.game.addNavigationObserver(playerObserver);
 	}
 }

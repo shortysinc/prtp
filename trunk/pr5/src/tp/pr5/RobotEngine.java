@@ -308,4 +308,16 @@ public class RobotEngine extends Observable<RobotEngineObserver> {
 		this.lastInstruction.undo();
 		this.lastInstruction = null;
 	}
+	
+	public void addEngineObserver(RobotEngineObserver observer){
+		this.addObserver(observer);
+	}
+	
+	public void addNavigationObserver(NavigationObserver robotObserver){
+		this.navigationModule.addObserver(robotObserver);
+	}
+	
+	public void addItemContainerObserver(InventoryObserver c){
+		this.inventary.addObserver(c);
+	}
 }
