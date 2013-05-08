@@ -6,15 +6,16 @@ import java.awt.event.*;
 import javax.swing.*;
 
 import tp.pr5.RobotEngine;
+import tp.pr5.RobotEngineObserver;
 import tp.pr5.instructions.UndoInstruction;
 
-public class MainWindow extends JFrame{
+public class MainWindow extends JFrame implements RobotEngineObserver{
 	
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	private RobotEngine robot;
+	private GUIController controller;
 	
 	public InstructionPanel InstructionPanel;
 	public RobotPanel robotPanel;
@@ -23,12 +24,12 @@ public class MainWindow extends JFrame{
 
 	/**
 	 * Creates the window and the panels using Swing Components. It stores a reference to the RobotEngine object and provides the panels to the robot engine in order to communicate the simulation events.
-	 * @param robot The RobotEngine that receives the instructions performed by the action panel
+	 * @param gc The RobotEngine that receives the instructions performed by the action panel
 	 */
-	public MainWindow(RobotEngine robot){
+	public MainWindow(GUIController gc){
 		
 		super();
-		this.robot=robot;
+		this.controller=gc;
 		
 		
 		this.build();
@@ -64,10 +65,10 @@ public class MainWindow extends JFrame{
 		
 		JPanel containerPanel= new JPanel(new BorderLayout());
 		
-		this.InstructionPanel = new  InstructionPanel(this.robot);
+		//this.InstructionPanel = new  InstructionPanel(this.robot);
 		this.InstructionPanel.setBounds(20, 30, 25, 15);
 		
-		this.robotPanel = new RobotPanel(this.robot);
+		//this.robotPanel = new RobotPanel(this.robot);
 		
 		JSplitPane splitPanel= new JSplitPane(JSplitPane.HORIZONTAL_SPLIT,this.InstructionPanel,this.robotPanel);
 		this.navigationPanel= new NavigationPanel(); 
@@ -90,12 +91,48 @@ public class MainWindow extends JFrame{
 			
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
-				MainWindow.this.robot.communicateRobot(new UndoInstruction());
+				//MainWindow.this.robot.communicateRobot(new UndoInstruction());
 			}
 		});
 	}
 	
 	public void quitActionPerformed(ActionEvent arg0) {
 		this.InstructionPanel.quitActionPerformed(arg0);
+	}
+
+	@Override
+	public void raiseError(String msg) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void communicationHelp(String help) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void engineOff(boolean atShip) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void communicationCompleted() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void robotUpdate(int fuel, int recycledMaterial) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void robotSays(String message) {
+		// TODO Auto-generated method stub
+		
 	}
 }
