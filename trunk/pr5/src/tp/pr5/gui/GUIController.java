@@ -11,7 +11,7 @@ public class GUIController extends tp.pr5.Controller
 
 	@Override
 	public void startController() {
-		// TODO Auto-generated method stub
+		//avisar a los observers de que ha empezado
 		
 	}
 
