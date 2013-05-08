@@ -12,6 +12,8 @@ import org.apache.commons.cli.*;
 
 import tp.pr5.cityLoader.CityLoaderFromTxtFile;
 import tp.pr5.cityLoader.cityLoaderExceptions.WrongCityFormatException;
+import tp.pr5.console.ConsoleController;
+import tp.pr5.gui.GUIController;
 import tp.pr5.gui.MainWindow;
 
 public class Main 
@@ -92,10 +94,13 @@ public class Main
 				engine = new RobotEngine(city.loadCity(input),city.getInitialPlace(),Direction.NORTH);
 				
 				if(i.equalsIgnoreCase("swing")){
-					MainWindow mainWindow = new MainWindow(engine);
+					GUIController gc = new GUIController(engine);
+					MainWindow mainWindow = new MainWindow(gc);
+					gc.startController();
 					
 				} else {
-					engine.startEngine();
+					ConsoleController cc = new ConsoleController(engine);
+					cc.startController();
 				}
 				
 			} catch(WrongCityFormatException e){
