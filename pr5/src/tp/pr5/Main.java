@@ -93,6 +93,7 @@ public class Main
 				
 				if(i.equalsIgnoreCase("swing")){
 					MainWindow mainWindow = new MainWindow(engine);
+					
 				} else {
 					engine.startEngine();
 				}
