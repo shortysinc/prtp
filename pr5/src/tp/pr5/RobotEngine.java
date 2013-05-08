@@ -247,7 +247,7 @@ public class RobotEngine extends Observable<RobotEngineObserver> {
 	 * Registers an EngineObserver to the model
 	 * @param observer - The observer that wants to be registered
 	 */
-	public void addEngineObserver(RobotEngineObserver observer){
+	protected void addEngineObserver(RobotEngineObserver observer){
 		this.addObserver(observer);
 	}
 	
@@ -267,7 +267,7 @@ public class RobotEngine extends Observable<RobotEngineObserver> {
 	 * Register a NavigationObserver to the model
 	 * @param observer - The observer that wants to be registered
 	 */
-	public void addNavigationObserver(NavigationObserver robotObserver){
+	protected void addNavigationObserver(NavigationObserver robotObserver){
 		this.navigationModule.addObserver(robotObserver);
 	}
 	
@@ -275,7 +275,7 @@ public class RobotEngine extends Observable<RobotEngineObserver> {
 	 * Registers an ItemContainerObserver to the model
 	 * @param observer - The observer that wants to be registered
 	 */
-	public void addItemContainerObserver(InventoryObserver c){
+	protected void addItemContainerObserver(InventoryObserver c){
 		this.inventary.addObserver(c);
 	}
 }
