@@ -153,22 +153,22 @@ public class InstructionPanel extends JPanel{
 	}
 	
 	public void dropActionPerformed(ActionEvent arg0){
-		String idItem=robot.getRobotPanel().getSelectedItem();
+		/*String idItem=robot.getRobotPanel().getSelectedItem();
 		if(idItem!=null){
 			DropInstruction drop=new DropInstruction(idItem);
 			robot.communicateRobot(drop);
 		}else{
 			JOptionPane.showMessageDialog(null, "No item selected");
-		}
+		}*/
 	}
 
 	public void operateActionPerformed(ActionEvent arg0){
-		String idItem=robot.getRobotPanel().getSelectedItem();
+		/*String idItem=robot.getRobotPanel().getSelectedItem();
 		if(idItem!=null){
 			OperateInstruction operate=new OperateInstruction(idItem);
 			robot.communicateRobot(operate);
 		} else {
 			JOptionPane.showMessageDialog(null, "No item selected");
-		}
+		}*/
 	}
 }

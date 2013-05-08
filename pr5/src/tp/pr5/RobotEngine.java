@@ -64,9 +64,6 @@ public class RobotEngine extends Observable<RobotEngineObserver> {
 		for (RobotEngineObserver robotEngineObserver : this.observers) {
 			robotEngineObserver.robotUpdate(fuel, recycledMaterial);
 		}
-		if(this.isSwingInteface()){
-			this.robotPanel.updateFuel();
-		}
 	}
 	
 	/**
@@ -86,9 +83,7 @@ public class RobotEngine extends Observable<RobotEngineObserver> {
 	public void addRecycledMaterial(int weight)
 	{
 		this.recycledMaterial+=weight;
-		for (RobotEngineObserver robotEngineObserver : this.observers) {
-			robotEngineObserver.robotUpdate(fuel, weight);
-		}
+		this.emitRobotUpdate(fuel, weight);
 		if(this.robotPanel!=null){
 			this.robotPanel.updateRecycledMaterial();
 		}
@@ -170,15 +165,6 @@ public class RobotEngine extends Observable<RobotEngineObserver> {
 	{
 		System.out.print("WALL·E> ");
 	}
-	
-	private int fuelCalc(int num)
-	{
-		if (num < 0)
-			return num=0;
-		return num;
-	}
-	
-	
 		
 	/**
 	 * Show the current Direction
@@ -229,9 +215,7 @@ public class RobotEngine extends Observable<RobotEngineObserver> {
 	 */
 	public void requestHelp()
 	{
-		for (RobotEngineObserver robotEngineObserver : this.observers) {
-			robotEngineObserver.communicationHelp(Interpreter.interpreterHelp());
-		}
+		this.emitComunicateHelp();
 	}
 	
 	/**
@@ -240,68 +224,18 @@ public class RobotEngine extends Observable<RobotEngineObserver> {
 	
 	public void printRobotState()
 	{
-		System.out.println("      * My power is " + fuelCalc(this.getFuel()));
-		System.out.println("      * My reclycled material is " + this.recycledMaterial);
+		/*System.out.println("      * My power is " + fuelCalc(this.getFuel()));
+		System.out.println("      * My reclycled material is " + this.recycledMaterial);*/
 	}
 	
 	public void outOfFuel (){
 		if (this.fuel<=0){
-			if(this.isSwingInteface()){
-				int exit= JOptionPane.showConfirmDialog(null,"WALL·E says: I run out of fuel", 
-						"Confirmation", JOptionPane.CLOSED_OPTION);
-				if (exit==JOptionPane.YES_OPTION)
-				{
-					QuitInstruction quit=new QuitInstruction();
-					this.communicateRobot(quit);
-					//this.closeGUI();
-				}
-			}
-			System.out.println("WALL·E says: I run out of fuel. I cannot move. Shutting down...");
 			this.quitRequest=true;
 		}
 	}
 	
 	public void atSpaceShip(){
-		if(this.isSwingInteface()){
-			int exit= JOptionPane.showConfirmDialog(null,"WALL·E says: I am at my spaceship. Bye bye", 
-					"Confirmation", JOptionPane.CLOSED_OPTION);
-			if (exit==JOptionPane.YES_OPTION)
-			{
-				QuitInstruction quit=new QuitInstruction();
-				this.communicateRobot(quit);
-				//this.closeGUI();
-			}
-		}
-	}
-	
-	public void setMainWindow(MainWindow mainWindow){
-		this.mainWindow=mainWindow;
-	}
-	
-	public void closeGUI(){
-		this.mainWindow.dispose();
-	}
-	
-	public boolean isSwingInteface(){
-		return this.mainWindow!=null;
-	}
-	
-	public void setNavigationPanel(NavigationPanel navPanel){
-		this.navigationPanel = navPanel;
-		this.navigationModule.setNavigationPanel(navPanel);
-	}
-	
-	public void setRobotPanel(RobotPanel robotPanel){
-		this.robotPanel = robotPanel;
-		this.inventary.setRobotPanel(robotPanel);
-	}
-	
-	public RobotPanel getRobotPanel(){
-		return this.robotPanel;
-	}
-	
-	public NavigationPanel getNavigationPanel(){
-		return this.navigationPanel;
+		
 	}
 	
 	public void undo() throws InstructionExecutionException{
@@ -309,14 +243,38 @@ public class RobotEngine extends Observable<RobotEngineObserver> {
 		this.lastInstruction = null;
 	}
 	
+	/**
+	 * Registers an EngineObserver to the model
+	 * @param observer - The observer that wants to be registered
+	 */
 	public void addEngineObserver(RobotEngineObserver observer){
 		this.addObserver(observer);
 	}
 	
+	private void emitComunicateHelp(){
+		for (RobotEngineObserver robotEngineObserver : this.observers) {
+			robotEngineObserver.communicationHelp(Interpreter.interpreterHelp());
+		}
+	}
+	
+	private void emitRobotUpdate(int fuel, int weight){
+		for (RobotEngineObserver robotEngineObserver : this.observers) {
+			robotEngineObserver.robotUpdate(fuel, weight);
+		}
+	}
+	
+	/**
+	 * Register a NavigationObserver to the model
+	 * @param observer - The observer that wants to be registered
+	 */
 	public void addNavigationObserver(NavigationObserver robotObserver){
 		this.navigationModule.addObserver(robotObserver);
 	}
 	
+	/**
+	 * Registers an ItemContainerObserver to the model
+	 * @param observer - The observer that wants to be registered
+	 */
 	public void addItemContainerObserver(InventoryObserver c){
 		this.inventary.addObserver(c);
 	}

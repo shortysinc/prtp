@@ -33,9 +33,6 @@ public class MainWindow extends JFrame{
 		
 		this.build();
 		//this.init();
-		this.robot.setMainWindow(this);
-		this.robot.setNavigationPanel(navigationPanel);
-		this.robot.setRobotPanel(robotPanel);
 		this.setTitle("WALL·E The garbage collector");
 		this.pack();
 		this.setVisible(true);

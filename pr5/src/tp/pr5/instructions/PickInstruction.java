@@ -72,23 +72,23 @@ public class PickInstruction implements Instruction
 			{
 				System.out.println("WALL·E says: I am happy! Now I have "+ this.id);
 				//this.engine.getNavigationPanel().updateLog();
-				if(this.engine.isSwingInteface())
+				/*if(this.engine.isSwingInteface())
 				{
 					this.engine.getNavigationPanel().updateLog();
-				}
+				}*/
 			} 
 			else if(it!=null){
 				String err="WALL·E says: I am stupid! I had already the object "+this.id;
-				if(this.engine.isSwingInteface()){
+				/*if(this.engine.isSwingInteface()){
 					JOptionPane.showMessageDialog(null, err);
-				}
+				}*/
 				throw new InstructionExecutionException(err);
 				//throw new InstructionExecutionException();
 			} else {
 				String err="WALL·E says: Ooops, this place has not the object "+ this.id;
-				if(this.engine.isSwingInteface()){
+				/*if(this.engine.isSwingInteface()){
 					JOptionPane.showMessageDialog(null, err);
-				}
+				}*/
 				throw new InstructionExecutionException(err);
 				//throw new InstructionExecutionException();
 			}
