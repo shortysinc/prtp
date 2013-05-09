@@ -1,5 +1,7 @@
 package tp.pr5;
-
+//uni doc ok
+//otros doc ok
+//imp ok
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -20,14 +22,10 @@ public class Main
 {
 	static String LINE_SEPARATOR = System.getProperty("line.separator");
 	/**
+	 * Application entry-point
 	 * @param args
 	 */
 	public static void main(String[] args) {
-		
-		//tp.pr4.Main [-h] [-i <type>] [-m <mapfile>]
-		//-h,--help Shows this help message
-		//-i,--interface <type> The type of interface: console or swing
-		//-m,--map <mapfile> File with the description of the city
 		
 		String 				i 		= null;
 		String            	map     = null;

@@ -1,11 +1,16 @@
 package tp.pr5;
-
-import javax.swing.JOptionPane;
+//uni doc ok
+//otros doc ok
+//imp no
 
 import tp.pr5.gui.NavigationPanel;
 import tp.pr5.instructions.exceptions.InstructionExecutionException;
-import tp.pr5.items.*;
+import tp.pr5.items.Item;
 
+/**
+ * This class is in charge of the robot navigation features. It contains the city where the robot looks for garbage, the current place where the robot is, and the current direction of the robot. It contains methods to handle the different robot movements and to pick and drop items at the current place.
+ * @author danidhsm
+ */
 public class NavigationModule extends Observable<NavigationObserver>
 {
 	
@@ -60,24 +65,24 @@ public class NavigationModule extends Observable<NavigationObserver>
 			Street street=this.getHeadingStreet();
 			if(street==null){
 				String err="WALL·E says: There is no street in direction "+this.getCurrentHeading();
-				if(isSwing()){
+				/*if(isSwing()){
 					JOptionPane.showMessageDialog(null, err);
-				}
+				}*/
 				throw new InstructionExecutionException(err);
 			}
 			
 			Place nextPlace=street.nextPlace(this.currentPlace);
 			if (street.isOpen()){
 				this.currentPlace=nextPlace;
-				if(isSwing()){
+				/*if(isSwing()){
 					this.navigationPanel.updateCell(currentDirection, nextPlace);
-				}
+				}*/
 				
 			}else{
 				String err="WALL·E says: Arrggg, there is a street but it is closed!";
-				if(isSwing()){
+				/*if(isSwing()){
 					JOptionPane.showMessageDialog(null, err);
-				}
+				}*/
 				throw new InstructionExecutionException(err);
 			}
 		}catch (Exception e){
@@ -97,9 +102,7 @@ public class NavigationModule extends Observable<NavigationObserver>
 	}
 	
 	/**
-	 * Drop an item in the current place. 
-	 * It assumes that there is no other item with the same name/id there. 
-	 * Otherwise, the behaviour is undefined.
+	 * Drop an item in the current place place. It does not check whether the operation fails
 	 * @param it - The name of the item to be dropped.
 	 */
 	public void dropItemAtCurrentPlace(Item it)
@@ -129,13 +132,13 @@ public class NavigationModule extends Observable<NavigationObserver>
 	}
 	
 	/**
-	 * Prints the information (description + inventory) of the current place
+	 * Provides the observers with the information (description + inventory) of the current place
 	 */
 	public void scanCurrentPlace()
 	{
-		System.out.println(this.getCurrentPlace().toString());
+		/*System.out.println(this.getCurrentPlace().toString());
 		System.out.println("The place contains these objects: ");
-		System.out.println(this.getCurrentPlace().getItems().toString());
+		System.out.println(this.getCurrentPlace().getItems().toString());*/
 	}
 	
 	/**
@@ -158,24 +161,14 @@ public class NavigationModule extends Observable<NavigationObserver>
 		
 	}
 	
-	public void setCurrentPlace(Place currentPlace) {
-		this.currentPlace = currentPlace;
-	}
-
+	/**
+	 * Returns the current place where the robot is (for testing purposes)
+	 * @return The current place
+	 */
 	public Place getCurrentPlace()
 	{
 		return this.currentPlace;
 		
-	}
-	
-	public void setNavigationPanel(NavigationPanel navPanel){
-		this.navigationPanel=navPanel;
-		this.navigationPanel.setInitialPlace(this.currentPlace,this.currentDirection);
-	}
-	
-	private boolean isSwing(){
-		return this.navigationPanel!=null;
-	}
-	
+	}	
 }
 

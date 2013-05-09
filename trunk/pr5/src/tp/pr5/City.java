@@ -1,7 +1,7 @@
 package tp.pr5;
-
-
-//100%
+//uni doc ok
+//otros doc no
+//imp ok
 /**
  * This class represents the city where the robot is wandering. 
  * It contains information about the streets and the places in the city.
@@ -23,7 +23,9 @@ public class City
 		
 	}
 	
-	
+	/**
+	 * Default constructor. Needed for testing purposes
+	 */
 	public City() 
 	{
 		
@@ -86,6 +88,11 @@ public class City
 		
 	}
 
-
+	/**
+	 * For debugging purposes
+	 */
+	public String toString(){
+		return super.toString();
+	}
 	
 }
