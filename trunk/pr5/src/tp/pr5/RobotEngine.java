@@ -103,7 +103,7 @@ public class RobotEngine extends Observable<RobotEngineObserver> {
 	public void startEngine()
 	{
 		showPlace();
-		showFirstItems();
+		//showFirstItems();
 		showDirection(); 
 		printRobotState();
 		
@@ -183,7 +183,7 @@ public class RobotEngine extends Observable<RobotEngineObserver> {
 		System.out.println(this.navigationModule.getCurrentPlace().toString());
 	}
 	
-	public void showCurrentItems() 
+	/*public void showCurrentItems() 
 	{
 		if(this.navigationModule.getCurrentPlace().getItems().numberOfItems()>0){
 			System.out.println("The place contains these objects:");
@@ -200,7 +200,7 @@ public class RobotEngine extends Observable<RobotEngineObserver> {
 		} else {
 			System.out.println("The place is empty. There are no objects to pick"+"\n");
 		}
-	}
+	}*/
 	
 	/**
 	 * Requests the end of the simulation

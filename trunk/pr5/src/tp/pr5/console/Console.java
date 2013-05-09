@@ -84,15 +84,8 @@ public class Console implements NavigationObserver, RobotEngineObserver, Invento
 
 	@Override
 	public void robotArrivesAtPlace(Direction heading, PlaceInfo place) {
-		System.out.println(place.getName());
-		System.out.println(place.getDescription());
+		System.out.println(place);
 		headingChanged(heading);
-		if(((Place) place).getItems().numberOfItems()>0){
-			System.out.println("The place contains these objects:");
-			System.out.println(((Place) place).getItems().toString()+"\n");
-		} else {
-			System.out.println("The place is empty. There are no objects to pick\n");
-		}
 	}
 
 	@Override

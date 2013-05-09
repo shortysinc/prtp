@@ -1,8 +1,7 @@
-/**
- * 
- */
 package tp.pr5;
-
+//uni doc ok
+//otros doc no
+//imp no
 import tp.pr5.items.*;
 
 
@@ -36,26 +35,34 @@ public class Place implements PlaceInfo
 	}
 	
 	/**
-	 * Is it the spaceship?
-	 * @return true if the place represents a spaceship.
-	 */
-	public boolean isSpaceship()
-	{
-		return this.spaceShip;
-	}
-	
-	/**
-	 * Overrides toString method. Returns the place name and its description
+	 * Overrides toString method. Returns the place name, its description and the list of items contained in the place
 	 */
 	public String toString()
 	{
-		return this.name+"\n"+this.description;
+		String place=this.name+Constants.LINE_SEPARATOR+this.description+Constants.LINE_SEPARATOR;
+		if(this.items.numberOfItems()>0){
+			place+="The place contains these objects:"+Constants.LINE_SEPARATOR;
+			place+=this.items.toString()+Constants.LINE_SEPARATOR;
+		} else {
+			place+="The place is empty. There are no objects to pick"+Constants.LINE_SEPARATOR+Constants.LINE_SEPARATOR;
+		}
+		return place;
 	}
 	
+	/**
+	 * Checks if an item is in this place
+	 * @param id Identifier of an item
+	 * @return true if and only if the place contains the item identified by id
+	 */
+	public boolean existItem(String id)
+	{
+		return this.items.containsItem(id);
+		
+	}	
 	
 	/**
-	 *Tries to pick an item characterized by a given identifier from the place. 
-	 *If the action was completed the item must be removed from the place. 
+	 * Tries to pick an item characterized by a given identifier from the place. 
+	 * If the action was completed the item must be removed from the place. 
 	 * @param id - The identifier of the item
 	 * @return The item of identifier id if it exists in the place. Otherwise the method returns null
 	 */
@@ -79,24 +86,30 @@ public class Place implements PlaceInfo
 		
 	}
 
-	public ItemContainer getItems() 
-	{
-		return items;
-	}
-	
-	
-	public boolean existItem(String id)
-	{
-		return this.items.containsItem(id);
-		
-	}
-	
-	
+	/**
+	 * Drop an item in this place. The operation can fail, returning false
+	 * @param it The name of the item to be dropped.
+	 * @return true if and only if the item is dropped in the place, i.e., an item with the same identifier does not exists in the place
+	 */
 	public boolean dropItem(Item it)
 	{
 		return this.items.addItem(it);
 		
 	}
+	
+	/**
+	 * Is it the spaceship?
+	 * @return true if the place represents a spaceship.
+	 */
+	public boolean isSpaceship()
+	{
+		return this.spaceShip;
+	}
+	
+	/*public ItemContainer getItems() 
+	{
+		return items;
+	}*/
 
 	@Override
 	public String getName() {
@@ -106,8 +119,5 @@ public class Place implements PlaceInfo
 	@Override
 	public String getDescription() {
 		return this.description;
-	}
-	
-	
-	
+	}	
 }

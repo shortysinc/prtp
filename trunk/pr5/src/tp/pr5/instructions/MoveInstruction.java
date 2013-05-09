@@ -42,7 +42,7 @@ public class MoveInstruction implements Instruction
 			System.out.println("WALL·E says: Moving in direction " + this.navigation.getCurrentHeading());
 			
 			engine.showPlace();
-			engine.showCurrentItems();
+			//engine.showCurrentItems();
 			engine.printRobotState();
 			
 			if(this.navigation.atSpaceship()){
