@@ -49,7 +49,7 @@ public class Fuel extends Item
 		{
 			r.addFuel(power);
 			this.times--;
-			r.printRobotState();
+			//r.printRobotState();
 			return true;
 		}
 		return false;

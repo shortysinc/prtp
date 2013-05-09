@@ -41,14 +41,14 @@ public class MoveInstruction implements Instruction
 			this.engine.addFuel(-5);
 			System.out.println("WALL·E says: Moving in direction " + this.navigation.getCurrentHeading());
 			
-			engine.showPlace();
+			//engine.showPlace();
 			//engine.showCurrentItems();
-			engine.printRobotState();
+			//engine.printRobotState();
 			
 			if(this.navigation.atSpaceship()){
-				this.engine.atSpaceShip();
+				/*this.engine.atSpaceShip();
 				this.engine.requestQuit();
-				System.out.println("WALL·E says: I am at my spaceship. Bye bye");
+				System.out.println("WALL·E says: I am at my spaceship. Bye bye");*/
 			} else {
 				engine.outOfFuel();
 			}
