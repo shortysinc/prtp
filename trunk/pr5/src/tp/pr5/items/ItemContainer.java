@@ -2,18 +2,22 @@ package tp.pr5.items;
 
 
 
-import tp.pr5.*;
-import tp.pr5.gui.RobotPanel;
+import tp.pr5.Observable;
 
 public class ItemContainer extends Observable<InventoryObserver> {
 	
 	private Item[] items= new Item[0];
-	private RobotPanel robotPanel;
-	
 	
 	/**
-	 * Returns the number of items contained
-	 * @return the number of items in the container
+	 * Creates the empty container
+	 */
+	public ItemContainer(){
+		
+	}
+	
+	/**
+	 * Returns the container's size
+	 * @return The number of items in the container
 	 */
 	public int numberOfItems()
 	{
@@ -36,7 +40,7 @@ public class ItemContainer extends Observable<InventoryObserver> {
 			this.items=newItems;
 			this.azSort();
 			
-			updateItems();
+			//updateItems();
 			
 			return true;
 		}
@@ -81,7 +85,7 @@ public class ItemContainer extends Observable<InventoryObserver> {
 				++j;
 			} while(j<this.items.length);
 			this.items=newItems;
-			updateItems();
+			//updateItems();
 		}
 		return item;
 	}
@@ -98,12 +102,56 @@ public class ItemContainer extends Observable<InventoryObserver> {
 		}
 		return inventary.trim().replaceFirst("", "   ");
 	}
-	//inventary+= "   "+this.items[i].getId()+LINE_SEPARATOR;
+	
+	/**
+	 * Checks if the Item with this id exists in the container.
+	 * @param id - Name of the item.
+	 * @return true if the container has an item with that name.
+	 */
+	public boolean containsItem(String id)
+	{
+		for (int i = 0; i < this.items.length; i++) 
+		{
+			if(this.items[i].getId().equalsIgnoreCase(id))
+			{
+				return true;
+			}
+		}
+		return false;
+		
+	}
+	
+	/**
+	 * Method called by the OperateInstruction when an item stored in the collection is successfully used.
+	 * The collection then checks if the item could be used again in the future. If it is not possible because the item is "empty", then it is removed from the collection (and the method notifies all the observers).
+	 * @param item to be used
+	 */
+	public void useItem(Item item){
+		
+	}
+	
+	/**
+	 * 
+	 */
+	public void requestScanCollection(){
+		
+	}
+	
+	/**
+	 * PRECOND: The item exists
+	 * @param id
+	 */
+	public void requestScanItem(java.lang.String id){
+		
+	}
 	/**
 	 * get the array position due to an id item
 	 * @param id id item
 	 * @return position
 	 */
+	
+	
+	
 	private int findItemPosition(String id)
 	{
 		int position=-1;
@@ -131,32 +179,10 @@ public class ItemContainer extends Observable<InventoryObserver> {
 		}
 	}
 	
-	/**
-	 * Checks if the Item with this id exists in the container.
-	 * @param id - Name of the item.
-	 * @return true if the container has an item with that name.
-	 */
-	public boolean containsItem(String id)
-	{
-		for (int i = 0; i < this.items.length; i++) 
-		{
-			if(this.items[i].getId().equalsIgnoreCase(id))
-			{
-				return true;
-			}
-		}
-		return false;
-		
-	}
-	
-	public void setRobotPanel(RobotPanel robotPanel){
-		this.robotPanel=robotPanel;
-	}
-	
-	public void updateItems(){
+	/*public void updateItems(){
 		if(this.robotPanel!=null){
 			this.robotPanel.updateItems(this.items);
 		}
-	}
+	}*/
 
 }
