@@ -1,12 +1,13 @@
 package tp.pr5;
-
+//uni doc ok
+//otros doc ok
+//imp ok
 import tp.pr5.items.CodeCard;
 
-//100%
 /**
- *A street links two places A and B in one direction. If it is defined as Street(A,NORTH,B) 
- *it means that Place B is at NORTH of Place A. Streets are two-way streets, i.e. if B is at 
- *NORTH of A then A is at SOUTH of B.  I
+ * A street links two places A and B in one direction. If it is defined as Street(A,NORTH,B) 
+ * it means that Place B is at NORTH of Place A. Streets are two-way streets, i.e. if B is at 
+ * NORTH of A then A is at SOUTH of B.  I
  */
 public class Street 
 {
@@ -16,12 +17,11 @@ public class Street
 	private boolean isOpen;
 	private String code;
 	
-	//--------------------------------------------------------------------------------------------------//
 	/**
 	 * Creates an open street and it have not any code to open or close it.
-	 * @param source - Source place (in the example A).
+	 * @param source - Source place
 	 * @param direction - Represents how is placed the target place with respect to the source place.
-	 * @param target - Target place (in the example B).
+	 * @param target - Target place
 	 */
 	public Street(Place source, Direction direction, Place target)
 	{
@@ -36,9 +36,9 @@ public class Street
 	
 	/**
 	 * Creates a street that has a code to open and close it
-	 * @param source - Source place (in the example A).
+	 * @param source - Source place
 	 * @param direction - Represents how is placed the target place with respect to the source place.
-	 * @param target - Target place (in the example B).
+	 * @param target - Target place
 	 * @param isOpen - Determines is the street is opened or closed
      * @param code - The code that opens and closes the street
 	 */
@@ -51,7 +51,6 @@ public class Street
 		this.code=code;
 	}
 	
-	//--------------------------------------------------------------------------------------------------//
 	
 	/**
 	 * Checks if the street comes out from a place in a given direction. 
@@ -127,9 +126,11 @@ public class Street
 		return false;
 	}
 	
-	
-	public String getCode()
-	{
-		return this.code;
+	/**
+	 * Only for debugging purposes
+	 */
+	@Override
+	public String toString(){
+		return super.toString();		
 	}
 }

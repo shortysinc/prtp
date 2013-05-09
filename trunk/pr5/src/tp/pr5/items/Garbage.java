@@ -52,7 +52,7 @@ public class Garbage extends Item{
 		if (this.canBeUsed()){
 			r.addRecycledMaterial(recycledMaterial);
 			this.times--;
-			r.printRobotState();
+			//r.printRobotState();
 			return true;
 		}
 		return false;

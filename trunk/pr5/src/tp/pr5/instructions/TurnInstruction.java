@@ -95,8 +95,8 @@ public class TurnInstruction implements Instruction
 			}*/
 			engine.addFuel(-5);
 			
-			engine.showDirection();
-			engine.printRobotState();
+			//engine.showDirection();
+			//engine.printRobotState();
 			engine.outOfFuel();
 		} 
 		catch (Exception e)
