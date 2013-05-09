@@ -43,9 +43,7 @@ public class Garbage extends Item{
 	 * The garbage generates recycled material for the robot that uses it
 	 * @return r - the robot that uses the item
 	 * @return p - The place where the item is used
-	 * 
 	 * @return true if the garbage was transformed in recycled material
-	 * 
 	 */
 	public boolean use(RobotEngine r, NavigationModule nav)
 	{
