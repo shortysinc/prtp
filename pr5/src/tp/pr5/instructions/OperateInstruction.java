@@ -76,7 +76,7 @@ public class OperateInstruction implements Instruction
 					
 					System.out.println("WALL·E says: What a pity! I have no more " + id +" in my inventory");
 				}
-				this.robotContainer.updateItems();
+				//this.robotContainer.updateItems();
 			}
 			else{
 				throw new InstructionExecutionException("WALL·E says: I have not such object " + id);
