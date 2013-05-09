@@ -37,5 +37,6 @@ public class Constants {
 	public static final String MESSAGE_WALL 						= "What the hell am I supposed to do going to {DIRECTION} ?";
 	public static final String MESSAGE_WHAT 						= "WALL\u00b7E says: I do not understand. Please repeat";
 	public static final String PROMPT 								= "WALL\u00b7E> ";
+	public static final String LINE_SEPARATOR						= System.getProperty("line.separator");
 	
 }

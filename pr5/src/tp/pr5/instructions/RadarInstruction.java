@@ -50,7 +50,7 @@ public class RadarInstruction implements Instruction
 	public void execute() throws InstructionExecutionException {
 		try{
 			System.out.println(this.navigation.getCurrentPlace().toString());
-			this.engine.showFirstItems();
+			//this.engine.showFirstItems();
 				   
 		} catch (Exception e){
 			throw new InstructionExecutionException();

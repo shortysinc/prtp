@@ -59,7 +59,7 @@ public class NavigationPanel extends JPanel {
 		
 		for (int i = 0; i < 11; i++) {
 			for (int j = 0; j < 11; j++) {
-				cells[i][j]=new PlaceCell();
+				cells[i][j]=new PlaceCell(this);
 				cityPanel.add(cells[i][j]);
 				cells[i][j].addActionListener(new ActionListener() {
 					
