@@ -1,5 +1,7 @@
 package tp.pr5;
-//100%test
+//uni doc ok
+//otros doc no
+//imp no
 import java.util.Scanner;
 
 import javax.swing.JOptionPane;
@@ -12,7 +14,9 @@ import tp.pr5.instructions.exceptions.*;
 import tp.pr5.items.*;
 
 /**
- * This class represents the robot engine. It controls robot movements by processing the instructions introduced with the keyboard. The engine stops when the robot arrives at the spaceship or receives a quit instruction.
+ * This class represents the robot engine. It controls robot movements by processing the instructions provided by the controllers. The engine stops when the robot arrives at the space ship, runs out of fuel or receives a quit instruction.
+ * The robot engine is also responsible for updating the fuel level and the recycled material according to the actions that the robot performs in the city.
+ * The robot engine contains an inventory, where the robot stores the items that it collects from the city
  */
 public class RobotEngine extends Observable<RobotEngineObserver> {
 
@@ -29,10 +33,10 @@ public class RobotEngine extends Observable<RobotEngineObserver> {
 	
 
 	/**
-	 * Creates the robot engine in an initial place, facing an initial direction and with a city map. Initially the robot has not any items or recycled material but it has an initial amount of fuel (50).
-	 * @param initialPlace
-	 * @param direction
-	 * @param cityMap
+	 * Creates the robot engine in an initial place, facing an initial direction and with a city map. Initially the robot has not any items or recycled material but it has an initial amount of fuel (100).
+	 * @param cityMap The city where the robot wanders
+	 * @param initialPlace The place where the robot starts
+	 * @param direction The initial direction where the robot is facing.
 	 */
 	public RobotEngine(City cityMap, Place initialPlace,Direction direction)
 	{
@@ -55,81 +59,6 @@ public class RobotEngine extends Observable<RobotEngineObserver> {
 	}
 	
 	/**
-	 * Adds an amount of fuel to the robot (it can be negative)
-	 * @param fuel  Amount of fuel added to the robot
-	 */
-	public void addFuel(int fuel)
-	{
-		this.fuel+=fuel;
-		for (RobotEngineObserver robotEngineObserver : this.observers) {
-			robotEngineObserver.robotUpdate(fuel, recycledMaterial);
-		}
-	}
-	
-	/**
-	 * Returns the current fuel level of the robot. This method is mandatory FOR TESTING PURPOSES
-	 * @return The current fuel level of the robot
-	 */
-	public int getFuel()
-	{
-		return this.fuel;
-	}
-	
-	
-	/**
-	 * Increases the amount of recycled material of the robot
-	 * @param weight Amount of recycled material
-	 */
-	public void addRecycledMaterial(int weight)
-	{
-		this.recycledMaterial+=weight;
-		this.emitRobotUpdate(fuel, weight);
-		if(this.robotPanel!=null){
-			this.robotPanel.updateRecycledMaterial();
-		}
-	}
-	
-	/**
-	 * Returns the current weight of recycled material that the robot carries. This method is mandatory FOR TESTING PURPOSES
-	 * @return The current fuel level of the robot
-	 */
-	public int getRecycledMaterial(){
-		return this.recycledMaterial;
-	}
-	
-	/**
-	 * It starts the robot engine.
-	 */
-	public void startEngine()
-	{
-		showPlace();
-		//showFirstItems();
-		showDirection(); 
-		printRobotState();
-		
-		//
-		
-		Scanner sc= new Scanner(System.in);
-
-		do
-		{
-			showPrompt();
-			Instruction instruction;
-			try 
-			{
-				instruction = Interpreter.generateInstruction(sc.nextLine());
-				this.communicateRobot(instruction);
-			} 
-			catch (WrongInstructionFormatException e) 
-			{
-				System.out.println("WALL·E says: I do not understand. Please repeat");
-			}
-			
-		} while(!this.quitRequest && this.fuel>0 && !this.navigationModule.atSpaceship());
-		sc.close();
-	}
-	
-	/**
 	 * It executes an instruction. The instruction must be configured with the context before executing it. 
 	 * It controls the end of the simulation. If the execution of the instruction throws an exception, 
 	 * then the corresponding message is printed
@@ -149,58 +78,64 @@ public class RobotEngine extends Observable<RobotEngineObserver> {
 		}
 		catch (InstructionExecutionException e) 
 		{
-			//System.out.println("me has pasado cosas mal");
+			//continue
 		}
 	}
 	
-	public Direction getCurrentDirection() 
-	{
-		return this.navigationModule.getCurrentHeading();
-	}
-
 	/**
-	 * Show the WALL-E prompt
+	 * Checks if the simulation is finished
+	 * @return true if the game has finished
 	 */
-	void showPrompt()
-	{
-		System.out.print("WALL·E> ");
+	public boolean isOver(){
+		return quitRequest;
 	}
+	
+	/**
+	 * Increases the amount of recycled material of the robot
+	 * @param weight Amount of recycled material
+	 */
+	public void addRecycledMaterial(int weight)
+	{
+		this.recycledMaterial+=weight;
+		this.emitRobotUpdate(fuel, weight);
+	}
+	
+	/**
+	 * Adds an amount of fuel to the robot (it can be negative)
+	 * @param fuel  Amount of fuel added to the robot
+	 */
+	public void addFuel(int fuel)
+	{
+		this.fuel+=fuel;
+		this.emitRobotUpdate(fuel, recycledMaterial);
+	}
+	
+	/**
+	 * Returns the current fuel level of the robot. This method is mandatory FOR TESTING PURPOSES
+	 * @return The current fuel level of the robot
+	 */
+	public int getFuel()
+	{
+		return this.fuel;
+	}
+	
+	
+	
+	
+	/**
+	 * Returns the current weight of recycled material that the robot carries. This method is mandatory FOR TESTING PURPOSES
+	 * @return The current fuel level of the robot
+	 */
+	public int getRecycledMaterial(){
+		return this.recycledMaterial;
+	}
+	
+	/**
+	 * Requests the engine to inform the observers that the simulation starts
+	 */
+	public void requestStart(){
 		
-	/**
-	 * Show the current Direction
-	 */
-	public void showDirection()
-	{
-		System.out.println("WALL·E is looking at direction "+  this.navigationModule.getCurrentHeading().toString());
-		//System.out.println();
 	}
-	
-	/**
-	 * Show the current Place
-	 */
-	public void showPlace()
-	{
-		System.out.println(this.navigationModule.getCurrentPlace().toString());
-	}
-	
-	/*public void showCurrentItems() 
-	{
-		if(this.navigationModule.getCurrentPlace().getItems().numberOfItems()>0){
-			System.out.println("The place contains these objects:");
-			System.out.println(this.navigationModule.getCurrentPlace().getItems().toString()+"\n");
-		} else {
-			System.out.println("The place is empty. There are no objects to pick"+"\n");
-		}
-	}
-	public void showFirstItems() 
-	{
-		if(this.navigationModule.getCurrentPlace().getItems().numberOfItems()>0){
-			System.out.println("The place contains these objects:");
-			System.out.println(this.navigationModule.getCurrentPlace().getItems().toString());
-		} else {
-			System.out.println("The place is empty. There are no objects to pick"+"\n");
-		}
-	}*/
 	
 	/**
 	 * Requests the end of the simulation
@@ -219,28 +154,19 @@ public class RobotEngine extends Observable<RobotEngineObserver> {
 	}
 	
 	/**
-	 * Prints the state of the robot
+	 * Requests the engine to inform that an error has been raised
+	 * @param msg
 	 */
-	
-	public void printRobotState()
-	{
-		/*System.out.println("      * My power is " + fuelCalc(this.getFuel()));
-		System.out.println("      * My reclycled material is " + this.recycledMaterial);*/
-	}
-	
-	public void outOfFuel (){
-		if (this.fuel<=0){
-			this.quitRequest=true;
-		}
-	}
-	
-	public void atSpaceShip(){
+	public void requestError(String msg){
 		
 	}
 	
-	public void undo() throws InstructionExecutionException{
-		this.lastInstruction.undo();
-		this.lastInstruction = null;
+	/**
+	 * Request the engine to say something
+	 * @param message
+	 */
+	public void saySomething(String message){
+		
 	}
 	
 	/**
@@ -249,18 +175,6 @@ public class RobotEngine extends Observable<RobotEngineObserver> {
 	 */
 	protected void addEngineObserver(RobotEngineObserver observer){
 		this.addObserver(observer);
-	}
-	
-	private void emitComunicateHelp(){
-		for (RobotEngineObserver robotEngineObserver : this.observers) {
-			robotEngineObserver.communicationHelp(Interpreter.interpreterHelp());
-		}
-	}
-	
-	private void emitRobotUpdate(int fuel, int weight){
-		for (RobotEngineObserver robotEngineObserver : this.observers) {
-			robotEngineObserver.robotUpdate(fuel, weight);
-		}
 	}
 	
 	/**
@@ -277,5 +191,30 @@ public class RobotEngine extends Observable<RobotEngineObserver> {
 	 */
 	protected void addItemContainerObserver(InventoryObserver c){
 		this.inventary.addObserver(c);
+	}
+	
+	private void emitComunicateHelp(){
+		for (RobotEngineObserver robotEngineObserver : this.observers) {
+			robotEngineObserver.communicationHelp(Interpreter.interpreterHelp());
+		}
+	}
+	
+	private void emitRobotUpdate(int fuel, int weight){
+		for (RobotEngineObserver robotEngineObserver : this.observers) {
+			robotEngineObserver.robotUpdate(fuel, weight);
+		}
+	}
+	
+	
+	
+	public void outOfFuel (){
+		if (this.fuel<=0){
+			this.quitRequest=true;
+		}
+	}
+	
+	public void undo() throws InstructionExecutionException{
+		this.lastInstruction.undo();
+		this.lastInstruction = null;
 	}
 }
