@@ -30,15 +30,17 @@ public class MainWindow extends JFrame implements RobotEngineObserver{
 		
 		super();
 		this.controller=gc;
-		this.controller.registerEngineObserver(this);
-		
-		
 		this.build();
+		
+		//add observers -----------------------------------------------
+		this.controller.registerEngineObserver(this);
 		
 		this.controller.registerEngineObserver(this.robotPanel);
 		this.controller.registerItemContainerObserver(this.robotPanel);
+		
 		this.controller.registerRobotObserver(this.navigationPanel);
-		//this.init();
+		//-------------------------------------------------------------
+		
 		this.setTitle("WALL·E The garbage collector");
 		this.pack();
 		this.setVisible(true);
