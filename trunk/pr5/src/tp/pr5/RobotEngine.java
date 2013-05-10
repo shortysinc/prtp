@@ -45,7 +45,6 @@ public class RobotEngine extends Observable<RobotEngineObserver> {
 		this.recycledMaterial	= 0;
 		this.inventary			= new ItemContainer();
 		this.navigationModule	= new NavigationModule(cityMap, initialPlace);
-		//this.currentDirection 	= direction;
 		this.navigationModule.initHeading(direction);
 		
 		/**
@@ -158,7 +157,7 @@ public class RobotEngine extends Observable<RobotEngineObserver> {
 	 * @param msg
 	 */
 	public void requestError(String msg){
-		
+		//this.emitRaiseError(msg);
 	}
 	
 	/**
