@@ -59,8 +59,8 @@ public class RobotEngine extends Observable<RobotEngineObserver> {
 	}
 	
 	/**
-	 * It executes an instruction. The instruction must be configured with the context before executing it. 
-	 * It controls the end of the simulation. If the execution of the instruction throws an exception, 
+	 * It executes an instruction. The instruction must be configured with the context before executing it.
+	 * It controls the end of the simulation. If the execution of the instruction throws an exception,
 	 * then the corresponding message is printed
 	 * @param c - The instruction to be executed
 	 */
