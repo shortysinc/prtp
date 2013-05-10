@@ -2,6 +2,9 @@ package tp.pr5.gui;
 
 import java.util.List;
 
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+
 import tp.pr5.Direction;
 import tp.pr5.NavigationObserver;
 import tp.pr5.PlaceInfo;
@@ -13,13 +16,26 @@ import tp.pr5.items.Item;
  * Panel at the bottom of the window that displays messages about the events that occur during the simulation.
  * This panel implements all the observer interfaces in order to be notified about all event ocurred
  */
-public class InfoPanel extends javax.swing.JPanel implements RobotEngineObserver, NavigationObserver, InventoryObserver{
+public class InfoPanel extends JPanel implements RobotEngineObserver, NavigationObserver, InventoryObserver{
 
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
 
+	private JLabel info= new JLabel();
+	
+	/**
+	 * Default constructor
+	 */
+	public InfoPanel(){
+		this.build();
+	}
+	
+	private void build(){
+		this.add(info);
+	}
+	
 	@Override
 	public void inventoryChange(List<Item> inventory) {
 		// TODO Auto-generated method stub
@@ -53,7 +69,6 @@ public class InfoPanel extends javax.swing.JPanel implements RobotEngineObserver
 	@Override
 	public void initNavigationModule(PlaceInfo initialPlace, Direction heading) {
 		// TODO Auto-generated method stub
-		
 	}
 
 	@Override
@@ -100,7 +115,7 @@ public class InfoPanel extends javax.swing.JPanel implements RobotEngineObserver
 
 	@Override
 	public void robotUpdate(int fuel, int recycledMaterial) {
-		// TODO Auto-generated method stub
+		this.info.setText("Robot attributes has been updated("+fuel+","+recycledMaterial+")");
 		
 	}
 
