@@ -81,7 +81,7 @@ public class OperateInstruction implements Instruction
 			else{
 				throw new InstructionExecutionException("WALL·E says: I have not such object " + id);
 			}
-			engine.outOfFuel();
+			//engine.outOfFuel();
 		} 
 		catch(Exception e)
 		{
