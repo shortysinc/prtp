@@ -134,7 +134,7 @@ public class RobotEngine extends Observable<RobotEngineObserver> {
 	 * Requests the engine to inform the observers that the simulation starts
 	 */
 	public void requestStart(){
-		
+		this.emitRobotUpdate(fuel, recycledMaterial);
 	}
 	
 	/**
