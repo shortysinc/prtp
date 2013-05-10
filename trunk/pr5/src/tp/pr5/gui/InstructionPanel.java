@@ -1,17 +1,19 @@
 package tp.pr5.gui;
 
-import java.awt.*;
-import java.awt.event.*;
+import java.awt.Dimension;
+import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
+import javax.swing.JButton;
+import javax.swing.JComboBox;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
+import javax.swing.border.TitledBorder;
 
-import javax.swing.*;
-import javax.swing.border.*;
-
-import tp.pr5.RobotEngine;
 import tp.pr5.Rotation;
-import tp.pr5.instructions.DropInstruction;
 import tp.pr5.instructions.MoveInstruction;
-import tp.pr5.instructions.OperateInstruction;
 import tp.pr5.instructions.PickInstruction;
 import tp.pr5.instructions.QuitInstruction;
 import tp.pr5.instructions.TurnInstruction;
@@ -23,7 +25,7 @@ public class InstructionPanel extends JPanel{
 	 */
 	private static final long serialVersionUID = 1L;
 
-	private RobotEngine robot;
+	private GUIController controller;
 	
 	public JButton moveButton;
 	public JButton quitButton;
@@ -34,9 +36,9 @@ public class InstructionPanel extends JPanel{
 	public JButton dropButton;
 	public JButton operateButton;
 
-	public InstructionPanel(RobotEngine robot){
+	public InstructionPanel(GUIController controller){
 		super();
-		this.robot=robot;
+		this.controller=controller;
 		this.build();
 	}
 	
@@ -127,26 +129,26 @@ public class InstructionPanel extends JPanel{
 		if (exit==JOptionPane.YES_OPTION)
 		{
 			QuitInstruction quit=new QuitInstruction();
-			robot.communicateRobot(quit);
+			//robot.communicateRobot(quit);
 		}
 	}
 	
 	public void moveActionPerformed(ActionEvent arg0){
 		MoveInstruction move=new MoveInstruction();
-		robot.communicateRobot(move);
+		//robot.communicateRobot(move);
 	}
 	
 	public void turnActionPerformed(ActionEvent arg0){
 		Rotation rotation = (Rotation) this.turnCombo.getSelectedItem();
 		TurnInstruction turn=new TurnInstruction(rotation);
-		robot.communicateRobot(turn);
+		//robot.communicateRobot(turn);
 	}
 	
 	public void pickActionPerformed(ActionEvent arg0){
 		String idItem=this.instructionText.getText();
 		if(!idItem.isEmpty()){
 			PickInstruction pick=new PickInstruction(idItem);
-			robot.communicateRobot(pick);
+			//robot.communicateRobot(pick);
 		} else {
 			JOptionPane.showMessageDialog(null, "No Item to pick");
 		}

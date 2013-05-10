@@ -65,10 +65,10 @@ public class MainWindow extends JFrame implements RobotEngineObserver{
 		
 		JPanel containerPanel= new JPanel(new BorderLayout());
 		
-		//this.InstructionPanel = new  InstructionPanel(this.robot);
+		this.InstructionPanel = new  InstructionPanel(this.controller);
 		this.InstructionPanel.setBounds(20, 30, 25, 15);
 		
-		//this.robotPanel = new RobotPanel(this.robot);
+		this.robotPanel = new RobotPanel();
 		
 		JSplitPane splitPanel= new JSplitPane(JSplitPane.HORIZONTAL_SPLIT,this.InstructionPanel,this.robotPanel);
 		this.navigationPanel= new NavigationPanel(); 
@@ -92,6 +92,7 @@ public class MainWindow extends JFrame implements RobotEngineObserver{
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				//MainWindow.this.robot.communicateRobot(new UndoInstruction());
+				//gc.avisarUndoInstruction();
 			}
 		});
 	}
