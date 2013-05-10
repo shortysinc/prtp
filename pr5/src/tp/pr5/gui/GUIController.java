@@ -14,6 +14,41 @@ public class GUIController extends tp.pr5.Controller
 		this.game.requestStart();
 	}
 	
-	//metodo por cada instruccion que se llamara desde la vista
+	/**
+	 * Executes an OPERATE instruction
+	 * @param itemName Name of the used item
+	 */
+	public void executeOperateAction(String itemName){
+		
+	}
+	
+	/**
+	 * Executes a DROP instruction
+	 * @param item Item dropped
+	 */
+	public void executeDropAction(java.lang.String item){
+		
+	}
 
+	/**
+	 * Executes a PICK instruction
+	 * @param item Item picked
+	 */
+	public void executePickAction(String item){
+		
+	}
+	
+	/**
+	 * Executes a QUIT instruction
+	 */
+	public void executeQuitAction(){
+		
+	}
+	
+	/**
+	 * Executes a MOVE instruction
+	 */
+	public void executeMoveAction(){
+		
+	}
 }
