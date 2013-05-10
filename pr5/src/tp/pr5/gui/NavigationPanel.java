@@ -13,9 +13,10 @@ import javax.swing.JTextArea;
 import javax.swing.border.TitledBorder;
 
 import tp.pr5.Direction;
-import tp.pr5.Place;
+import tp.pr5.NavigationObserver;
+import tp.pr5.PlaceInfo;
 
-public class NavigationPanel extends JPanel {
+public class NavigationPanel extends JPanel implements NavigationObserver{
 
 	/**
 	 * 
@@ -88,20 +89,37 @@ public class NavigationPanel extends JPanel {
 		
 	}
 	
-	public void setInitialPlace(Place place, Direction direction){
+	/**
+	 * Returns the PlaceCell object of the current position on the city
+	 * @return The current cell
+	 */
+	public PlaceCell getCurrentCell(){
+		return null;
+	}
+	
+	/**
+	 * Changes the current cell according to the player movement
+	 * @param dir Direction of the movement
+	 */
+	public void move(Direction dir){
+		
+	}
+	
+	/**
+	 * Displays the place description on the text area
+	 * @param description The place that will be shown
+	 */
+	public void showCurrentPlace(java.lang.String description){
+		
+	}
+	
+	
+	/*public void setInitialPlace(Place place, Direction direction){
 		PlaceCell cell = this.cells[this.row][this.column];
 		cell.setPlace(place);
 		cell.activate();
 		this.log.setText(cell.getDescriptionPlace());
-		this.updateDirection(direction);
-	}
-	
-	public void updateDirection(Direction direction){
-		try{
-			this.robotImage.setIcon(new ImageIcon(ImageIcon.class.getResource("/tp/pr5/gui/images/"+direction.getImage())));
-		} catch (Exception e){
-			//continue
-		}
+		//this.updateDirection(direction);
 	}
 	
 	public void updateCell(Direction direction, Place currentPlace){
@@ -126,5 +144,37 @@ public class NavigationPanel extends JPanel {
 	public void updateLog(){
 		PlaceCell cell=this.cells[row][column];
 		this.log.setText(cell.getDescriptionPlace());
+	}*/
+
+	@Override
+	public void headingChanged(Direction newHeading) {
+		try{
+			this.robotImage.setIcon(new ImageIcon(ImageIcon.class.getResource("/tp/pr5/gui/images/"+newHeading.getImage())));
+		} catch (Exception e){
+			//continue
+		}
+	}
+
+	@Override
+	public void initNavigationModule(PlaceInfo initialPlace, Direction heading) {
+		this.headingChanged(heading);
+	}
+
+	@Override
+	public void robotArrivesAtPlace(Direction heading, PlaceInfo place) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void placeScanned(PlaceInfo placeDescription) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void placeHasChanged(PlaceInfo placeDescription) {
+		// TODO Auto-generated method stub
+		
 	}
 }

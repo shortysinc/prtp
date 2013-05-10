@@ -2,6 +2,7 @@ package tp.pr5.gui;
 
 import java.awt.BorderLayout;
 import java.awt.Dimension;
+import java.util.List;
 
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -11,23 +12,23 @@ import javax.swing.border.TitledBorder;
 import javax.swing.table.AbstractTableModel;
 
 import tp.pr5.RobotEngine;
+import tp.pr5.RobotEngineObserver;
+import tp.pr5.items.InventoryObserver;
 import tp.pr5.items.Item;
 
-public class RobotPanel extends JPanel{
+public class RobotPanel extends JPanel implements RobotEngineObserver, InventoryObserver{
 
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
 	
-	public JLabel fuel;
-	public JLabel recycledMaterial;
+	public JLabel fuel=new JLabel();
+	public JLabel recycledMaterial=new JLabel();
 	public JTable inventoryTable;
-	private RobotEngine robot;
 	
-	public RobotPanel(RobotEngine robot){
+	public RobotPanel(){
 		super();
-		this.robot=robot;
 		this.build();
 	}
 	
@@ -39,8 +40,8 @@ public class RobotPanel extends JPanel{
 		JLabel fuelLabel = new JLabel("Fuel");
 		JLabel recycledLabel = new JLabel("Recycled");
 		
-		this.fuel = new JLabel(this.robot.getFuel()+"");
-		this.recycledMaterial = new JLabel(this.robot.getRecycledMaterial()+"");
+		//this.fuel.setText(this.robot.getFuel()+"");
+		//this.recycledMaterial.setText(this.robot.getRecycledMaterial()+"");
 		
 		String[][] inventory=new String[0][0];
 		 
@@ -56,14 +57,6 @@ public class RobotPanel extends JPanel{
 		this.add(new JScrollPane(this.inventoryTable),BorderLayout.CENTER);
 		this.setPreferredSize(new Dimension(300, 125));
 		
-	}
-	
-	public String getSelectedItem(){
-		int pos=this.inventoryTable.getSelectedRow();
-		if(pos>=0){
-			return this.inventoryTable.getValueAt(this.inventoryTable.getSelectedRow(),0).toString();
-		}
-		return null;
 	}
 	
 	class inventoryModel extends AbstractTableModel{
@@ -103,8 +96,22 @@ public class RobotPanel extends JPanel{
 		}
 	
 	}
+	
+	/**
+	 * Returns the name of the item selected by the user on the table
+	 * @return The name of the item selected
+	 */
+	public String getSelectedItem(){
+		int pos=this.inventoryTable.getSelectedRow();
+		if(pos>=0){
+			return this.inventoryTable.getValueAt(this.inventoryTable.getSelectedRow(),0).toString();
+		}
+		return null;
+	}
+	
+	
 
-	public void updateStats(){
+	/*public void updateStats(){
 		this.updateFuel();
 		this.updateRecycledMaterial();
 	}
@@ -125,6 +132,66 @@ public class RobotPanel extends JPanel{
 		}
 		inventoryTable.setModel(new inventoryModel(datos));
 		//inventoryTable.repaint();
+		
+	}*/
+
+	@Override
+	public void inventoryChange(List<Item> inventory) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void inventoryScanned(String inventoryDescription) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void itemScanned(String description) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void itemEmpty(String itemName) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void raiseError(String msg) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void communicationHelp(String help) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void engineOff(boolean atShip) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void communicationCompleted() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void robotUpdate(int fuel, int recycledMaterial) {
+		this.fuel.setText(""+fuel);
+		this.fuel.setText(""+recycledMaterial);
+	}
+
+	@Override
+	public void robotSays(String message) {
+		// TODO Auto-generated method stub
 		
 	}
 	
