@@ -79,7 +79,7 @@ public class RobotEngine extends Observable<RobotEngineObserver> {
 		}
 		catch (InstructionExecutionException e) 
 		{
-			//
+			this.emitRaiseError(e.getMessage());
 		}
 	}
 	
@@ -167,7 +167,7 @@ public class RobotEngine extends Observable<RobotEngineObserver> {
 	 * @param message
 	 */
 	public void saySomething(String message){
-		
+		this.emitRobotSays(message);
 	}
 	
 	/**
@@ -218,13 +218,13 @@ public class RobotEngine extends Observable<RobotEngineObserver> {
 		}
 	}
 	
-	private void communicationCompleted(){
+	private void emitCommunicationCompleted(){
 		for (RobotEngineObserver robotEngineObserver : this.observers) {
 			robotEngineObserver.communicationCompleted();
 		}
 	}
 	
-	private void robotSays(String message){
+	private void emitRobotSays(String message){
 		for (RobotEngineObserver robotEngineObserver : this.observers) {
 			robotEngineObserver.robotSays(message);
 		}
