@@ -48,6 +48,7 @@ public class NavigationModule extends Observable<NavigationObserver>
 	public void rotate(Rotation rotation)
 	{
 		this.currentDirection=this.currentDirection.rotate(rotation);
+		this.emitHeadingChanged(this.currentDirection);
 	}
 	
 	/**
@@ -169,6 +170,13 @@ public class NavigationModule extends Observable<NavigationObserver>
 	{
 		return this.currentPlace;
 		
-	}	
+	}
+	
+	
+	private void emitHeadingChanged(Direction newHeading){
+		for (NavigationObserver navigationObserver : this.observers) {
+			navigationObserver.headingChanged(newHeading);
+		}
+	}
 }
 
