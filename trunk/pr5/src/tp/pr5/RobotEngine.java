@@ -75,6 +75,7 @@ public class RobotEngine extends Observable<RobotEngineObserver> {
 			if(c.isUndoable()){
 				this.lastInstruction= c;
 			}
+			this.checkFuel();
 		}
 		catch (InstructionExecutionException e) 
 		{
@@ -229,7 +230,7 @@ public class RobotEngine extends Observable<RobotEngineObserver> {
 		}
 	}
 	
-	public void outOfFuel (){
+	public void checkFuel (){
 		if (this.fuel<=0){
 			this.quitRequest=true;
 		}

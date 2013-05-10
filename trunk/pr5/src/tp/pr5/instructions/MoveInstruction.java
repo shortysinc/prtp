@@ -49,10 +49,7 @@ public class MoveInstruction implements Instruction
 				/*this.engine.atSpaceShip();
 				this.engine.requestQuit();
 				System.out.println("WALL·E says: I am at my spaceship. Bye bye");*/
-			} else {
-				engine.outOfFuel();
 			}
-			
 		}catch (Exception e){
 			throw new InstructionExecutionException();
 		}
