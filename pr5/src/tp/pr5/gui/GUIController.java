@@ -11,8 +11,7 @@ public class GUIController extends tp.pr5.Controller
 
 	@Override
 	public void startController() {
-		//avisar a los observers de que ha empezado
-		
+		this.game.requestStart();
 	}
 	
 	//metodo por cada instruccion que se llamara desde la vista
