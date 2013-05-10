@@ -4,6 +4,7 @@ package tp.pr5;
 //imp no
 import java.util.Scanner;
 
+import javax.print.attribute.standard.MediaSize.Engineering;
 import javax.swing.JOptionPane;
 
 import tp.pr5.gui.MainWindow;
@@ -77,7 +78,7 @@ public class RobotEngine extends Observable<RobotEngineObserver> {
 		}
 		catch (InstructionExecutionException e) 
 		{
-			//continue
+			//
 		}
 	}
 	
@@ -157,7 +158,7 @@ public class RobotEngine extends Observable<RobotEngineObserver> {
 	 * @param msg
 	 */
 	public void requestError(String msg){
-		//this.emitRaiseError(msg);
+		this.emitRaiseError(msg);
 	}
 	
 	/**
@@ -204,7 +205,29 @@ public class RobotEngine extends Observable<RobotEngineObserver> {
 		}
 	}
 	
+	private void emitRaiseError(String msg){
+		for (RobotEngineObserver robotEngineObserver : this.observers) {
+			robotEngineObserver.raiseError(msg);
+		}
+	}
 	
+	private void emitEngineOff(boolean atShip){
+		for (RobotEngineObserver robotEngineObserver : this.observers) {
+			robotEngineObserver.engineOff(atShip);
+		}
+	}
+	
+	private void communicationCompleted(){
+		for (RobotEngineObserver robotEngineObserver : this.observers) {
+			robotEngineObserver.communicationCompleted();
+		}
+	}
+	
+	private void robotSays(String message){
+		for (RobotEngineObserver robotEngineObserver : this.observers) {
+			robotEngineObserver.robotSays(message);
+		}
+	}
 	
 	public void outOfFuel (){
 		if (this.fuel<=0){
