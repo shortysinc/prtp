@@ -20,7 +20,7 @@ public class MainWindow extends JFrame implements RobotEngineObserver{
 	public InstructionPanel InstructionPanel;
 	public RobotPanel robotPanel;
 	public NavigationPanel navigationPanel;
-	
+	public InfoPanel infoPanel;
 
 	/**
 	 * Creates the window and the panels using Swing Components. It stores a reference to the RobotEngine object and provides the panels to the robot engine in order to communicate the simulation events.
@@ -39,6 +39,10 @@ public class MainWindow extends JFrame implements RobotEngineObserver{
 		this.controller.registerItemContainerObserver(this.robotPanel);
 		
 		this.controller.registerRobotObserver(this.navigationPanel);
+		
+		this.controller.registerEngineObserver(this.infoPanel);
+		this.controller.registerItemContainerObserver(this.infoPanel);
+		this.controller.registerRobotObserver(this.infoPanel);
 		//-------------------------------------------------------------
 		
 		this.setTitle("WALL·E The garbage collector");
@@ -78,10 +82,13 @@ public class MainWindow extends JFrame implements RobotEngineObserver{
 		this.robotPanel = new RobotPanel();
 		
 		JSplitPane splitPanel= new JSplitPane(JSplitPane.HORIZONTAL_SPLIT,this.InstructionPanel,this.robotPanel);
-		this.navigationPanel= new NavigationPanel(); 
+		this.navigationPanel= new NavigationPanel();
+		
+		this.infoPanel = new InfoPanel();
 		
 		containerPanel.add(splitPanel,BorderLayout.NORTH);
 		containerPanel.add(this.navigationPanel,BorderLayout.CENTER);
+		containerPanel.add(this.infoPanel,BorderLayout.SOUTH);
 		
 		this.add(containerPanel);
 		containerPanel.setPreferredSize(new Dimension(800, 500));
