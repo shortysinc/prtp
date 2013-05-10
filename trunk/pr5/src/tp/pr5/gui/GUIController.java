@@ -14,5 +14,7 @@ public class GUIController extends tp.pr5.Controller
 		//avisar a los observers de que ha empezado
 		
 	}
+	
+	//metodo por cada instruccion que se llamara desde la vista
 
 }
