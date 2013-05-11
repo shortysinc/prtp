@@ -144,6 +144,7 @@ public class RobotEngine extends Observable<RobotEngineObserver> {
 	public void requestQuit()
 	{
 		this.quitRequest=true;
+		this.emitCommunicationCompleted();
 	}
 	
 	/**
