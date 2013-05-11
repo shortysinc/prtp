@@ -13,10 +13,6 @@ import javax.swing.JTextField;
 import javax.swing.border.TitledBorder;
 
 import tp.pr5.Rotation;
-import tp.pr5.instructions.MoveInstruction;
-import tp.pr5.instructions.PickInstruction;
-import tp.pr5.instructions.QuitInstruction;
-import tp.pr5.instructions.TurnInstruction;
 
 public class InstructionPanel extends JPanel{
 	
