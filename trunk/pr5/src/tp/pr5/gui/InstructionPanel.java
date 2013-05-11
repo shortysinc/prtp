@@ -134,13 +134,11 @@ public class InstructionPanel extends JPanel{
 	}
 	
 	public void moveActionPerformed(ActionEvent arg0){
-		MoveInstruction move=new MoveInstruction();
-		//robot.communicateRobot(move);
+		controller.executeMoveAction();
 	}
 	
 	public void turnActionPerformed(ActionEvent arg0){
 		Rotation rotation = (Rotation) this.turnCombo.getSelectedItem();
-		//TurnInstruction turn=new TurnInstruction(rotation);
 		controller.executeTurnAction(rotation);
 	}
 	
