@@ -35,10 +35,13 @@ public class InstructionPanel extends JPanel{
 	public JButton pickButton;
 	public JButton dropButton;
 	public JButton operateButton;
+	
+	private RobotPanel robotPanel;
 
-	public InstructionPanel(GUIController controller){
+	public InstructionPanel(GUIController controller, RobotPanel robotPanel){
 		super();
 		this.controller=controller;
+		this.robotPanel= robotPanel;
 		this.build();
 	}
 	
@@ -151,22 +154,20 @@ public class InstructionPanel extends JPanel{
 	}
 	
 	public void dropActionPerformed(ActionEvent arg0){
-		/*String idItem=robot.getRobotPanel().getSelectedItem();
+		String idItem=this.robotPanel.getSelectedItem();
 		if(idItem!=null){
-			DropInstruction drop=new DropInstruction(idItem);
-			robot.communicateRobot(drop);
+			controller.executeDropAction(idItem);
 		}else{
 			JOptionPane.showMessageDialog(null, "No item selected");
-		}*/
+		}
 	}
 
 	public void operateActionPerformed(ActionEvent arg0){
-		/*String idItem=robot.getRobotPanel().getSelectedItem();
+		String idItem=this.robotPanel.getSelectedItem();
 		if(idItem!=null){
-			OperateInstruction operate=new OperateInstruction(idItem);
-			robot.communicateRobot(operate);
+			controller.executeOperateAction(idItem);
 		} else {
 			JOptionPane.showMessageDialog(null, "No item selected");
-		}*/
+		}
 	}
 }

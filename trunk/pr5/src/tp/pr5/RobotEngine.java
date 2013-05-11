@@ -100,7 +100,7 @@ public class RobotEngine extends Observable<RobotEngineObserver> {
 	public void addRecycledMaterial(int weight)
 	{
 		this.recycledMaterial+=weight;
-		this.emitRobotUpdate(fuel, weight);
+		this.emitRobotUpdate();
 	}
 	
 	/**
@@ -110,7 +110,7 @@ public class RobotEngine extends Observable<RobotEngineObserver> {
 	public void addFuel(int fuel)
 	{
 		this.fuel+=fuel;
-		this.emitRobotUpdate(fuel, recycledMaterial);
+		this.emitRobotUpdate();
 	}
 	
 	/**
@@ -137,7 +137,7 @@ public class RobotEngine extends Observable<RobotEngineObserver> {
 	 * Requests the engine to inform the observers that the simulation starts
 	 */
 	public void requestStart(){
-		this.emitRobotUpdate(fuel, recycledMaterial);
+		this.emitRobotUpdate();
 		this.navigationModule.initHeading(direction);
 	}
 	
@@ -203,9 +203,9 @@ public class RobotEngine extends Observable<RobotEngineObserver> {
 		}
 	}
 	
-	private void emitRobotUpdate(int fuel, int weight){
+	private void emitRobotUpdate(){
 		for (RobotEngineObserver robotEngineObserver : this.observers) {
-			robotEngineObserver.robotUpdate(fuel, weight);
+			robotEngineObserver.robotUpdate(this.fuel, this.recycledMaterial);
 		}
 	}
 	
