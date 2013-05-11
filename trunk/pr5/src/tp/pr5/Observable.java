@@ -18,6 +18,7 @@ public class Observable<T>
 	}
 
 	public void addObserver(T observer){
+		System.out.println(observer);
 		this.observers.add(observer);
 	}
 	
