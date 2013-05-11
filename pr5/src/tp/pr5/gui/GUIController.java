@@ -1,6 +1,8 @@
 package tp.pr5.gui;
 
 import tp.pr5.RobotEngine;
+import tp.pr5.Rotation;
+import tp.pr5.instructions.TurnInstruction;
 
 public class GUIController extends tp.pr5.Controller
 {
@@ -50,5 +52,9 @@ public class GUIController extends tp.pr5.Controller
 	 */
 	public void executeMoveAction(){
 		
+	}
+
+	public void executeTurnAction(Rotation rotation) {
+		game.communicateRobot(new TurnInstruction(rotation));		
 	}
 }
