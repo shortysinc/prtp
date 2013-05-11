@@ -8,6 +8,7 @@ import tp.pr5.instructions.OperateInstruction;
 import tp.pr5.instructions.PickInstruction;
 import tp.pr5.instructions.QuitInstruction;
 import tp.pr5.instructions.TurnInstruction;
+import tp.pr5.instructions.UndoInstruction;
 
 public class GUIController extends tp.pr5.Controller
 {
@@ -65,5 +66,9 @@ public class GUIController extends tp.pr5.Controller
 	 */
 	public void executeTurnAction(Rotation rotation) {
 		game.communicateRobot(new TurnInstruction(rotation));	
+	}
+
+	public void executeUndoAction() {
+		game.communicateRobot(new UndoInstruction());
 	}
 }

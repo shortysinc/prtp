@@ -107,8 +107,7 @@ public class MainWindow extends JFrame implements RobotEngineObserver{
 			
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
-				//MainWindow.this.robot.communicateRobot(new UndoInstruction());
-				//gc.avisarUndoInstruction();
+				MainWindow.this.controller.executeUndoAction();
 			}
 		});
 	}

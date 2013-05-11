@@ -27,9 +27,6 @@ public class RobotEngine extends Observable<RobotEngineObserver> {
 	private ItemContainer inventary;
 	private boolean quitRequest=false;
 	//private Direction currentDirection;
-	private MainWindow mainWindow;
-	private NavigationPanel navigationPanel;
-	private RobotPanel robotPanel;
 	private Instruction lastInstruction;
 	private Direction direction;
 	
