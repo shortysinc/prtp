@@ -144,8 +144,7 @@ public class InstructionPanel extends JPanel{
 	public void pickActionPerformed(ActionEvent arg0){
 		String idItem=this.instructionText.getText();
 		if(!idItem.isEmpty()){
-			PickInstruction pick=new PickInstruction(idItem);
-			//robot.communicateRobot(pick);
+			controller.executePickAction(idItem);
 		} else {
 			JOptionPane.showMessageDialog(null, "No Item to pick");
 		}

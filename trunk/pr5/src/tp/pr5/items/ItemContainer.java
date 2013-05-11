@@ -2,6 +2,10 @@ package tp.pr5.items;
 
 
 
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
+
 import tp.pr5.Observable;
 
 public class ItemContainer extends Observable<InventoryObserver> {
@@ -31,8 +35,8 @@ public class ItemContainer extends Observable<InventoryObserver> {
 	 */
 	public boolean addItem(Item item){
 		int position=this.findItemPosition(item.getId());
-		Item[] newItems= new Item[this.items.length+1];
 		if(position<0){
+			Item[] newItems= new Item[this.items.length+1];
 			for (int i = 0; i < this.items.length; i++) {
 				newItems[i]=this.items[i];
 			}
@@ -40,8 +44,7 @@ public class ItemContainer extends Observable<InventoryObserver> {
 			this.items=newItems;
 			this.azSort();
 			
-			//updateItems();
-			
+			this.emitInventoryChange(this.toImmutableList());
 			return true;
 		}
 		return false;
@@ -85,7 +88,7 @@ public class ItemContainer extends Observable<InventoryObserver> {
 				++j;
 			} while(j<this.items.length);
 			this.items=newItems;
-			//updateItems();
+			this.emitInventoryChange(this.toImmutableList());
 		}
 		return item;
 	}
@@ -127,22 +130,23 @@ public class ItemContainer extends Observable<InventoryObserver> {
 	 * @param item to be used
 	 */
 	public void useItem(Item item){
-		
+		this.emitItemEmpty(item.getId());
+		this.emitInventoryChange(Arrays.asList(this.items));
 	}
 	
 	/**
 	 * 
 	 */
 	public void requestScanCollection(){
-		
+		this.emitInventoryScanned(this.toString());
 	}
 	
 	/**
 	 * PRECOND: The item exists
 	 * @param id
 	 */
-	public void requestScanItem(java.lang.String id){
-		
+	public void requestScanItem(String id){
+		this.emitItemScanned(id);
 	}
 	/**
 	 * get the array position due to an id item
@@ -179,10 +183,31 @@ public class ItemContainer extends Observable<InventoryObserver> {
 		}
 	}
 	
-	/*public void updateItems(){
-		if(this.robotPanel!=null){
-			this.robotPanel.updateItems(this.items);
+	private List<Item> toImmutableList(){
+		return Collections.unmodifiableList(Arrays.asList(this.items));
+	}
+	
+	private void emitInventoryChange(List<Item> inventory){
+		for (InventoryObserver inventoryobserver : this.observers) {
+			inventoryobserver.inventoryChange(inventory);
 		}
-	}*/
+	}
+	
+	private void emitInventoryScanned(String inventoryDescription){
+		for (InventoryObserver inventoryobserver : this.observers) {
+			inventoryobserver.inventoryScanned(inventoryDescription);
+		}
+	}
 
+	private void emitItemScanned(String description){
+		for (InventoryObserver inventoryobserver : this.observers) {
+			inventoryobserver.itemScanned(description);
+		}
+	}
+	
+	private void emitItemEmpty(String itemName){
+		for (InventoryObserver inventoryobserver : this.observers) {
+			inventoryobserver.itemEmpty(itemName);
+		}
+	}
 }
