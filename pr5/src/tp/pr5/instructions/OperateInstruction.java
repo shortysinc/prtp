@@ -69,14 +69,13 @@ public class OperateInstruction implements Instruction
 			this.lastRecycledMaterial = this.engine.getRecycledMaterial();
 			if (inventoryOperate.use(engine, navigation))
 			{
-				
-				if (!inventoryOperate.canBeUsed())
+				this.robotContainer.useItem(inventoryOperate);
+				/*if (!inventoryOperate.canBeUsed())
 				{
 					this.robotContainer.pickItem(this.id);
 					
 					System.out.println("WALL·E says: What a pity! I have no more " + id +" in my inventory");
-				}
-				//this.robotContainer.updateItems();
+				}*/
 			}
 			else{
 				throw new InstructionExecutionException("WALL·E says: I have not such object " + id);
