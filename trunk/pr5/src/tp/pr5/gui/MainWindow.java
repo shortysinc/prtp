@@ -130,13 +130,12 @@ public class MainWindow extends JFrame implements RobotEngineObserver{
 
 	@Override
 	public void engineOff(boolean atShip) {
-		this.dispose();
+		
 	}
 
 	@Override
 	public void communicationCompleted() {
-		// TODO Auto-generated method stub
-		
+		this.dispose();
 	}
 
 	@Override
