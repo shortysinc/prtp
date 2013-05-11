@@ -17,8 +17,6 @@ public class NavigationModule extends Observable<NavigationObserver>
 	private City aCity;
 	private Place currentPlace;
 	private Direction currentDirection;
-	private RobotEngine robot;
-	private NavigationPanel navigationPanel;
 	
 	/**
 	 * Navigation module constructor. It needs the city map and the initial place
@@ -119,7 +117,6 @@ public class NavigationModule extends Observable<NavigationObserver>
 	public boolean findItemAtCurrentPlace(String id)
 	{
 		return this.currentPlace.existItem(id);
-		
 	}
 	
 	
@@ -130,6 +127,7 @@ public class NavigationModule extends Observable<NavigationObserver>
 	public void initHeading(Direction heading)
 	{
 		this.currentDirection=heading;
+		this.emitInitNavigationModule();
 	}
 	
 	/**
@@ -137,9 +135,7 @@ public class NavigationModule extends Observable<NavigationObserver>
 	 */
 	public void scanCurrentPlace()
 	{
-		/*System.out.println(this.getCurrentPlace().toString());
-		System.out.println("The place contains these objects: ");
-		System.out.println(this.getCurrentPlace().getItems().toString());*/
+		this.emitPlaceScanned(currentPlace);
 	}
 	
 	/**
@@ -178,5 +174,24 @@ public class NavigationModule extends Observable<NavigationObserver>
 			navigationObserver.headingChanged(newHeading);
 		}
 	}
+	
+	private void emitInitNavigationModule(){
+		for (NavigationObserver navigationObserver : this.observers) {
+			navigationObserver.initNavigationModule(currentPlace, currentDirection);
+		}
+	}
+	
+	private void emitRobotArrivesAtPlace(Direction heading, PlaceInfo place){
+		
+	}
+	
+	private void emitPlaceScanned(PlaceInfo placeDescription){
+		
+	}
+	
+	private void emitPlaceHasChanged(PlaceInfo placeDescription){
+		
+	}
+	
 }
 
