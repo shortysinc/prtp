@@ -73,6 +73,7 @@ public class NavigationModule extends Observable<NavigationObserver>
 			Place nextPlace=street.nextPlace(this.currentPlace);
 			if (street.isOpen()){
 				this.currentPlace=nextPlace;
+				this.emitRobotArrivesAtPlace(currentDirection, currentPlace);
 				/*if(isSwing()){
 					this.navigationPanel.updateCell(currentDirection, nextPlace);
 				}*/
@@ -97,7 +98,9 @@ public class NavigationModule extends Observable<NavigationObserver>
 	 */
 	public Item pickItemFromCurrentPlace(String id)
 	{
-		return this.currentPlace.pickItem(id);
+		Item it=this.currentPlace.pickItem(id);
+		this.emitPlaceHasChanged(currentPlace);
+		return it;
 	}
 	
 	/**
@@ -107,6 +110,7 @@ public class NavigationModule extends Observable<NavigationObserver>
 	public void dropItemAtCurrentPlace(Item it)
 	{
 		this.currentPlace.addItem(it);
+		this.emitPlaceHasChanged(currentPlace);
 	}
 	
 	/**
