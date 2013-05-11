@@ -130,8 +130,12 @@ public class ItemContainer extends Observable<InventoryObserver> {
 	 * @param item to be used
 	 */
 	public void useItem(Item item){
-		this.emitItemEmpty(item.getId());
-		this.emitInventoryChange(Arrays.asList(this.items));
+		if(!item.canBeUsed()){
+			this.pickItem(item.getId());
+			this.emitItemEmpty(item.getId());
+			this.emitInventoryChange(Arrays.asList(this.items));
+		}
+		
 	}
 	
 	/**

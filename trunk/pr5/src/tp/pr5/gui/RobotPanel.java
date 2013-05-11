@@ -137,8 +137,12 @@ public class RobotPanel extends JPanel implements RobotEngineObserver, Inventory
 
 	@Override
 	public void inventoryChange(List<Item> inventory) {
-		// TODO Auto-generated method stub
-		
+		String[][] datos=new String[inventory.size()][2];
+		for (int i = 0; i < inventory.size(); i++) {
+			datos[i][0]=inventory.get(i).getId();
+			datos[i][1]=inventory.get(i).toString();
+		}
+		inventoryTable.setModel(new inventoryModel(datos));
 	}
 
 	@Override
