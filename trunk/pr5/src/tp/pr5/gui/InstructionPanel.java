@@ -128,8 +128,7 @@ public class InstructionPanel extends JPanel{
 				"Confirmation", JOptionPane.YES_NO_OPTION);
 		if (exit==JOptionPane.YES_OPTION)
 		{
-			QuitInstruction quit=new QuitInstruction();
-			//robot.communicateRobot(quit);
+			controller.executeQuitAction();
 		}
 	}
 	
