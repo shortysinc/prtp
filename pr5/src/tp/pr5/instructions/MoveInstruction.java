@@ -39,7 +39,7 @@ public class MoveInstruction implements Instruction
 		{
 			this.navigation.move();
 			this.engine.addFuel(-5);
-			System.out.println("WALL·E says: Moving in direction " + this.navigation.getCurrentHeading());
+			//System.out.println("WALL·E says: Moving in direction " + this.navigation.getCurrentHeading());
 			
 			//engine.showPlace();
 			//engine.showCurrentItems();
@@ -50,8 +50,8 @@ public class MoveInstruction implements Instruction
 				this.engine.requestQuit();
 				System.out.println("WALL·E says: I am at my spaceship. Bye bye");*/
 			}
-		}catch (Exception e){
-			throw new InstructionExecutionException();
+		}catch (InstructionExecutionException e){
+			throw e;
 		}
 	}
 	

@@ -14,6 +14,7 @@ import javax.swing.border.TitledBorder;
 
 import tp.pr5.Direction;
 import tp.pr5.NavigationObserver;
+import tp.pr5.Place;
 import tp.pr5.PlaceInfo;
 
 public class NavigationPanel extends JPanel implements NavigationObserver{
@@ -157,12 +158,25 @@ public class NavigationPanel extends JPanel implements NavigationObserver{
 
 	@Override
 	public void initNavigationModule(PlaceInfo initialPlace, Direction heading) {
+		PlaceCell cell = this.cells[this.row][this.column];
+		cell.setPlace((Place)initialPlace);
+		cell.activate();
+		this.log.setText(initialPlace.toString());
 		this.headingChanged(heading);
 	}
 
 	@Override
 	public void robotArrivesAtPlace(Direction heading, PlaceInfo place) {
-		// TODO Auto-generated method stub
+		PlaceCell lastCell= this.cells[row][column];
+		lastCell.desactivate();
+		
+		this.column	+=	heading.getHorizontalMovement();
+		this.row	+=	heading.getVerticalMovement();
+		
+		PlaceCell cell=this.cells[row][column];
+		cell.setPlace((Place)place);
+		cell.activate();
+		this.log.setText(cell.getDescriptionPlace());
 		
 	}
 
@@ -174,7 +188,7 @@ public class NavigationPanel extends JPanel implements NavigationObserver{
 
 	@Override
 	public void placeHasChanged(PlaceInfo placeDescription) {
-		// TODO Auto-generated method stub
-		
+		//PlaceCell cell=this.cells[row][column];
+		this.log.setText(placeDescription.toString());
 	}
 }

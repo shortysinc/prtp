@@ -63,29 +63,17 @@ public class NavigationModule extends Observable<NavigationObserver>
 		{
 			Street street=this.getHeadingStreet();
 			if(street==null){
-				String err="WALL·E says: There is no street in direction "+this.getCurrentHeading();
-				/*if(isSwing()){
-					JOptionPane.showMessageDialog(null, err);
-				}*/
-				throw new InstructionExecutionException(err);
+				throw new InstructionExecutionException(Constants.MESSAGE_NO_PLACE.replace("{ID}", currentDirection.toString()));
 			}
 			
 			Place nextPlace=street.nextPlace(this.currentPlace);
 			if (street.isOpen()){
 				this.currentPlace=nextPlace;
-				this.emitRobotArrivesAtPlace(currentDirection, currentPlace);
-				/*if(isSwing()){
-					this.navigationPanel.updateCell(currentDirection, nextPlace);
-				}*/
-				
+				this.emitRobotArrivesAtPlace(currentDirection, currentPlace);				
 			}else{
-				String err="WALL·E says: Arrggg, there is a street but it is closed!";
-				/*if(isSwing()){
-					JOptionPane.showMessageDialog(null, err);
-				}*/
-				throw new InstructionExecutionException(err);
+				throw new InstructionExecutionException(Constants.MESSAGE_DOOR_CLOSED.replace("{ID}", currentDirection.toString()));
 			}
-		}catch (Exception e){
+		}catch (InstructionExecutionException e){
 			throw e;
 		}
 	}
@@ -99,7 +87,7 @@ public class NavigationModule extends Observable<NavigationObserver>
 	public Item pickItemFromCurrentPlace(String id)
 	{
 		Item it=this.currentPlace.pickItem(id);
-		this.emitPlaceHasChanged(currentPlace);
+		this.emitPlaceHasChanged();
 		return it;
 	}
 	
@@ -110,7 +98,7 @@ public class NavigationModule extends Observable<NavigationObserver>
 	public void dropItemAtCurrentPlace(Item it)
 	{
 		this.currentPlace.addItem(it);
-		this.emitPlaceHasChanged(currentPlace);
+		this.emitPlaceHasChanged();
 	}
 	
 	/**
@@ -139,7 +127,7 @@ public class NavigationModule extends Observable<NavigationObserver>
 	 */
 	public void scanCurrentPlace()
 	{
-		this.emitPlaceScanned(currentPlace);
+		this.emitPlaceScanned();
 	}
 	
 	/**
@@ -186,15 +174,21 @@ public class NavigationModule extends Observable<NavigationObserver>
 	}
 	
 	private void emitRobotArrivesAtPlace(Direction heading, PlaceInfo place){
-		
+		for (NavigationObserver navigationObserver : this.observers) {
+			navigationObserver.robotArrivesAtPlace(heading, place);
+		}
 	}
 	
-	private void emitPlaceScanned(PlaceInfo placeDescription){
-		
+	private void emitPlaceScanned(){
+		for (NavigationObserver navigationObserver : this.observers) {
+			navigationObserver.placeScanned(currentPlace);
+		}
 	}
 	
-	private void emitPlaceHasChanged(PlaceInfo placeDescription){
-		
+	private void emitPlaceHasChanged(){
+		for (NavigationObserver navigationObserver : this.observers) {
+			navigationObserver.placeHasChanged(currentPlace);
+		}
 	}
 	
 }

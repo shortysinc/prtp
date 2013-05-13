@@ -67,20 +67,20 @@ public class ScanInstruction implements Instruction
 			{
 				if(this.id==null)
 				{
-					System.out.println("WALL·E says: I am carrying the following items");
-					System.out.print(this.robotContainer.toString()+ "\n");
+					//System.out.println("WALL·E says: I am carrying the following items");
+					//System.out.print(this.robotContainer.toString()+ "\n");
 				}
 				else
 				{
 					Item scanId=this.robotContainer.getItem(this.id);
 					if(scanId!=null)
 					{
-						System.out.println("WALL·E says: "+scanId.getId()+": " +scanId.toString());
+						//System.out.println("WALL·E says: "+scanId.getId()+": " +scanId.toString());
 						
 					} 
 					else 
 					{
-						System.out.println("WALL·E says: I have not such object");
+						//System.out.println("WALL·E says: I have not such object");
 						
 					}
 				}

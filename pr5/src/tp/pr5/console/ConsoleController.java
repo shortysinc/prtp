@@ -4,7 +4,9 @@ import java.util.Scanner;
 
 import tp.pr5.Constants;
 import tp.pr5.Controller;
+import tp.pr5.Interpreter;
 import tp.pr5.RobotEngine;
+import tp.pr5.instructions.Instruction;
 import tp.pr5.instructions.exceptions.WrongInstructionFormatException;
 
 public class ConsoleController extends Controller {
@@ -23,30 +25,35 @@ public class ConsoleController extends Controller {
 	public void startController() {
 		
 		Scanner sc= new Scanner(System.in);
-
-		
-		/*do
+		String cm;
+		try 
 		{
-			console.robotSays(Constants.PROMPT);
-			Instruction instruction;
-			try 
+			do
 			{
-				instruction = Interpreter.generateInstruction(sc.nextLine());
-				this.game.communicateRobot(instruction);
-			} 
-			catch (WrongInstructionFormatException e) 
-			{
-				System.out.println("WALL·E says: I do not understand. Please repeat");
-			}
-			
-		} while(!this.game.quitRequest && this.game.getFuel()>0 && !this.navigationModule.atSpaceship());
-		sc.close();*/
+				console.robotSays(Constants.PROMPT);
+				cm=sc.nextLine();
+			} while(!executeCommand(cm));
+		} catch (WrongInstructionFormatException e) 
+		{
+			this.game.requestError(Constants.MESSAGE_WHAT);
+		}
+		sc.close();
 		
 	}
 	
+	/**
+	 * This method implements the command execution.
+	 * The string is parsed and the resulting command is executed in the game.
+	 * After command execution, it checks if the game has finished
+	 * @param command The string that probably contains a command
+	 * @return true if the command execution raises the end of the game.
+	 * @throws WrongInstructionFormatException
+	 */
 	public boolean executeCommand(String command) throws WrongInstructionFormatException
     {
-		return false;
+		Instruction instruction = Interpreter.generateInstruction(command);
+		this.game.communicateRobot(instruction);
+		return this.game.isOver();
     }
 
 }

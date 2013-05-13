@@ -49,8 +49,9 @@ public class RadarInstruction implements Instruction
 	@Override
 	public void execute() throws InstructionExecutionException {
 		try{
-			System.out.println(this.navigation.getCurrentPlace().toString());
+			//System.out.println(this.navigation.getCurrentPlace().toString());
 			//this.engine.showFirstItems();
+			this.navigation.scanCurrentPlace();
 				   
 		} catch (Exception e){
 			throw new InstructionExecutionException();

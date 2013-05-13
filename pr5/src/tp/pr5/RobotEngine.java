@@ -45,7 +45,7 @@ public class RobotEngine extends Observable<RobotEngineObserver> {
 		this.inventary			= new ItemContainer();
 		this.direction			= direction;
 		this.navigationModule	= new NavigationModule(cityMap, initialPlace);
-		//this.navigationModule.initHeading(direction);
+		this.navigationModule.initHeading(direction);
 		
 		/**
 		 	this.fuel = 100;

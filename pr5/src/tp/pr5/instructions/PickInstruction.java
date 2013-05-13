@@ -67,10 +67,13 @@ public class PickInstruction implements Instruction
 		
 		try
 		{
-			Item it=navigation.getCurrentPlace().pickItem(this.id);
+			//Item it=navigation.getCurrentPlace().pickItem(this.id);
+			Item it=navigation.pickItemFromCurrentPlace(this.id);
+			
 			if(it!=null && this.robotContainer.addItem(it))
 			{
-				System.out.println("WALL·E says: I am happy! Now I have "+ this.id);
+				this.engine.saySomething(Constants.MESSAGE_PICK_OK.replace("{ID}", this.id));
+				//System.out.println("WALL·E says: I am happy! Now I have "+ this.id);
 				//this.engine.getNavigationPanel().updateLog();
 				/*if(this.engine.isSwingInteface())
 				{
