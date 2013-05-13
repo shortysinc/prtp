@@ -14,7 +14,8 @@ public class InstructionExecutionException extends Exception
 	}
 	public InstructionExecutionException(java.lang.String arg0)
 	{
-		System.out.println(arg0);
+		
+		super(arg0);
 	}
 	public InstructionExecutionException(java.lang.Throwable arg0)
 	{
