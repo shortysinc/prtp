@@ -70,7 +70,7 @@ public class NavigationPanel extends JPanel implements NavigationObserver{
 						for (int i = 0; i < 11; i++) {
 							for (int j = 0; j < 11; j++) {
 								if(e.getSource().equals(cells[i][j]) && cells[i][j].visited()){
-									NavigationPanel.this.log.setText(cells[i][j].getDescriptionPlace());
+									//NavigationPanel.this.log.setText(cells[i][j].getDescriptionPlace());
 								}
 							}
 						}
@@ -95,7 +95,7 @@ public class NavigationPanel extends JPanel implements NavigationObserver{
 	 * @return The current cell
 	 */
 	public PlaceCell getCurrentCell(){
-		return null;
+		return this.cells[row][column];
 	}
 	
 	/**
@@ -103,15 +103,16 @@ public class NavigationPanel extends JPanel implements NavigationObserver{
 	 * @param dir Direction of the movement
 	 */
 	public void move(Direction dir){
-		
+		this.column	+=	dir.getHorizontalMovement();
+		this.row	+=	dir.getVerticalMovement();
 	}
 	
 	/**
 	 * Displays the place description on the text area
 	 * @param description The place that will be shown
 	 */
-	public void showCurrentPlace(java.lang.String description){
-		
+	public void showCurrentPlace(String description){
+		this.log.setText(description);
 	}
 	
 	
@@ -160,23 +161,22 @@ public class NavigationPanel extends JPanel implements NavigationObserver{
 	public void initNavigationModule(PlaceInfo initialPlace, Direction heading) {
 		PlaceCell cell = this.cells[this.row][this.column];
 		cell.setPlace((Place)initialPlace);
-		cell.activate();
-		this.log.setText(initialPlace.toString());
+		cell.arriveAt(initialPlace);
+		//this.log.setText(initialPlace.toString());
+		this.showCurrentPlace(initialPlace.toString());
 		this.headingChanged(heading);
 	}
 
 	@Override
 	public void robotArrivesAtPlace(Direction heading, PlaceInfo place) {
 		PlaceCell lastCell= this.cells[row][column];
-		lastCell.desactivate();
+		lastCell.left();
 		
-		this.column	+=	heading.getHorizontalMovement();
-		this.row	+=	heading.getVerticalMovement();
+		this.move(heading);
 		
 		PlaceCell cell=this.cells[row][column];
-		cell.setPlace((Place)place);
-		cell.activate();
-		this.log.setText(cell.getDescriptionPlace());
+		cell.arriveAt(place);
+		this.showCurrentPlace(place.toString());
 		
 	}
 

@@ -90,7 +90,7 @@ public class Console implements NavigationObserver, RobotEngineObserver, Invento
 
 	@Override
 	public void placeScanned(PlaceInfo placeDescription) {
-		// TODO Auto-generated method stub
+		System.out.println(placeDescription);
 		
 	}
 

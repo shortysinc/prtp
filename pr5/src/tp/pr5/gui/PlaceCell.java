@@ -19,13 +19,14 @@ public class PlaceCell extends JButton{
 	 */
 	private static final long serialVersionUID = 1L;
 	private Place place;
+	private NavigationPanel owner;
 	
 	/**
 	 * Constructor. It needs a reference to the panel that references it
 	 * @param owner
 	 */
 	public PlaceCell(NavigationPanel owner){
-		
+		this.owner=owner;
 	}
 	
 	/**
@@ -33,6 +34,12 @@ public class PlaceCell extends JButton{
 	 * @param arrivalPlace Place where the robot arrives at
 	 */
 	public void arriveAt(PlaceInfo arrivalPlace){
+		this.setText(arrivalPlace.getName());
+		if(arrivalPlace.isSpaceship()){
+			this.setBackground(Color.red);
+		} else {
+			this.setBackground(Color.green);
+		}
 		
 	}
 	
@@ -40,7 +47,7 @@ public class PlaceCell extends JButton{
 	 * Updates the PlaceCell because that the robot leaves the place
 	 */
 	public void left(){
-		
+		this.setBackground(Color.gray);
 	}
 	
 	public void setPlace(Place place){
@@ -62,19 +69,19 @@ public class PlaceCell extends JButton{
 		}
 	}
 	
-	public void close(){
-		this.place=null;
+	public void undo(){
+		//this.place=null;
 		this.setText("");
 		this.setBackground(null);
 	}
 	
-	public String getDescriptionPlace(){
+	/*public String getDescriptionPlace(){
 		String LINE_SEPARATOR = System.getProperty("line.separator");
-		/*if(this.place.getItems().numberOfItems()>0){
+		if(this.place.getItems().numberOfItems()>0){
 			return this.place.toString()+LINE_SEPARATOR+"The place contains these objects:"+LINE_SEPARATOR+this.place.getItems();
-		}*/
+		}
 		return this.place.toString()+LINE_SEPARATOR+"The place is empty. There are no objects to pick";
-	}
+	}*/
 	
 	public boolean visited(){
 		return this.place!=null;
