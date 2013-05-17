@@ -59,25 +59,19 @@ public class DropInstruction implements Instruction
 	public void execute() throws InstructionExecutionException 
 	{
 		Item item=this.robotContainer.pickItem(this.id);
-		if(item!=null)
-		{
+		if(item!=null){
 			
-			if(!navigation.findItemAtCurrentPlace(this.id))
-			{
-				navigation.dropItemAtCurrentPlace(item);
-				//System.out.println("Great! I have dropped "+ this.id);
-			}
-			
-			else
-			{
-				throw new InstructionExecutionException("WALL·E> The object " + this.id+ " already in this place");
+			if(!navigation.findItemAtCurrentPlace(this.id)){
 				
+				navigation.dropItemAtCurrentPlace(item);
+				this.engine.saySomething(Constants.MESSAGE_DROP_OK.replace("{ID}",item.getId()));
+				
+			} else {
+				throw new InstructionExecutionException(Constants.MESSAGE_DROP_ERROR2.replace("{ID}", this.id));
 			}
 			
-		} 
-		else 
-		{
-			throw new InstructionExecutionException("You do not have any " + this.id+ ".");
+		} else {
+			throw new InstructionExecutionException(Constants.MESSAGE_DROP_ERROR.replace("{ID}", this.id));
 		}
 		
 	}
@@ -99,6 +93,4 @@ public class DropInstruction implements Instruction
 	public boolean isUndoable() {
 		return true;
 	}
-	
-
 }
