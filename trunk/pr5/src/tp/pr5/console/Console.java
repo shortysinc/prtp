@@ -78,8 +78,7 @@ public class Console implements NavigationObserver, RobotEngineObserver, Invento
 
 	@Override
 	public void initNavigationModule(PlaceInfo initialPlace, Direction heading) {
-		// TODO Auto-generated method stub
-		
+		robotArrivesAtPlace(heading, initialPlace);
 	}
 
 	@Override
