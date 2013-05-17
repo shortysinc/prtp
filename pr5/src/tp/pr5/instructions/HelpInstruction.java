@@ -54,8 +54,7 @@ public class HelpInstruction implements Instruction
 	 * Configuration of the context for this instruction
 	 */
 	@Override
-	public void configureContext(RobotEngine engine,
-			NavigationModule navigation, ItemContainer robotContainer) 
+	public void configureContext(RobotEngine engine, NavigationModule navigation, ItemContainer robotContainer) 
 	{
 	
 		this.engine=engine;
@@ -69,16 +68,7 @@ public class HelpInstruction implements Instruction
 	@Override
 	public void execute() throws InstructionExecutionException 
 	{
-		try
-		{
-			this.engine.requestHelp();
-		}
-		catch (Exception e)
-		{
-			throw new InstructionExecutionException();
-		}
-		
-		
+		this.engine.requestHelp();
 	}
 
 	@Override

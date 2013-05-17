@@ -64,27 +64,21 @@ public class OperateInstruction implements Instruction
 		
 		Item inventoryOperate=this.robotContainer.getItem(this.id);
 		try{
-			this.lastItem=(Item)inventoryOperate.clone();
-			this.lastFuel = this.engine.getFuel();
-			this.lastRecycledMaterial = this.engine.getRecycledMaterial();
-			if (inventoryOperate.use(engine, navigation))
-			{
-				this.robotContainer.useItem(inventoryOperate);
-				/*if (!inventoryOperate.canBeUsed())
+			if(inventoryOperate!=null){
+				this.lastItem=(Item)inventoryOperate.clone();
+				this.lastFuel = this.engine.getFuel();
+				this.lastRecycledMaterial = this.engine.getRecycledMaterial();
+				if (inventoryOperate.use(engine, navigation))
 				{
-					this.robotContainer.pickItem(this.id);
-					
-					System.out.println("WALL·E says: What a pity! I have no more " + id +" in my inventory");
-				}*/
-			}
-			else{
+					this.robotContainer.useItem(inventoryOperate);
+				}
+			} else {
 				throw new InstructionExecutionException("WALL·E says: I have not such object " + id);
 			}
-			//engine.outOfFuel();
 		} 
-		catch(Exception e)
+		catch(InstructionExecutionException e)
 		{
-			throw new InstructionExecutionException();
+			throw e;
 		}
 		
 	}

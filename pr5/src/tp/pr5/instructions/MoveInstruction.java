@@ -38,13 +38,7 @@ public class MoveInstruction implements Instruction
 		try
 		{
 			this.navigation.move();
-			this.engine.addFuel(-5);
-			//System.out.println("WALL·E says: Moving in direction " + this.navigation.getCurrentHeading());
-			
-			//engine.showPlace();
-			//engine.showCurrentItems();
-			//engine.printRobotState();
-			
+			this.engine.addFuel(-5);			
 			if(this.navigation.atSpaceship()){
 				/*this.engine.atSpaceShip();
 				this.engine.requestQuit();
