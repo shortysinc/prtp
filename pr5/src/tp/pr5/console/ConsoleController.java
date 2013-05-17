@@ -19,6 +19,7 @@ public class ConsoleController extends Controller {
 		this.registerEngineObserver(console);
 		this.registerItemContainerObserver(console);
 		this.registerRobotObserver(console);
+		this.game.requestStart();
 	}
 
 	@Override
