@@ -2,6 +2,7 @@ package tp.pr5.instructions;
 //Funciona
 import java.util.StringTokenizer;
 
+import tp.pr5.Constants;
 import tp.pr5.NavigationModule;
 import tp.pr5.RobotEngine;
 import tp.pr5.instructions.exceptions.InstructionExecutionException;
@@ -67,27 +68,27 @@ public class ScanInstruction implements Instruction
 			{
 				if(this.id==null)
 				{
+					this.robotContainer.requestScanCollection();
 					//System.out.println("WALL·E says: I am carrying the following items");
 					//System.out.print(this.robotContainer.toString()+ "\n");
 				}
 				else
 				{
-					Item scanId=this.robotContainer.getItem(this.id);
-					if(scanId!=null)
+					if(this.robotContainer.containsItem(this.id))
 					{
 						//System.out.println("WALL·E says: "+scanId.getId()+": " +scanId.toString());
-						
+						this.robotContainer.requestScanItem(this.id);
 					} 
 					else 
 					{
 						//System.out.println("WALL·E says: I have not such object");
-						
+						throw new InstructionExecutionException(Constants.MESSAGE_NO_ITEM.replace("{ID}", this.id));
 					}
 				}
 			} 
 			else 
 			{
-				throw new InstructionExecutionException("WALL·E says: My inventory is empty");
+				throw new InstructionExecutionException(Constants.MESSAGE_NO_ITEMS);
 				
 			}
 		} catch(Exception e){
