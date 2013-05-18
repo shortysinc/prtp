@@ -2,6 +2,7 @@ package tp.pr5.instructions;
 
 import java.util.StringTokenizer;
 
+import tp.pr5.Constants;
 import tp.pr5.NavigationModule;
 import tp.pr5.RobotEngine;
 import tp.pr5.instructions.exceptions.InstructionExecutionException;
@@ -73,7 +74,7 @@ public class OperateInstruction implements Instruction
 					this.robotContainer.useItem(inventoryOperate);
 				}
 			} else {
-				throw new InstructionExecutionException("WALL·E says: I have not such object " + id);
+				throw new InstructionExecutionException(Constants.MESSAGE_TRY_USE_ITEM_BUT_NOT_EXISTS.replace("{ID}", this.id));
 			}
 		} 
 		catch(InstructionExecutionException e)

@@ -73,31 +73,15 @@ public class PickInstruction implements Instruction
 			if(it!=null && this.robotContainer.addItem(it))
 			{
 				this.engine.saySomething(Constants.MESSAGE_PICK_OK.replace("{ID}", this.id));
-				//System.out.println("WALL·E says: I am happy! Now I have "+ this.id);
-				//this.engine.getNavigationPanel().updateLog();
-				/*if(this.engine.isSwingInteface())
-				{
-					this.engine.getNavigationPanel().updateLog();
-				}*/
 			} 
 			else if(it!=null){
-				String err="WALL·E says: I am stupid! I had already the object "+this.id;
-				/*if(this.engine.isSwingInteface()){
-					JOptionPane.showMessageDialog(null, err);
-				}*/
-				throw new InstructionExecutionException(err);
-				//throw new InstructionExecutionException();
+				throw new InstructionExecutionException(Constants.MESSAGE_ITEM_IS_IN_INVENTORY.replace("{ID}", this.id));
 			} else {
-				String err="WALL·E says: Ooops, this place has not the object "+ this.id;
-				/*if(this.engine.isSwingInteface()){
-					JOptionPane.showMessageDialog(null, err);
-				}*/
-				throw new InstructionExecutionException(err);
-				//throw new InstructionExecutionException();
+				throw new InstructionExecutionException(Constants.MESSAGE_PICK_ERROR1.replace("{ID}", this.id));
 			}
 		}
-		catch (Exception e) {
-			throw new InstructionExecutionException();
+		catch (InstructionExecutionException e) {
+			throw e;
 		}
 		
 	}
