@@ -149,7 +149,7 @@ public class ItemContainer extends Observable<InventoryObserver> {
 	 * @param id
 	 */
 	public void requestScanItem(String id){
-		this.emitItemScanned(id);
+		this.emitItemScanned(this.getItem(id).toString());
 	}
 	/**
 	 * get the array position due to an id item
