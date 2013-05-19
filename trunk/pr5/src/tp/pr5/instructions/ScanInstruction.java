@@ -78,7 +78,7 @@ public class ScanInstruction implements Instruction
 					{
 						//System.out.println("WALL·E says: "+scanId.getId()+": " +scanId.toString());
 						this.robotContainer.requestScanItem(this.id);
-					} 
+					}
 					else 
 					{
 						//System.out.println("WALL·E says: I have not such object");
@@ -91,8 +91,8 @@ public class ScanInstruction implements Instruction
 				throw new InstructionExecutionException(Constants.MESSAGE_NO_ITEMS);
 				
 			}
-		} catch(Exception e){
-			throw new InstructionExecutionException();
+		} catch(InstructionExecutionException e){
+			throw e;
 		}
 		
 	}
