@@ -63,7 +63,7 @@ public class Main
 
 	        if (cmdLine.hasOption("i")){
 	        	i = cmdLine.getOptionValue("i");
-	        	if(i==null || !i.equalsIgnoreCase("console") && !i.equalsIgnoreCase("swing")){
+	        	if(i==null || !i.equalsIgnoreCase("console") && !i.equalsIgnoreCase("swing") && !i.equalsIgnoreCase("both")){
 	        		throw new org.apache.commons.cli.ParseException("Wrong type of interface"); 
 	        	}
 	        } else {
@@ -89,16 +89,34 @@ public class Main
 			
 			try {
 				RobotEngine engine;
+				
 				engine = new RobotEngine(city.loadCity(input),city.getInitialPlace(),Direction.NORTH);
 				
-				if(i.equalsIgnoreCase("swing")){
-					GUIController gc = new GUIController(engine);
-					MainWindow mainWindow = new MainWindow(gc);
-					gc.startController();
-					
-				} else {
-					ConsoleController cc = new ConsoleController(engine);
-					cc.startController();
+				GUIController gc;
+				MainWindow mainWindow;
+				ConsoleController cc;
+				
+				switch (i.toUpperCase()) {
+				
+					case "SWING":
+						gc = new GUIController(engine);
+						mainWindow = new MainWindow(gc);
+						gc.startController();
+						break;
+	
+					case "CONSOLE":
+						cc = new ConsoleController(engine);
+						cc.startController();
+						break;
+						
+					case "BOTH":
+						gc = new GUIController(engine);
+						mainWindow = new MainWindow(gc);
+						gc.startController();
+						cc = new ConsoleController(engine);
+						cc.startController();
+						
+						break;
 				}
 				
 			} catch(WrongCityFormatException e){
