@@ -18,7 +18,7 @@ public class PlaceCell extends JButton{
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	private Place place;
+	private PlaceInfo placeInfo;
 	private NavigationPanel owner;
 	
 	/**
@@ -40,6 +40,7 @@ public class PlaceCell extends JButton{
 		} else {
 			this.setBackground(Color.green);
 		}
+		this.placeInfo = arrivalPlace;
 		
 	}
 	
@@ -50,13 +51,8 @@ public class PlaceCell extends JButton{
 		this.setBackground(Color.gray);
 	}
 	
-	public void setPlace(Place place){
-		this.place=place;
-		this.setText(place.toString());
-	}
-	
 	public void activate(){
-		if(this.place.isSpaceship()){
+		if(this.placeInfo.isSpaceship()){
 			this.setBackground(Color.red);
 		} else {
 			this.setBackground(Color.green);
@@ -64,13 +60,13 @@ public class PlaceCell extends JButton{
 	}
 	
 	public void desactivate(){
-		if(place!=null){
+		if(placeInfo!=null){
 			this.setBackground(Color.gray);
 		}
 	}
 	
 	public void undo(){
-		//this.place=null;
+		this.placeInfo=null;
 		this.setText("");
 		this.setBackground(null);
 	}
@@ -84,7 +80,7 @@ public class PlaceCell extends JButton{
 	}*/
 	
 	public boolean visited(){
-		return this.place!=null;
+		return this.placeInfo!=null;
 	}
 	
 }

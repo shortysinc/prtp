@@ -160,7 +160,6 @@ public class NavigationPanel extends JPanel implements NavigationObserver{
 	@Override
 	public void initNavigationModule(PlaceInfo initialPlace, Direction heading) {
 		PlaceCell cell = this.cells[this.row][this.column];
-		cell.setPlace((Place)initialPlace);
 		cell.arriveAt(initialPlace);
 		//this.log.setText(initialPlace.toString());
 		this.showCurrentPlace(initialPlace.toString());
