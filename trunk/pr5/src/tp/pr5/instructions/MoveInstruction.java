@@ -2,6 +2,8 @@ package tp.pr5.instructions;
 //No funciona
 import java.util.StringTokenizer;
 
+import com.sun.corba.se.impl.orbutil.closure.Constant;
+
 import tp.pr5.*;
 import tp.pr5.instructions.exceptions.*;
 import tp.pr5.items.ItemContainer;
@@ -38,7 +40,7 @@ public class MoveInstruction implements Instruction
 		try
 		{
 			this.navigation.move();
-			this.engine.addFuel(-5);			
+			this.engine.addFuel(-Constants.LOST_FUEL);			
 			if(this.navigation.atSpaceship()){
 				/*this.engine.atSpaceShip();
 				this.engine.requestQuit();
@@ -69,7 +71,7 @@ public class MoveInstruction implements Instruction
 		try
 		{
 			
-			this.engine.addFuel(10);
+			this.engine.addFuel(Constants.LOST_FUEL*2);
 			this.navigation.rotate(Rotation.LEFT);
 			this.navigation.rotate(Rotation.LEFT);
 			this.engine.communicateRobot(new MoveInstruction());

@@ -2,6 +2,7 @@ package tp.pr5.instructions;
 
 import java.util.StringTokenizer;
 
+import tp.pr5.Constants;
 import tp.pr5.NavigationModule;
 import tp.pr5.RobotEngine;
 import tp.pr5.Rotation;
@@ -93,7 +94,7 @@ public class TurnInstruction implements Instruction
 			/*if(this.engine.isSwingInteface()){
 				engine.getNavigationPanel().updateDirection(engine.getCurrentDirection());
 			}*/
-			engine.addFuel(-5);
+			engine.addFuel(-Constants.LOST_FUEL);
 			
 			//engine.showDirection();
 			//engine.printRobotState();
@@ -111,7 +112,7 @@ public class TurnInstruction implements Instruction
 		
 		try
 		{
-			engine.addFuel(10);
+			engine.addFuel(Constants.LOST_FUEL*2);
 			this.engine.communicateRobot(new TurnInstruction(this.rotation.opposite()));
 			
 		} 
