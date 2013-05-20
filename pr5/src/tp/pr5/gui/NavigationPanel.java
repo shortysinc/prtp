@@ -71,6 +71,7 @@ public class NavigationPanel extends JPanel implements NavigationObserver{
 							for (int j = 0; j < 11; j++) {
 								if(e.getSource().equals(cells[i][j]) && cells[i][j].visited()){
 									//NavigationPanel.this.log.setText(cells[i][j].getDescriptionPlace());
+									showCurrentPlace(cells[i][j].toString());
 								}
 							}
 						}
@@ -159,21 +160,20 @@ public class NavigationPanel extends JPanel implements NavigationObserver{
 
 	@Override
 	public void initNavigationModule(PlaceInfo initialPlace, Direction heading) {
-		PlaceCell cell = this.cells[this.row][this.column];
+		PlaceCell cell = getCurrentCell();
 		cell.arriveAt(initialPlace);
-		//this.log.setText(initialPlace.toString());
 		this.showCurrentPlace(initialPlace.toString());
 		this.headingChanged(heading);
 	}
 
 	@Override
 	public void robotArrivesAtPlace(Direction heading, PlaceInfo place) {
-		PlaceCell lastCell= this.cells[row][column];
+		PlaceCell lastCell= getCurrentCell();
 		lastCell.left();
 		
 		this.move(heading);
 		
-		PlaceCell cell=this.cells[row][column];
+		PlaceCell cell=getCurrentCell();
 		cell.arriveAt(place);
 		this.showCurrentPlace(place.toString());
 		
@@ -188,7 +188,7 @@ public class NavigationPanel extends JPanel implements NavigationObserver{
 	@Override
 	public void placeHasChanged(PlaceInfo placeDescription) {
 		//PlaceCell cell=this.cells[row][column];
-		this.log.setText(placeDescription.toString());
+		this.showCurrentPlace(placeDescription.toString());
 	}
 
 	@Override
