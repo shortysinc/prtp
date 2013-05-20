@@ -72,10 +72,10 @@ public class MoveInstruction implements Instruction
 			this.engine.addFuel(10);
 			this.navigation.rotate(Rotation.LEFT);
 			this.navigation.rotate(Rotation.LEFT);
-			//this.engine.getNavigationPanel().closeCell();
 			this.engine.communicateRobot(new MoveInstruction());
 			this.navigation.rotate(Rotation.LEFT);
 			this.navigation.rotate(Rotation.LEFT);
+			this.navigation.undoLastMove();
 		} 
 		catch (Exception e)
 		{

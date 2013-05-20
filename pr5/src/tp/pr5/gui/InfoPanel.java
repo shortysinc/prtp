@@ -129,4 +129,10 @@ public class InfoPanel extends JPanel implements RobotEngineObserver, Navigation
 		this.info.setText(msg);
 	}
 
+	@Override
+	public void undone(Direction direction) {
+		// TODO Auto-generated method stub
+		
+	}
+
 }

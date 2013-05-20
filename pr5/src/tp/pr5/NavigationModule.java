@@ -160,6 +160,10 @@ public class NavigationModule extends Observable<NavigationObserver>
 		
 	}
 	
+	public void undoLastMove(){
+		this.emitUndone();
+	}
+	
 	
 	private void emitHeadingChanged(Direction newHeading){
 		for (NavigationObserver navigationObserver : this.observers) {
@@ -188,6 +192,12 @@ public class NavigationModule extends Observable<NavigationObserver>
 	private void emitPlaceHasChanged(){
 		for (NavigationObserver navigationObserver : this.observers) {
 			navigationObserver.placeHasChanged(currentPlace);
+		}
+	}
+	
+	private void emitUndone(){
+		for (NavigationObserver navigationObserver : this.observers) {
+			navigationObserver.undone(this.getCurrentHeading());
 		}
 	}
 	

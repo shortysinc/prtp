@@ -191,4 +191,10 @@ public class NavigationPanel extends JPanel implements NavigationObserver{
 		//PlaceCell cell=this.cells[row][column];
 		this.log.setText(placeDescription.toString());
 	}
+
+	@Override
+	public void undone(Direction direction) {
+		PlaceCell lastCell= this.cells[row+direction.getVerticalMovement()][column+direction.getHorizontalMovement()];
+		lastCell.undo();
+	}
 }

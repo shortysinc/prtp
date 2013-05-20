@@ -74,7 +74,6 @@ public class RobotEngine extends Observable<RobotEngineObserver> {
 			if(c.isUndoable()){
 				this.lastInstruction= c;
 			}
-			//this.checkFuel();
 			this.checkIsOver();
 		}
 		catch (InstructionExecutionException e) 

@@ -99,4 +99,10 @@ public class Console implements NavigationObserver, RobotEngineObserver, Invento
 		
 	}
 
+	@Override
+	public void undone(Direction direction) {
+		// TODO Auto-generated method stub
+		
+	}
+
 }
