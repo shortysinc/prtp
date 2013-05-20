@@ -7,6 +7,7 @@ import tp.pr5.instructions.MoveInstruction;
 import tp.pr5.instructions.OperateInstruction;
 import tp.pr5.instructions.PickInstruction;
 import tp.pr5.instructions.QuitInstruction;
+import tp.pr5.instructions.RadarInstruction;
 import tp.pr5.instructions.TurnInstruction;
 import tp.pr5.instructions.UndoInstruction;
 
@@ -70,5 +71,9 @@ public class GUIController extends tp.pr5.Controller
 
 	public void executeUndoAction() {
 		game.communicateRobot(new UndoInstruction());
+	}
+	
+	public void executeRadarAction(){
+		game.communicateRobot(new RadarInstruction());
 	}
 }
