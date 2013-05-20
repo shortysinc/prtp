@@ -60,7 +60,7 @@ public class PlaceCell extends JButton{
 	}
 	
 	public void desactivate(){
-		if(placeInfo!=null){
+		if(this.visited()){
 			this.setBackground(Color.gray);
 		}
 	}
@@ -81,6 +81,10 @@ public class PlaceCell extends JButton{
 	
 	public boolean visited(){
 		return this.placeInfo!=null;
+	}
+	
+	public String toString(){
+		return placeInfo.toString();
 	}
 	
 }
