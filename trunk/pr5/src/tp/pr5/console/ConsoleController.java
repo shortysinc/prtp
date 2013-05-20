@@ -31,7 +31,8 @@ public class ConsoleController extends Controller {
 		{
 			do
 			{
-				console.robotSays(Constants.PROMPT);
+				//console.robotSays(Constants.PROMPT);
+				System.out.print(Constants.PROMPT);
 				cm=sc.nextLine();
 			} while(!executeCommand(cm));
 		} catch (WrongInstructionFormatException e) 

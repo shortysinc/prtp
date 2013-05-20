@@ -124,5 +124,9 @@ public class InfoPanel extends JPanel implements RobotEngineObserver, Navigation
 		// TODO Auto-generated method stub
 		
 	}
+	
+	public void setInfoText(String msg){
+		this.info.setText(msg);
+	}
 
 }

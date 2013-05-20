@@ -68,7 +68,7 @@ public class Console implements NavigationObserver, RobotEngineObserver, Invento
 	
 	@Override
 	public void robotSays(String message) {
-		System.out.print(message);
+		System.out.println(message);
 	}
 
 	@Override

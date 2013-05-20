@@ -63,7 +63,7 @@ public class Main
 
 	        if (cmdLine.hasOption("i")){
 	        	i = cmdLine.getOptionValue("i");
-	        	if(i==null || !i.equalsIgnoreCase("console") && !i.equalsIgnoreCase("swing") && !i.equalsIgnoreCase("both")){
+	        	if(i==null || (!i.equalsIgnoreCase("console") && !i.equalsIgnoreCase("swing") && !i.equalsIgnoreCase("both"))){
 	        		throw new org.apache.commons.cli.ParseException("Wrong type of interface"); 
 	        	}
 	        } else {
@@ -95,7 +95,7 @@ public class Main
 				GUIController gc;
 				MainWindow mainWindow;
 				ConsoleController cc;
-				
+								
 				switch (i.toUpperCase()) {
 				
 					case "SWING":
@@ -117,6 +117,9 @@ public class Main
 						cc.startController();
 						
 						break;
+					default:
+						// TODO
+						System.out.println("WSefsdfs");
 				}
 				
 			} catch(WrongCityFormatException e){
