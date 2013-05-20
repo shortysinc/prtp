@@ -43,7 +43,7 @@ public class UndoInstruction implements Instruction {
 		}
 		catch (Exception e)
 		{
-			throw new InstructionExecutionException();
+			throw new InstructionExecutionException("you cant undo more actions");
 		}
 
 	}
