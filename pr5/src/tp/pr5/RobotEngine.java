@@ -74,7 +74,8 @@ public class RobotEngine extends Observable<RobotEngineObserver> {
 			if(c.isUndoable()){
 				this.lastInstruction= c;
 			}
-			this.checkFuel();
+			//this.checkFuel();
+			this.checkIsOver();
 		}
 		catch (InstructionExecutionException e) 
 		{
@@ -88,6 +89,19 @@ public class RobotEngine extends Observable<RobotEngineObserver> {
 	 */
 	public boolean isOver(){
 		return quitRequest;
+	}
+	
+	
+	public void checkIsOver(){
+		
+		if(!checkFuel()){
+			this.emitEngineOff(false);
+			this.quitRequest=true;
+		} else if(this.navigationModule.atSpaceship()){
+			this.emitEngineOff(true);
+			this.quitRequest=true;
+		}
+		
 	}
 	
 	/**
@@ -231,10 +245,11 @@ public class RobotEngine extends Observable<RobotEngineObserver> {
 		}
 	}
 	
-	public void checkFuel (){
+	public boolean checkFuel (){
 		if (this.fuel<=0){
-			this.quitRequest=true;
+			return false;
 		}
+		return true;
 	}
 	
 	public void undo() throws InstructionExecutionException{

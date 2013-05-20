@@ -1,10 +1,12 @@
 package tp.pr5.gui;
 
 import java.awt.*;
+import java.awt.TrayIcon.MessageType;
 import java.awt.event.*;
 
 import javax.swing.*;
 
+import tp.pr5.Constants;
 import tp.pr5.RobotEngine;
 import tp.pr5.RobotEngineObserver;
 import tp.pr5.instructions.UndoInstruction;
@@ -118,19 +120,24 @@ public class MainWindow extends JFrame implements RobotEngineObserver{
 
 	@Override
 	public void raiseError(String msg) {
-		// TODO Auto-generated method stub
-		
+		JOptionPane.showMessageDialog(this, msg, "Error", MessageType.ERROR.ordinal());
+		this.infoPanel.setInfoText(msg);
 	}
 
 	@Override
 	public void communicationHelp(String help) {
-		// TODO Auto-generated method stub
+		//empty
 		
 	}
 
 	@Override
 	public void engineOff(boolean atShip) {
-		
+		if(atShip){
+			JOptionPane.showMessageDialog(this, Constants.MESSAGE_FIN_SPACESHIP);
+		} else {
+			JOptionPane.showMessageDialog(this, Constants.MESSAGE_DIE);
+		}
+		this.dispose();
 	}
 
 	@Override
@@ -146,7 +153,6 @@ public class MainWindow extends JFrame implements RobotEngineObserver{
 
 	@Override
 	public void robotSays(String message) {
-		// TODO Auto-generated method stub
-		
+		this.infoPanel.setInfoText(message);
 	}
 }

@@ -59,7 +59,7 @@ public class QuitInstruction implements Instruction
 	{
 		try
 		{
-			System.out.println("WALL·E says: I have communication problems. Bye bye");
+			//System.out.println("WALL·E says: I have communication problems. Bye bye");
 			//this.engine.printRobotState();
 			this.engine.requestQuit();
 			/*if(this.engine.isSwingInteface()){
