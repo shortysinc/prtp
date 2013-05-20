@@ -39,4 +39,6 @@ public interface NavigationObserver {
 	 */
 	void placeHasChanged(PlaceInfo placeDescription);
 	
+	void undone(Direction direction);
+	
 }
