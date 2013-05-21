@@ -24,7 +24,7 @@ public class NavigationPanel extends JPanel implements NavigationObserver{
 	 */
 	private static final long serialVersionUID = 1L;
 	
-	public JLabel robotImage;
+	private JLabel robotImage;
 	private int row;
 	private int column;
 	//private JPanel cityPanel;
@@ -103,7 +103,7 @@ public class NavigationPanel extends JPanel implements NavigationObserver{
 	 * Changes the current cell according to the player movement
 	 * @param dir Direction of the movement
 	 */
-	public void move(Direction dir){
+	private void move(Direction dir){
 		this.column	+=	dir.getHorizontalMovement();
 		this.row	+=	dir.getVerticalMovement();
 	}
@@ -112,42 +112,9 @@ public class NavigationPanel extends JPanel implements NavigationObserver{
 	 * Displays the place description on the text area
 	 * @param description The place that will be shown
 	 */
-	public void showCurrentPlace(String description){
+	private void showCurrentPlace(String description){
 		this.log.setText(description);
 	}
-	
-	
-	/*public void setInitialPlace(Place place, Direction direction){
-		PlaceCell cell = this.cells[this.row][this.column];
-		cell.setPlace(place);
-		cell.activate();
-		this.log.setText(cell.getDescriptionPlace());
-		//this.updateDirection(direction);
-	}
-	
-	public void updateCell(Direction direction, Place currentPlace){
-		
-		PlaceCell lastCell= this.cells[row][column];
-		lastCell.desactivate();
-		
-		this.column	+=	direction.getHorizontalMovement();
-		this.row	+=	direction.getVerticalMovement();
-		
-		PlaceCell cell=this.cells[row][column];
-		cell.setPlace(currentPlace);
-		cell.activate();
-		this.log.setText(cell.getDescriptionPlace());
-	}
-	
-	public void closeCell(){
-		PlaceCell cell=this.cells[row][column];
-		cell.close();
-	}
-	
-	public void updateLog(){
-		PlaceCell cell=this.cells[row][column];
-		this.log.setText(cell.getDescriptionPlace());
-	}*/
 
 	@Override
 	public void headingChanged(Direction newHeading) {

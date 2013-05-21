@@ -23,14 +23,14 @@ public class InstructionPanel extends JPanel{
 
 	private GUIController controller;
 	
-	public JButton moveButton;
-	public JButton quitButton;
-	public JButton turnButton;
-	public JComboBox<Rotation> turnCombo;
-	public JTextField instructionText;
-	public JButton pickButton;
-	public JButton dropButton;
-	public JButton operateButton;
+	private JButton moveButton;
+	private JButton quitButton;
+	private JButton turnButton;
+	private JComboBox<Rotation> turnCombo;
+	private JTextField instructionText;
+	private JButton pickButton;
+	private JButton dropButton;
+	private JButton operateButton;
 	
 	private RobotPanel robotPanel;
 
