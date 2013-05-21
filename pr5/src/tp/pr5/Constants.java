@@ -16,7 +16,7 @@ public class Constants {
 	public static final String MESSAGE_DOOR_CLOSED 					= "WALL\u00b7E says: There is a street in direction {ID} but it is closed. I cannot move in that way"; 
 	public static final String MESSAGE_DROP_ERROR 					= "You do not have any {ID}.";
 	public static final String MESSAGE_DROP_ERROR2 					= "WALL\u00b7E says: The place already contains the object {ID}"; 
-	public static final String MESSAGE_DROP_OK 						= "Great! I have dropped {ID}";
+	public static final String MESSAGE_DROP_OK 						= "WALL\u00b7E says: Great! I have dropped {ID}";
 	public static final String MESSAGE_EMPTY 						= "WALL\u00b7E says: What a pity! I have no more {ID} in my inventory"; 
 	public static final String MESSAGE_FIN_QUIT 					= "WALL\u00b7E says: I have communications problems. BYE BYE"; 
 	public static final String MESSAGE_FIN_SPACESHIP 				= "WALL\u00b7E says: I am at my spaceship. Bye bye";

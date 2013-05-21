@@ -34,7 +34,7 @@ public class Main
 		
 		Options options = new Options();
 		
-		Option interfaces= new Option("i", "interface", true, "The type of interface: console or swing");
+		Option interfaces= new Option("i", "interface", true, "The type of interface: console, swing or both");
 		interfaces.setArgName("type");
 		
 		Option maps= new Option("m","map",true, "File with the description of the city");
