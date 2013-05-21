@@ -72,8 +72,4 @@ public class GUIController extends tp.pr5.Controller
 	public void executeUndoAction() {
 		game.communicateRobot(new UndoInstruction());
 	}
-	
-	public void executeRadarAction(){
-		game.communicateRobot(new RadarInstruction());
-	}
 }
