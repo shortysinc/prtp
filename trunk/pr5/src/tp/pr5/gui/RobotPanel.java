@@ -23,9 +23,9 @@ public class RobotPanel extends JPanel implements RobotEngineObserver, Inventory
 	 */
 	private static final long serialVersionUID = 1L;
 	
-	public JLabel fuel=new JLabel();
-	public JLabel recycledMaterial=new JLabel();
-	public JTable inventoryTable;
+	private JLabel fuel=new JLabel();
+	private JLabel recycledMaterial=new JLabel();
+	private JTable inventoryTable;
 	
 	public RobotPanel(){
 		super();
@@ -108,32 +108,6 @@ public class RobotPanel extends JPanel implements RobotEngineObserver, Inventory
 		}
 		return null;
 	}
-	
-	
-
-	/*public void updateStats(){
-		this.updateFuel();
-		this.updateRecycledMaterial();
-	}
-	
-	public void updateFuel(){
-		this.fuel.setText(this.robot.getFuel()+"");
-	}
-	
-	public void updateRecycledMaterial(){
-		this.recycledMaterial.setText(this.robot.getRecycledMaterial()+"");
-	}
-
-	public void updateItems(Item[] items) {
-		String[][] datos=new String[items.length][2];
-		for (int i = 0; i < items.length; i++) {
-			datos[i][0]=items[i].getId();
-			datos[i][1]=items[i].toString();
-		}
-		inventoryTable.setModel(new inventoryModel(datos));
-		//inventoryTable.repaint();
-		
-	}*/
 
 	@Override
 	public void inventoryChange(List<Item> inventory) {
