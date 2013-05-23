@@ -72,6 +72,8 @@ public class OperateInstruction implements Instruction
 				if (inventoryOperate.use(engine, navigation))
 				{
 					this.robotContainer.useItem(inventoryOperate);
+				} else {
+					throw new InstructionExecutionException();
 				}
 			} else {
 				throw new InstructionExecutionException(Constants.MESSAGE_TRY_USE_ITEM_BUT_NOT_EXISTS.replace("{ID}", this.id));
