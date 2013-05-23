@@ -38,5 +38,5 @@ public class Constants {
 	public static final String MESSAGE_WHAT 						= "WALL\u00b7E says: I do not understand. Please repeat";
 	public static final String PROMPT 								= "WALL\u00b7E> ";
 	public static final String LINE_SEPARATOR						= System.getProperty("line.separator");
-	
+	public static final String CARRY_ITEMS						    = "WALL\u00b7E says: I am carrying the following items \n";
 }
