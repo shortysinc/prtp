@@ -1,6 +1,9 @@
 package tp.pr5.gui;
 
 import java.awt.Color;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
 import javax.swing.JButton;
 
 import tp.pr5.Place;
@@ -27,6 +30,13 @@ public class PlaceCell extends JButton{
 	 */
 	public PlaceCell(NavigationPanel owner){
 		this.owner=owner;
+		this.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				PlaceCell.this.owner.placeScanned(placeInfo);	
+			}
+		});
 	}
 	
 	/**
