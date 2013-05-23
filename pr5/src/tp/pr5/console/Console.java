@@ -57,7 +57,7 @@ public class Console implements NavigationObserver, RobotEngineObserver, Invento
 	public void robotUpdate(int fuel, int recycledMaterial) {
 		String newFuel=Integer.toString(fuelCalc(fuel));
 		String newRecycledMaterial=Integer.toString(recycledMaterial);
-		System.out.println(Constants.MESSAGE_ROBOT_POWER.replace("{ID}", newFuel ));
+		System.out.println(Constants.MESSAGE_ROBOT_POWER.replace("{ID}", newFuel.trim() ));
 		System.out.println(Constants.MESSAGE_ROBOT_RECYCLED_MATERIAL.replace("{ID}", newRecycledMaterial));
 	}
 
