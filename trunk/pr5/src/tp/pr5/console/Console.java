@@ -87,10 +87,7 @@ public class Console implements NavigationObserver, RobotEngineObserver, Invento
 
 	@Override
 	public void robotArrivesAtPlace(Direction heading, PlaceInfo place) {
-		System.out.println(place);
-		// TODO 
-		// Esto es lo que hay que cambiar
-		
+		System.out.println(place);	
 	}
 
 	@Override
