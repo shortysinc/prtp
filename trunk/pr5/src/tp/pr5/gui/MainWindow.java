@@ -137,7 +137,7 @@ public class MainWindow extends JFrame implements RobotEngineObserver{
 		} else {
 			JOptionPane.showMessageDialog(this, Constants.MESSAGE_DIE);
 		}
-		this.dispose();
+		//this.dispose();
 	}
 
 	@Override
