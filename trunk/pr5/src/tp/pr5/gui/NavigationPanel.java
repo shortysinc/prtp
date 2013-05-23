@@ -63,7 +63,7 @@ public class NavigationPanel extends JPanel implements NavigationObserver{
 			for (int j = 0; j < 11; j++) {
 				cells[i][j]=new PlaceCell(this);
 				cityPanel.add(cells[i][j]);
-				cells[i][j].addActionListener(new ActionListener() {
+				/*cells[i][j].addActionListener(new ActionListener() {
 					
 					@Override
 					public void actionPerformed(ActionEvent e) {
@@ -78,7 +78,7 @@ public class NavigationPanel extends JPanel implements NavigationObserver{
 						
 						
 					}
-				});
+				});*/
 			}
 		}
 		
@@ -148,13 +148,11 @@ public class NavigationPanel extends JPanel implements NavigationObserver{
 
 	@Override
 	public void placeScanned(PlaceInfo placeDescription) {
-		// TODO Auto-generated method stub
-		
+		this.showCurrentPlace(placeDescription.toString());		
 	}
 
 	@Override
 	public void placeHasChanged(PlaceInfo placeDescription) {
-		//PlaceCell cell=this.cells[row][column];
 		this.showCurrentPlace(placeDescription.toString());
 	}
 
