@@ -34,7 +34,7 @@ public class Main
 		
 		Options options = new Options();
 		
-		Option interfaces= new Option("i", "interface", true, "The type of interface: console, swing or both");
+		Option interfaces= new Option("i", "interface", true, "The type of interface:  console, swing or both");
 		interfaces.setArgName("type");
 		
 		Option maps= new Option("m","map",true, "File with the description of the city");
@@ -58,16 +58,16 @@ public class Main
 	        }
 	        
 	        if(!cmdLine.hasOption("m") || (map = cmdLine.getOptionValue("m"))==null){
-	        	throw new org.apache.commons.cli.ParseException("Map file not specified"); 
+	        	throw new org.apache.commons.cli.MissingArgumentException("Map file not specified"); 
 	        }
 
 	        if (cmdLine.hasOption("i")){
 	        	i = cmdLine.getOptionValue("i");
 	        	if(i==null || (!i.equalsIgnoreCase("console") && !i.equalsIgnoreCase("swing") && !i.equalsIgnoreCase("both"))){
-	        		throw new org.apache.commons.cli.ParseException("Wrong type of interface"); 
+	        		throw new org.apache.commons.cli.UnrecognizedOptionException("Wrong type of interface"); 
 	        	}
 	        } else {
-	        	throw new org.apache.commons.cli.ParseException("Interface not specified"); 
+	        	throw new org.apache.commons.cli.MissingArgumentException("Interface not specified"); 
 	        }
 	        
 	        
@@ -130,6 +130,12 @@ public class Main
 				e.printStackTrace();
 			}
 	        
+		} catch (org.apache.commons.cli.UnrecognizedOptionException e) {
+			System.err.println(e.getMessage());
+			System.exit(1);
+		} catch (org.apache.commons.cli.MissingArgumentException e){
+			System.err.println(e.getMessage());
+			System.exit(3);
 		} catch (Exception e) {
 			System.err.println(e.getMessage());
 			System.exit(1);
