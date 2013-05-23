@@ -43,7 +43,7 @@ public class Console implements NavigationObserver, RobotEngineObserver, Invento
 	@Override
 	public void engineOff(boolean atShip) {
 		if(atShip){
-			System.out.println(Constants.MESSAGE_FIN_SPACESHIP.trim());
+			System.out.println(Constants.MESSAGE_FIN_SPACESHIP);
 		} else {
 			System.out.println(Constants.MESSAGE_DIE);
 		}
@@ -58,7 +58,7 @@ public class Console implements NavigationObserver, RobotEngineObserver, Invento
 	public void robotUpdate(int fuel, int recycledMaterial) {
 		String newFuel=Integer.toString(fuelCalc(fuel));
 		String newRecycledMaterial=Integer.toString(recycledMaterial);
-		System.out.println(Constants.MESSAGE_ROBOT_POWER.replace("{ID}", newFuel.trim() ));
+		System.out.println(Constants.MESSAGE_ROBOT_POWER.replace("{ID}", newFuel));
 		System.out.println(Constants.MESSAGE_ROBOT_RECYCLED_MATERIAL.replace("{ID}", newRecycledMaterial));
 	}
 
@@ -82,6 +82,7 @@ public class Console implements NavigationObserver, RobotEngineObserver, Invento
 	@Override
 	public void initNavigationModule(PlaceInfo initialPlace, Direction heading) {
 		robotArrivesAtPlace(heading, initialPlace);
+		headingChanged(heading);
 	}
 
 	@Override
@@ -89,7 +90,7 @@ public class Console implements NavigationObserver, RobotEngineObserver, Invento
 		System.out.println(place);
 		// TODO 
 		// Esto es lo que hay que cambiar
-		headingChanged(heading);
+		
 	}
 
 	@Override
