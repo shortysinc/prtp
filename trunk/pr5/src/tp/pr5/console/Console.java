@@ -5,6 +5,7 @@ import java.util.List;
 import tp.pr5.*;
 import tp.pr5.items.InventoryObserver;
 import tp.pr5.items.Item;
+import tp.pr5.items.ItemContainer;
 
 public class Console implements NavigationObserver, RobotEngineObserver, InventoryObserver
 {
@@ -86,24 +87,32 @@ public class Console implements NavigationObserver, RobotEngineObserver, Invento
 	@Override
 	public void robotArrivesAtPlace(Direction heading, PlaceInfo place) {
 		System.out.println(place);
+		// TODO 
+		// Esto es lo que hay que cambiar
 		headingChanged(heading);
 	}
 
 	@Override
 	public void placeScanned(PlaceInfo placeDescription) {
-		System.out.println(placeDescription);
-		
+		System.out.println(placeDescription.getDescription()+"\n");
+		// TODO
+		//Aqui hay que sacar la descripcion del sitio y los objetos que hay mas o menos asi
+		//esto es cuando Haces un RADAR
+		/*
+		 WALL·E> In this square you can find a code card
+   			Battery
+		 */
 	}
 
 	@Override
 	public void placeHasChanged(PlaceInfo placeDescription) {
-		// TODO Auto-generated method stub
+		
 		
 	}
 
 	@Override
 	public void undone(Direction direction) {
-		// TODO Auto-generated method stub
+		
 		
 	}
 
