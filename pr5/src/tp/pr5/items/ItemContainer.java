@@ -6,6 +6,7 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
+import tp.pr5.Constants;
 import tp.pr5.Observable;
 
 public class ItemContainer extends Observable<InventoryObserver> {
@@ -141,7 +142,11 @@ public class ItemContainer extends Observable<InventoryObserver> {
 	 * 
 	 */
 	public void requestScanCollection(){
-		this.emitInventoryScanned(this.toString());
+		/**
+		 * Supongo que aqui podre concatenar este String así no?
+		 */
+		
+		this.emitInventoryScanned(Constants.CARRY_ITEMS+this.toString()+"\n");
 	}
 	
 	/**
