@@ -142,7 +142,7 @@ public class ItemContainer extends Observable<InventoryObserver> {
 	 * 
 	 */
 	public void requestScanCollection(){
-		this.emitInventoryScanned(Constants.CARRY_ITEMS+Constants.LINE_SEPARATOR+this.toString()+"\n");
+		this.emitInventoryScanned(Constants.CARRY_ITEMS+Constants.LINE_SEPARATOR+this.toString()+Constants.LINE_SEPARATOR);
 	}
 	
 	/**
