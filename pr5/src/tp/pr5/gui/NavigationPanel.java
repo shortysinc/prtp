@@ -129,7 +129,7 @@ public class NavigationPanel extends JPanel implements NavigationObserver{
 	public void initNavigationModule(PlaceInfo initialPlace, Direction heading) {
 		PlaceCell cell = getCurrentCell();
 		cell.arriveAt(initialPlace);
-		this.showCurrentPlace(initialPlace.toString());
+		this.placeScanned(initialPlace);
 		this.headingChanged(heading);
 	}
 
@@ -142,18 +142,18 @@ public class NavigationPanel extends JPanel implements NavigationObserver{
 		
 		PlaceCell cell=getCurrentCell();
 		cell.arriveAt(place);
-		this.showCurrentPlace(place.toString());
+		this.placeScanned(place);
 		
 	}
 
 	@Override
 	public void placeScanned(PlaceInfo placeDescription) {
-		this.showCurrentPlace(placeDescription.toString());		
+		this.showCurrentPlace(placeDescription.getDescription());		
 	}
 
 	@Override
 	public void placeHasChanged(PlaceInfo placeDescription) {
-		this.showCurrentPlace(placeDescription.toString());
+		this.showCurrentPlace(placeDescription.getDescription());
 	}
 
 	@Override
