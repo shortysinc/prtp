@@ -28,15 +28,15 @@ public class Constants {
 	public static final String MESSAGE_NO_PLACE 					= "WALL\u00b7E says: There is no street in direction {ID}"; 
 	public static final String MESSAGE_NO_ROOM_TO_EXAMINE 			= "No place specified";
 	public static final String MESSAGE_PICK_ERROR1 					= "WALL\u00b7E says: Ooops, this place has not the object {ID}";
-	public static final String MESSAGE_PICK_OK 						= "I am happy! Now I have {ID}";
+	public static final String MESSAGE_PICK_OK 						= "WALL\u00b7E says: I am happy! Now I have {ID}";
 	public static final String MESSAGE_PLAYER_TOSTRING 				= "FUEL = {HEALTH}, RECYCLED MATERIAL ={SCORE}";
 	public static final String MESSAGE_ROBOT_POWER 					= "      * My power is {ID}";
-	public static final String MESSAGE_ROBOT_RECYCLED_MATERIAL 		= "      * My reclycled material is {ID}";
+	public static final String MESSAGE_ROBOT_RECYCLED_MATERIAL 		= "      * My recycled material is {ID}";
 	public static final String MESSAGE_TRY_USE_ITEM_BUT_NOT_EXISTS 	= "I am stupid. I have not {ID}.";
 	public static final String MESSAGE_UNIDIRECTIONAL_STREET 		= "WALL\u00b7E says: There is a door but in the opposite direction";
 	public static final String MESSAGE_WALL 						= "What the hell am I supposed to do going to {DIRECTION} ?";
 	public static final String MESSAGE_WHAT 						= "WALL\u00b7E says: I do not understand. Please repeat";
 	public static final String PROMPT 								= "WALL\u00b7E> ";
 	public static final String LINE_SEPARATOR						= System.getProperty("line.separator");
-	public static final String CARRY_ITEMS						    = "WALL\u00b7E says: I am carrying the following items \n";
+	public static final String CARRY_ITEMS						    = "WALL\u00b7E says: I am carrying the following items";
 }

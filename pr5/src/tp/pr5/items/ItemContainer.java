@@ -142,11 +142,7 @@ public class ItemContainer extends Observable<InventoryObserver> {
 	 * 
 	 */
 	public void requestScanCollection(){
-		/**
-		 * Supongo que aqui podre concatenar este String así no?
-		 */
-		
-		this.emitInventoryScanned(Constants.CARRY_ITEMS+this.toString()+"\n");
+		this.emitInventoryScanned(Constants.CARRY_ITEMS+Constants.LINE_SEPARATOR+this.toString()+"\n");
 	}
 	
 	/**
