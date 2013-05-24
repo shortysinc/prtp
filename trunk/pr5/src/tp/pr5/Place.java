@@ -44,7 +44,7 @@ public class Place implements PlaceInfo
 			place+="The place contains these objects:"+Constants.LINE_SEPARATOR;
 			place+=this.items.toString()+Constants.LINE_SEPARATOR;
 		} else {
-			place+="The place is empty. There are no objects to pick"+Constants.LINE_SEPARATOR+Constants.LINE_SEPARATOR;
+			place+="The place is empty. There are no objects to pick"+Constants.LINE_SEPARATOR;
 		}
 		return place;
 	}
@@ -118,6 +118,10 @@ public class Place implements PlaceInfo
 
 	@Override
 	public String getDescription() {
-		return this.description;
+		String description=this.description+Constants.LINE_SEPARATOR;
+		if(this.items.numberOfItems()>0){
+			description+=this.items.toString()+Constants.LINE_SEPARATOR;
+		}
+		return description;
 	}	
 }

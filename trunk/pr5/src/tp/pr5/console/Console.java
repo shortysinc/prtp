@@ -2,6 +2,8 @@ package tp.pr5.console;
 
 import java.util.List;
 
+import com.sun.corba.se.impl.orbutil.closure.Constant;
+
 import tp.pr5.*;
 import tp.pr5.items.InventoryObserver;
 import tp.pr5.items.Item;
@@ -81,25 +83,20 @@ public class Console implements NavigationObserver, RobotEngineObserver, Invento
 
 	@Override
 	public void initNavigationModule(PlaceInfo initialPlace, Direction heading) {
-		robotArrivesAtPlace(heading, initialPlace);
+		//robotArrivesAtPlace(heading, initialPlace);
+		System.out.println(initialPlace);
 		headingChanged(heading);
 	}
 
 	@Override
 	public void robotArrivesAtPlace(Direction heading, PlaceInfo place) {
+		System.out.println(Constants.MESSAGE_MOVING.replace("{ID}",heading.toString()));
 		System.out.println(place);
 	}
 
 	@Override
 	public void placeScanned(PlaceInfo placeDescription) {
-		System.out.println(placeDescription.getDescription()+"\n");
-		// TODO
-		//Aqui hay que sacar la descripcion del sitio y los objetos que hay mas o menos asi
-		//esto es cuando Haces un RADAR
-		/*
-		 WALL·E> In this square you can find a code card
-   			Battery
-		 */
+		System.out.println(placeDescription.getDescription());
 	}
 
 	@Override
