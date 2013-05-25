@@ -17,6 +17,10 @@ public class PickInstruction implements Instruction
 	private ItemContainer robotContainer;
 	private NavigationModule navigation;
 	
+	/**
+	 * It builds a command without the context of execution. 
+	 * Therefore, if the command is executed an exception should be raised.
+	 */
 	public PickInstruction(){
 		
 	}

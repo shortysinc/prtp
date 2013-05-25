@@ -61,9 +61,6 @@ public class RobotPanel extends JPanel implements RobotEngineObserver, Inventory
 	
 	class inventoryModel extends AbstractTableModel{
 
-		/**
-		 * 
-		 */
 		private static final long serialVersionUID = 1L;
 
 		public String[] cols={"Id","Description"};

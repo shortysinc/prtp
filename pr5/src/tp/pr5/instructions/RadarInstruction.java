@@ -1,6 +1,6 @@
 package tp.pr5.instructions;
 //Funciona
-//
+
 import java.util.StringTokenizer;
 
 import tp.pr5.NavigationModule;

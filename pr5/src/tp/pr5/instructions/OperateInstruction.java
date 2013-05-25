@@ -22,6 +22,9 @@ public class OperateInstruction implements Instruction
 	private int lastFuel;
 	private int lastRecycledMaterial;
 
+	/**
+	 * It builds a default Operate Instruction
+	 */
 	public OperateInstruction(){
 		
 	}
