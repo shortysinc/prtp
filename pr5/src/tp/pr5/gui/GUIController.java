@@ -1,5 +1,6 @@
 package tp.pr5.gui;
 
+import tp.pr5.Controller;
 import tp.pr5.RobotEngine;
 import tp.pr5.Rotation;
 import tp.pr5.instructions.DropInstruction;
@@ -7,11 +8,10 @@ import tp.pr5.instructions.MoveInstruction;
 import tp.pr5.instructions.OperateInstruction;
 import tp.pr5.instructions.PickInstruction;
 import tp.pr5.instructions.QuitInstruction;
-import tp.pr5.instructions.RadarInstruction;
 import tp.pr5.instructions.TurnInstruction;
 import tp.pr5.instructions.UndoInstruction;
 
-public class GUIController extends tp.pr5.Controller
+public class GUIController extends Controller
 {
 
 	public GUIController(RobotEngine game) {

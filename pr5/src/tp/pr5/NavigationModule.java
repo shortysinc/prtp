@@ -1,15 +1,10 @@
 package tp.pr5;
-//uni doc ok
-//otros doc ok
-//imp no
 
-import tp.pr5.gui.NavigationPanel;
 import tp.pr5.instructions.exceptions.InstructionExecutionException;
 import tp.pr5.items.Item;
 
 /**
  * This class is in charge of the robot navigation features. It contains the city where the robot looks for garbage, the current place where the robot is, and the current direction of the robot. It contains methods to handle the different robot movements and to pick and drop items at the current place.
- * @author danidhsm
  */
 public class NavigationModule extends Observable<NavigationObserver>
 {
@@ -163,7 +158,6 @@ public class NavigationModule extends Observable<NavigationObserver>
 	public void undoLastMove(){
 		this.emitUndone();
 	}
-	
 	
 	private void emitHeadingChanged(Direction newHeading){
 		for (NavigationObserver navigationObserver : this.observers) {

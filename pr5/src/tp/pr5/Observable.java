@@ -1,7 +1,4 @@
 package tp.pr5;
-//uni doc ok
-//otros doc ok
-//imp ok
 
 import java.util.Vector;
 

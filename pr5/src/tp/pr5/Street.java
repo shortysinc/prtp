@@ -1,7 +1,5 @@
 package tp.pr5;
-//uni doc ok
-//otros doc ok
-//imp ok
+
 import tp.pr5.items.CodeCard;
 
 /**
