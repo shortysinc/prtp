@@ -7,15 +7,10 @@ import java.awt.event.*;
 import javax.swing.*;
 
 import tp.pr5.Constants;
-import tp.pr5.RobotEngine;
 import tp.pr5.RobotEngineObserver;
-import tp.pr5.instructions.UndoInstruction;
 
 public class MainWindow extends JFrame implements RobotEngineObserver{
 	
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
 	private GUIController controller;
 	
