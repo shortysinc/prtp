@@ -2,9 +2,6 @@ package tp.pr5.gui;
 
 import java.awt.BorderLayout;
 import java.awt.GridLayout;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -14,20 +11,16 @@ import javax.swing.border.TitledBorder;
 
 import tp.pr5.Direction;
 import tp.pr5.NavigationObserver;
-import tp.pr5.Place;
 import tp.pr5.PlaceInfo;
 
 public class NavigationPanel extends JPanel implements NavigationObserver{
 
-	/**
-	 * 
-	 */
+
 	private static final long serialVersionUID = 1L;
 	
 	private JLabel robotImage;
 	private int row;
 	private int column;
-	//private JPanel cityPanel;
 	private JTextArea log;
 	private PlaceCell[][] cells= new PlaceCell[11][11];
 
