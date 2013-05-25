@@ -44,12 +44,11 @@ public class Fuel extends Item
      * @return p - place where the fuel is going to be used
 	 */
 	public boolean use(RobotEngine r, NavigationModule nav)
-	{ //---Orden: operate spaceballs-card---
+	{ 
 		if(this.canBeUsed())
 		{
 			r.addFuel(power);
 			this.times--;
-			//r.printRobotState();
 			return true;
 		}
 		return false;

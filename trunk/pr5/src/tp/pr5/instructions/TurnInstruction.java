@@ -9,7 +9,7 @@ import tp.pr5.Rotation;
 import tp.pr5.instructions.exceptions.InstructionExecutionException;
 import tp.pr5.instructions.exceptions.WrongInstructionFormatException;
 import tp.pr5.items.ItemContainer;
-//Por arreglar
+
 public class TurnInstruction implements Instruction
 {
 
@@ -91,14 +91,7 @@ public class TurnInstruction implements Instruction
 		try
 		{
 			navigation.rotate(this.rotation);
-			/*if(this.engine.isSwingInteface()){
-				engine.getNavigationPanel().updateDirection(engine.getCurrentDirection());
-			}*/
 			engine.addFuel(-Constants.LOST_FUEL);
-			
-			//engine.showDirection();
-			//engine.printRobotState();
-			//engine.outOfFuel();
 		} 
 		catch (Exception e)
 		{

@@ -50,7 +50,6 @@ public class Garbage extends Item{
 		if (this.canBeUsed()){
 			r.addRecycledMaterial(recycledMaterial);
 			this.times--;
-			//r.printRobotState();
 			return true;
 		}
 		return false;

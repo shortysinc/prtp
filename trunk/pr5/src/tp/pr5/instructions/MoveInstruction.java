@@ -12,8 +12,6 @@ public class MoveInstruction implements Instruction
 	private RobotEngine engine;
 	private ItemContainer robotContainer;
 	private NavigationModule navigation;
-	private static String LINE_SEPARATOR = System.getProperty("line.separator");
-	
 	
 	
 	@Override

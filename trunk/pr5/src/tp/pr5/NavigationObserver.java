@@ -20,6 +20,7 @@ public interface NavigationObserver {
 	
 	/**
 	 * Notifies that the robot has arrived at a place
+	 * This PlaceCell will use the information provided in order to update its state.
 	 * @param heading - The robot movement direction
 	 * @param place - The place where the robot arrives
 	 */

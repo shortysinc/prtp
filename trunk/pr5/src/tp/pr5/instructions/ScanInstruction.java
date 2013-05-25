@@ -18,6 +18,10 @@ public class ScanInstruction implements Instruction
 	private ItemContainer robotContainer;
 	private NavigationModule navigation;
 	
+	
+	/**
+	 * Default constructor
+	 */
 	public ScanInstruction(){
 		
 	}

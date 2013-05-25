@@ -5,7 +5,7 @@ import tp.pr5.*;
 import tp.pr5.instructions.exceptions.InstructionExecutionException;
 import tp.pr5.instructions.exceptions.WrongInstructionFormatException;
 import tp.pr5.items.*;
-//Funciona
+
 public class DropInstruction implements Instruction
 {
 	private String id;
