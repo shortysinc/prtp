@@ -14,6 +14,10 @@ import tp.pr5.instructions.UndoInstruction;
 public class GUIController extends Controller
 {
 
+	/**
+	 * Constructor that uses the model
+	 * @param game - The reference to the model
+	 */
 	public GUIController(RobotEngine game) {
 		super(game);
 	}
@@ -69,6 +73,9 @@ public class GUIController extends Controller
 		game.communicateRobot(new TurnInstruction(rotation));	
 	}
 
+	/**
+	 * Executes a Undo instruction
+	 */
 	public void executeUndoAction() {
 		game.communicateRobot(new UndoInstruction());
 	}
