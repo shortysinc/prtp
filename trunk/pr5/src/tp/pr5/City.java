@@ -1,7 +1,5 @@
 package tp.pr5;
-//uni doc ok
 //otros doc no
-//imp ok
 /**
  * This class represents the city where the robot is wandering. 
  * It contains information about the streets and the places in the city.
@@ -69,19 +67,28 @@ public class City
 		this.cityMap=newStreets;
 	}
 
-
+	/**
+	 * CityMap getter
+	 * @return cityMap
+	 */
 	public Street[] getCityMap() 
 	{
 		return cityMap;
 	}
 
-
+	/**
+	 * currentPlace getter
+	 * @return currentPlace
+	 */
 	public Place getCurrentPlace() 
 	{
 		return currentPlace;
 	}
 
-
+	/**
+	 * currentPlace setter
+	 * @param place
+	 */
 	public void setCurrentPlace(Place place) 
 	{
 		this.currentPlace=place;

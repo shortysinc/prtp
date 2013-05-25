@@ -1,15 +1,5 @@
 package tp.pr5;
-//uni doc ok
-//otros doc no
-//imp no
-import java.util.Scanner;
 
-import javax.print.attribute.standard.MediaSize.Engineering;
-import javax.swing.JOptionPane;
-
-import tp.pr5.gui.MainWindow;
-import tp.pr5.gui.NavigationPanel;
-import tp.pr5.gui.RobotPanel;
 import tp.pr5.instructions.*;
 import tp.pr5.instructions.exceptions.*;
 import tp.pr5.items.*;

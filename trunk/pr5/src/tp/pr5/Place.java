@@ -1,7 +1,5 @@
 package tp.pr5;
-//uni doc ok
-//otros doc no
-//imp no
+
 import tp.pr5.items.*;
 
 
@@ -106,11 +104,6 @@ public class Place implements PlaceInfo
 		return this.spaceShip;
 	}
 	
-	/*public ItemContainer getItems() 
-	{
-		return items;
-	}*/
-
 	@Override
 	public String getName() {
 		return this.name;

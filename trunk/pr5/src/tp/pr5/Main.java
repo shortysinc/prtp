@@ -24,7 +24,20 @@ public class Main
 {
 	static String LINE_SEPARATOR = System.getProperty("line.separator");
 	/**
-	 * Application entry-point
+	 * Application entry-point. The application admits a parameter -m | --map with the name of the 
+	 * map file to be used, a parameter -i | --interface with the type of interface (console, swing or both) 
+	 * and a parameter -h | --help to show a help message about how to use this application.
+	 
+	 * If no arg is specified (or more than one file is given), it prints an error message (in System.err) and 
+	 * the application finishes with an error code (-1).
+
+	 * If the map file cannot be read (or it does not exist), the application ends with a different 
+	 * error code (-2).
+
+	 * If the interface arg is not correct (console, swing or both) the application prints a message and 
+	 * the application finishes with an error code (-3). Otherwise, the simulation starts and eventually 
+	 * the application will end normally (return code 0).
+	 * 
 	 * @param args
 	 */
 	public static void main(String[] args) {

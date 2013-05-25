@@ -1,10 +1,7 @@
 package tp.pr5;
-//uni doc ok
-//otros doc ok
-//imp ok
+
 /**
  * Interface of the observers that want to be notified about the events ocurred in the robot engine. The robot engine will notify the changes in the robot (fuel and recycled material), will inform about communication problems, errors and when the robot wants to say something. Finally, the engine will also notify when the user requests help and when the robot shuts down (because the robot run out of fuel or when it arrived at the spaceship)
- * @author danidhsm
  */
 public interface RobotEngineObserver {
 

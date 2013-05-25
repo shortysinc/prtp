@@ -1,7 +1,4 @@
 package tp.pr5;
-//uni doc ok
-//otros doc ok
-//imp ok
 /*
  * In this class are defined the set of constants of our program.
  */
