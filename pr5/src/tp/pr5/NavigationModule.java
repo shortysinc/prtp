@@ -155,40 +155,64 @@ public class NavigationModule extends Observable<NavigationObserver>
 		
 	}
 	
+	/**
+	 * Tries to undo the last move
+	 */
 	public void undoLastMove(){
 		this.emitUndone();
 	}
 	
+	/**
+	 * Notifies the observer if the direction has changed
+	 * @param newHeading - new direction
+	 */
 	private void emitHeadingChanged(Direction newHeading){
 		for (NavigationObserver navigationObserver : this.observers) {
 			navigationObserver.headingChanged(newHeading);
 		}
 	}
 	
+	/**
+	 * Notifies the observer if the navigation module has been initialized 
+	 */
 	private void emitInitNavigationModule(){
 		for (NavigationObserver navigationObserver : this.observers) {
 			navigationObserver.initNavigationModule(currentPlace, currentDirection);
 		}
 	}
 	
+	/**
+	 * notifies the observer if the robot has arrived at place
+	 * @param heading - current heading
+	 * @param place - Current place
+	 */
 	private void emitRobotArrivesAtPlace(Direction heading, PlaceInfo place){
 		for (NavigationObserver navigationObserver : this.observers) {
 			navigationObserver.robotArrivesAtPlace(heading, place);
 		}
 	}
 	
+	/**
+	 * Notifies the observer if user has requested a RADAR instruction
+	 */
 	private void emitPlaceScanned(){
 		for (NavigationObserver navigationObserver : this.observers) {
 			navigationObserver.placeScanned(currentPlace);
 		}
 	}
 	
+	/**
+	 * Notifies the observer if the place where the robot stays has changed
+	 */
 	private void emitPlaceHasChanged(){
 		for (NavigationObserver navigationObserver : this.observers) {
 			navigationObserver.placeHasChanged(currentPlace);
 		}
 	}
 	
+	/**
+	 * Notifies the observer if user has requested to undone the last instruction
+	 */
 	private void emitUndone(){
 		for (NavigationObserver navigationObserver : this.observers) {
 			navigationObserver.undone(this.getCurrentHeading());

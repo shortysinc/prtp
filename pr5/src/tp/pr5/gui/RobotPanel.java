@@ -16,17 +16,16 @@ import tp.pr5.RobotEngineObserver;
 import tp.pr5.items.InventoryObserver;
 import tp.pr5.items.Item;
 
-public class RobotPanel extends JPanel implements RobotEngineObserver, InventoryObserver{
-
-	/**
-	 * 
-	 */
+public class RobotPanel extends JPanel implements RobotEngineObserver, InventoryObserver
+{
 	private static final long serialVersionUID = 1L;
-	
 	private JLabel fuel=new JLabel();
 	private JLabel recycledMaterial=new JLabel();
 	private JTable inventoryTable;
 	
+	/**
+	 * Constructor
+	 */
 	public RobotPanel(){
 		super();
 		this.build();

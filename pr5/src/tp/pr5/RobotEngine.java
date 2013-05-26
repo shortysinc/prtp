@@ -198,6 +198,11 @@ public class RobotEngine extends Observable<RobotEngineObserver> {
 		this.inventary.addObserver(c);
 	}
 	
+	/**
+	 * Auxiliar method. checks if fuel>0 
+	 * @param num
+	 * @return
+	 */
 	private int fuelCalc(int num)
 	{
 		if (num < 0)
@@ -205,42 +210,69 @@ public class RobotEngine extends Observable<RobotEngineObserver> {
 		return num;
 	}
 	
+	/**
+	 * The robot engine notifies the observer that help has been requested
+	 */
 	private void emitComunicateHelp(){
 		for (RobotEngineObserver robotEngineObserver : this.observers) {
 			robotEngineObserver.communicationHelp(Interpreter.interpreterHelp());
 		}
 	}
 	
+	/**
+	 * The robot engine notifies the observer that the fuel and/or 
+	 * the amount of recycled material has changed
+	 */
 	private void emitRobotUpdate(){
 		for (RobotEngineObserver robotEngineObserver : this.observers) {
 			robotEngineObserver.robotUpdate(fuelCalc(this.fuel), this.recycledMaterial);
 		}
 	}
 	
+	/**
+	 * The robot engine notifies the observer that it has raised an error
+	 * @param msg - Error message
+	 */
 	private void emitRaiseError(String msg){
 		for (RobotEngineObserver robotEngineObserver : this.observers) {
 			robotEngineObserver.raiseError(msg);
 		}
 	}
 	
+	/**
+	 * The robot engine notifies the observer that the robot has shut down (because 
+	 * it has arrived at the spaceship or it has run out of fuel)
+	 * @param atShip
+	 */
 	private void emitEngineOff(boolean atShip){
 		for (RobotEngineObserver robotEngineObserver : this.observers) {
 			robotEngineObserver.engineOff(atShip);
 		}
 	}
 	
+	/**
+	 * The robot engine notifies the observer that the communication is over.
+	 */
 	private void emitCommunicationCompleted(){
 		for (RobotEngineObserver robotEngineObserver : this.observers) {
 			robotEngineObserver.communicationCompleted();
 		}
 	}
 	
+	/**
+	 * The robot engine notifies the observer that the robot wants to say something
+	 * @param message
+	 */
 	private void emitRobotSays(String message){
 		for (RobotEngineObserver robotEngineObserver : this.observers) {
 			robotEngineObserver.robotSays(message);
 		}
 	}
 	
+	/**
+	 * checks if fuel>0 
+	 * @return
+	 */
 	public boolean checkFuel (){
 		if (this.fuel<=0){
 			return false;
@@ -248,6 +280,10 @@ public class RobotEngine extends Observable<RobotEngineObserver> {
 		return true;
 	}
 	
+	/**
+	 * The robot engine tries to undo the last instruction
+	 * @throws InstructionExecutionException
+	 */
 	public void undo() throws InstructionExecutionException{
 		this.lastInstruction.undo();
 		this.lastInstruction = null;

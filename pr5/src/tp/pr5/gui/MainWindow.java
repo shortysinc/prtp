@@ -109,6 +109,9 @@ public class MainWindow extends JFrame implements RobotEngineObserver{
 		});
 	}
 	
+	/**
+	 * Executes a QUIT instruction
+	 */
 	public void quitActionPerformed(ActionEvent arg0) {
 		this.InstructionPanel.quitActionPerformed(arg0);
 	}
