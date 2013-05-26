@@ -24,6 +24,12 @@ public class CityLoaderFromTxtFile
 		this.city= new City();
 	}
 	
+	/**
+	 * Loads the city
+	 * @param file
+	 * @return
+	 * @throws IOException
+	 */
 	public City loadCity(InputStream file) throws IOException
 	{
 		BufferedReader buffer=null;
@@ -54,11 +60,21 @@ public class CityLoaderFromTxtFile
 		return this.city;
 	}
 	
+	/**
+	 * Prepares the first tag that will be compared
+	 * @param line -  input line
+	 * @return new string
+	 */
 	private String firstTag(String line){
 		String[] parts=line.split(" ");
 		return parts[0];
 	}
 	
+	/**
+	 * Checks if the map start it's fine
+	 * @param buffer
+	 * @throws IOException
+	 */
 	private void checkBeginCity(BufferedReader buffer) throws IOException{
 		String line=buffer.readLine();
 		if(!this.firstTag(line).equalsIgnoreCase("begincity")){
@@ -66,12 +82,23 @@ public class CityLoaderFromTxtFile
 		}
 	}
 	
+	/**
+	 * Checks if the input place tag and his length are valid
+	 * @param tag
+	 * @param length
+	 * @return
+	 */
 	private boolean isValidPlace(String tag,int length){
 		return length==5 && tag.equalsIgnoreCase("place");
 	}
 	
-	private void loadPlaces(BufferedReader buffer) throws IOException{
-		
+	/**
+	 * Load the places after the analysis stage where we will go
+	 * @param buffer
+	 * @throws IOException
+	 */
+	private void loadPlaces(BufferedReader buffer) throws IOException
+	{
 		int num=0;
 		boolean places=true;
 		String line=buffer.readLine();
@@ -101,10 +128,21 @@ public class CityLoaderFromTxtFile
 		}
 	}
 	
+	/**
+	 * Checks if the input item string tag and his length are valid
+	 * @param tag
+	 * @param length
+	 * @return true if the input tag is a valid street and false if is not
+	 */
 	private boolean isValidStreet(String tag,int length){
 		return (length==8 || length==9) && tag.equalsIgnoreCase("street");
 	}
 	
+	/**
+	 * Load the streets after the analysis stage where we will play
+	 * @param buffer
+	 * @throws IOException
+	 */
 	private void loadStreets(BufferedReader buffer) throws IOException{
 		
 		int num=0;
@@ -136,10 +174,21 @@ public class CityLoaderFromTxtFile
 		}
 	}
 	
+	/**
+	 * Checks if the input item string tag and his length are valid
+	 * @param tag - input tag
+	 * @param length - input length
+	 * @return true if the item is valid nd false if is not
+	 */
 	private boolean isValidItem(String tag,int length){
 		return (length==7 || length==8) && (tag.equalsIgnoreCase("fuel") || tag.equalsIgnoreCase("garbage") || tag.equalsIgnoreCase("codecard"));
 	}
 	
+	/**
+	 *  Load the items after the analysis stage that we will use in the game
+	 * @param buffer
+	 * @throws IOException
+	 */
 	private void loadItems(BufferedReader buffer) throws IOException{
 		int num=0;
 		boolean items=true;
@@ -169,6 +218,11 @@ public class CityLoaderFromTxtFile
 		}
 	}
 	
+	/**
+	 * Checks if the city ends in the map file
+	 * @param buffer
+	 * @throws IOException
+	 */
 	private void checkEndCity(BufferedReader buffer) throws IOException{
 		String line=buffer.readLine();
 		if(line!=null){
@@ -179,12 +233,8 @@ public class CityLoaderFromTxtFile
 	}
 	
 	
-	/*private void checkStep(int step,int actual) throws WrongCityFormatException{
-		if(step!=actual) throw new WrongCityFormatException();
-	}*/
-	
 	/**
-	 * 
+	 * Parse the items that we will use in the game 
 	 * @param aux
 	 * @throws WrongCityFormatException
 	 */
@@ -220,9 +270,9 @@ public class CityLoaderFromTxtFile
 		
 	}
 	/**
-	 * 
+	 * Tries to create the streets that has been read from the file
 	 * @param cad
-	 * @return
+	 * @return new Street
 	 * @throws WrongCityFormatException
 	 */
 	private Street createStreet(String[] cad)  throws WrongCityFormatException
@@ -240,8 +290,8 @@ public class CityLoaderFromTxtFile
 
 
 	/**
-	 * 
-	 * @param cad
+	 * Checks if the street is open 
+	 * @param cad input string to be compared
 	 * @return
 	 */
 	private boolean parseOpen(String cad) 
@@ -252,9 +302,9 @@ public class CityLoaderFromTxtFile
 	
 
 	/**
-	 * 
+	 * Creates new places
 	 * @param cad
-	 * @return
+	 * @return a new place
 	 * @throws WrongCityFormatException
 	 */
 	private Place createPlace(String[] cad) throws WrongCityFormatException
@@ -271,9 +321,9 @@ public class CityLoaderFromTxtFile
 	}
 	
 	/**
-	 * 
-	 * @param cad
-	 * @return
+	 * Checks if the input direction is correct
+	 * @param cad - string that will be compared
+	 * @return new direction
 	 * @throws WrongCityFormatException
 	 */
 	private Direction parseDirection(String cad)throws WrongCityFormatException
@@ -291,21 +341,6 @@ public class CityLoaderFromTxtFile
 		default:
 				throw new WrongCityFormatException();
 		}
-	
-		/*if(cad.equalsIgnoreCase("north")) 
-			return Direction.NORTH;
-		
-		if(cad.equalsIgnoreCase("south")) 
-			return Direction.SOUTH;
-		
-		if(cad.equalsIgnoreCase("east")) 
-			return Direction.EAST;
-		
-		if(cad.equalsIgnoreCase("west"))
-			return Direction.WEST;
-		else 
-			throw new WrongCityFormatException();
-		*/
 	}
 
 	/**
@@ -330,9 +365,9 @@ public class CityLoaderFromTxtFile
 	}
 
 	/**
-	 * 
+	 * change type String to Integer
 	 * @param entrada
-	 * @return
+	 * @return integer
 	 */
 	private int parseNum(String entrada)
 	{
@@ -340,7 +375,7 @@ public class CityLoaderFromTxtFile
 	}
     
 	/**
-	 * 
+	 * return initial place
 	 * @return
 	 */
 	public Place getInitialPlace()
@@ -349,6 +384,11 @@ public class CityLoaderFromTxtFile
 		
     }
 	
+	/**
+	 * remove the " " and "_" 
+	 * @param cad
+	 * @return new string
+	 */
 	private String prepareDesc(String cad){
 		
 		if(cad.contains("\"")){

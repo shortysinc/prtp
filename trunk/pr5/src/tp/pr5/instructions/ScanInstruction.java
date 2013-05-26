@@ -7,7 +7,6 @@ import tp.pr5.NavigationModule;
 import tp.pr5.RobotEngine;
 import tp.pr5.instructions.exceptions.InstructionExecutionException;
 import tp.pr5.instructions.exceptions.WrongInstructionFormatException;
-import tp.pr5.items.Item;
 import tp.pr5.items.ItemContainer;
 
 public class ScanInstruction implements Instruction

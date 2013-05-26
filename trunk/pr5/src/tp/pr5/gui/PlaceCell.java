@@ -14,11 +14,8 @@ import tp.pr5.PlaceInfo;
  * When the user clicks on a PlaceCell the NavigationPanel will show the place description if the Place was previously visited.
  */
 
-public class PlaceCell extends JButton{
-
-	/**
-	 * 
-	 */
+public class PlaceCell extends JButton
+{
 	private static final long serialVersionUID = 1L;
 	private PlaceInfo placeInfo;
 	private NavigationPanel owner;
@@ -62,6 +59,9 @@ public class PlaceCell extends JButton{
 		this.setBackground(Color.gray);
 	}
 	
+	/**
+	 * Activate Cells
+	 */
 	public void activate(){
 		if(this.placeInfo.isSpaceship()){
 			this.setBackground(Color.red);
@@ -70,12 +70,18 @@ public class PlaceCell extends JButton{
 		}
 	}
 	
+	/**
+	 * Desactivate cells
+	 */
 	public void desactivate(){
 		if(this.visited()){
 			this.setBackground(Color.gray);
 		}
 	}
 	
+	/**
+	 * Set default properties to cells
+	 */
 	public void undo(){
 		this.placeInfo=null;
 		this.setText("");
@@ -90,10 +96,15 @@ public class PlaceCell extends JButton{
 		return this.place.toString()+LINE_SEPARATOR+"The place is empty. There are no objects to pick";
 	}*/
 	
+	/**
+	 * Checks if the place has been visited
+	 * @return
+	 */
 	public boolean visited(){
 		return this.placeInfo!=null;
 	}
 	
+	@Override
 	public String toString(){
 		return placeInfo.toString();
 	}

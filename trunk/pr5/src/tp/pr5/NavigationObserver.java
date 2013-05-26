@@ -38,6 +38,10 @@ public interface NavigationObserver {
 	 */
 	void placeHasChanged(PlaceInfo placeDescription);
 	
+	/**
+	 * Tries to undone the last instruction executed
+	 * @param direction
+	 */
 	void undone(Direction direction);
 	
 }

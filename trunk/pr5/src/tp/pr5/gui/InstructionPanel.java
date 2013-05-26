@@ -122,6 +122,9 @@ public class InstructionPanel extends JPanel{
 		});
 	}
 	
+	/**
+	 * Executes a QUIT instruction
+	 */
 	public void quitActionPerformed(ActionEvent arg0) {
 		int exit= JOptionPane.showConfirmDialog(null,"Are you sure you want to exit?", 
 				"Confirmation", JOptionPane.YES_NO_OPTION);
@@ -131,15 +134,25 @@ public class InstructionPanel extends JPanel{
 		}
 	}
 	
+	/**
+	 * Executes a MOVE instruction
+	 */
 	public void moveActionPerformed(ActionEvent arg0){
 		controller.executeMoveAction();
 	}
 	
+	/**
+	 * Executes a TURN instruction
+	 * @param arg0
+	 */
 	public void turnActionPerformed(ActionEvent arg0){
 		Rotation rotation = (Rotation) this.turnCombo.getSelectedItem();
 		controller.executeTurnAction(rotation);
 	}
 	
+	/**
+	 * Executes a pick Action
+	 */
 	public void pickActionPerformed(ActionEvent arg0){
 		String idItem=this.instructionText.getText();
 		if(!idItem.isEmpty()){
@@ -149,6 +162,9 @@ public class InstructionPanel extends JPanel{
 		}
 	}
 	
+	/**
+	 * Executes a DROP instruction
+	 */
 	public void dropActionPerformed(ActionEvent arg0){
 		String idItem=this.robotPanel.getSelectedItem();
 		if(idItem!=null){
@@ -158,6 +174,9 @@ public class InstructionPanel extends JPanel{
 		}
 	}
 
+	/**
+	 * Executes a DROP instruction
+	 */
 	public void operateActionPerformed(ActionEvent arg0){
 		String idItem=this.robotPanel.getSelectedItem();
 		if(idItem!=null){

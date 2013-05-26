@@ -132,9 +132,6 @@ public class Main
 						cc.startController();
 						
 						break;
-					/*default:
-						// TODO
-						System.out.println("WSefsdfs");*/
 				}
 				
 			} catch(WrongCityFormatException e){
