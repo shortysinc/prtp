@@ -51,7 +51,10 @@ public abstract class Item implements Cloneable{
 		return this.description;
 	}
 	
-	
+	/**
+	 * Creates and returns a copy of this object. 
+	 * The precise meaning of "copy" may depend on the class of the object.
+	 */
 	public Object clone(){
 		Object obj=null;
         try

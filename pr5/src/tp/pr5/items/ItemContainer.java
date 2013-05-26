@@ -187,28 +187,49 @@ public class ItemContainer extends Observable<InventoryObserver> {
 		}
 	}
 	
+	/**
+	 * Return a list of item
+	 * @return List
+	 */
 	private List<Item> toImmutableList(){
 		return Collections.unmodifiableList(Arrays.asList(this.items));
 	}
 	
+	/**
+	 * Notifies the observer that the container has changed
+	 * @param inventory
+	 */
 	private void emitInventoryChange(List<Item> inventory){
 		for (InventoryObserver inventoryobserver : this.observers) {
 			inventoryobserver.inventoryChange(inventory);
 		}
 	}
 	
+	/**
+	 * Notifies the observer that the user requests a SCAN instruction over the inventory.
+	 * @param inventoryDescription
+	 */
 	private void emitInventoryScanned(String inventoryDescription){
 		for (InventoryObserver inventoryobserver : this.observers) {
 			inventoryobserver.inventoryScanned(inventoryDescription);
 		}
 	}
 
+	/**
+	 * Notifies the observer that the user wants to scan an item allocated in the inventory
+	 * @param description
+	 */
 	private void emitItemScanned(String description){
 		for (InventoryObserver inventoryobserver : this.observers) {
 			inventoryobserver.itemScanned(description);
 		}
 	}
 	
+	/**
+	 * Notifies the observer that an item is empty and it will be removed from the container. 
+	 * An invocation to the inventoryChange method will follow.
+	 * @param itemName
+	 */
 	private void emitItemEmpty(String itemName){
 		for (InventoryObserver inventoryobserver : this.observers) {
 			inventoryobserver.itemEmpty(itemName);
