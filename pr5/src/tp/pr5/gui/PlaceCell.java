@@ -33,7 +33,9 @@ public class PlaceCell extends JButton{
 			
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
-				PlaceCell.this.owner.placeScanned(placeInfo);	
+				if(visited()){
+					PlaceCell.this.owner.placeScanned(placeInfo);
+				}
 			}
 		});
 	}

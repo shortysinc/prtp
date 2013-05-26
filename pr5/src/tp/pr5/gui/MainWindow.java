@@ -133,6 +133,7 @@ public class MainWindow extends JFrame implements RobotEngineObserver{
 			JOptionPane.showMessageDialog(this, Constants.MESSAGE_DIE);
 		}
 		//this.dispose();
+		this.InstructionPanel.setEnabled(false);
 	}
 
 	@Override
