@@ -42,7 +42,15 @@ public interface Instruction
 	 */
 	void execute()throws InstructionExecutionException;
 	
+	/**
+	 * Checks if the instruction is undoable
+	 * @return
+	 */
 	boolean isUndoable();
 	
+	/**
+	 * Undoes the last instruction executed if it is undoable
+	 * @throws InstructionExecutionException
+	 */
 	void undo() throws InstructionExecutionException;
 }

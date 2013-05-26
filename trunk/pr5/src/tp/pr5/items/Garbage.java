@@ -54,7 +54,8 @@ public class Garbage extends Item{
 		}
 		return false;
 	}
-
+	
+	@Override
 	public String toString()
 	{
 		return super.toString() + "// recycledMaterial = " + this.recycledMaterial + ", times = " + this.times;
