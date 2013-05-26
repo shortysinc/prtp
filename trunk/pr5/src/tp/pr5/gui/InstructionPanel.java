@@ -166,4 +166,16 @@ public class InstructionPanel extends JPanel{
 			JOptionPane.showMessageDialog(null, "No item selected");
 		}
 	}
+	
+	@Override
+	public void setEnabled(boolean enable){
+		super.setEnabled(enable);
+		this.moveButton.setEnabled(enable);
+		this.dropButton.setEnabled(enable);
+		this.instructionText.setEnabled(enable);
+		this.operateButton.setEnabled(enable);
+		this.pickButton.setEnabled(enable);
+		this.turnButton.setEnabled(enable);
+		this.turnCombo.setEnabled(enable);		
+	}
 }
