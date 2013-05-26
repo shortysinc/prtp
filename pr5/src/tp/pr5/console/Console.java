@@ -2,12 +2,9 @@ package tp.pr5.console;
 
 import java.util.List;
 
-import com.sun.corba.se.impl.orbutil.closure.Constant;
-
 import tp.pr5.*;
 import tp.pr5.items.InventoryObserver;
 import tp.pr5.items.Item;
-import tp.pr5.items.ItemContainer;
 
 public class Console implements NavigationObserver, RobotEngineObserver, InventoryObserver
 {
