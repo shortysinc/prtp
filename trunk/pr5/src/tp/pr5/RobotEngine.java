@@ -198,6 +198,13 @@ public class RobotEngine extends Observable<RobotEngineObserver> {
 		this.inventary.addObserver(c);
 	}
 	
+	private int fuelCalc(int num)
+	{
+		if (num < 0)
+			return num=0;
+		return num;
+	}
+	
 	private void emitComunicateHelp(){
 		for (RobotEngineObserver robotEngineObserver : this.observers) {
 			robotEngineObserver.communicationHelp(Interpreter.interpreterHelp());
@@ -206,7 +213,7 @@ public class RobotEngine extends Observable<RobotEngineObserver> {
 	
 	private void emitRobotUpdate(){
 		for (RobotEngineObserver robotEngineObserver : this.observers) {
-			robotEngineObserver.robotUpdate(this.fuel, this.recycledMaterial);
+			robotEngineObserver.robotUpdate(fuelCalc(this.fuel), this.recycledMaterial);
 		}
 	}
 	

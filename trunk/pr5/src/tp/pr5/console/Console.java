@@ -58,17 +58,10 @@ public class Console implements NavigationObserver, RobotEngineObserver, Invento
 
 	@Override
 	public void robotUpdate(int fuel, int recycledMaterial) {
-		String newFuel=Integer.toString(fuelCalc(fuel));
+		String newFuel=Integer.toString(fuel);
 		String newRecycledMaterial=Integer.toString(recycledMaterial);
 		System.out.println(Constants.MESSAGE_ROBOT_POWER.replace("{ID}", newFuel));
 		System.out.println(Constants.MESSAGE_ROBOT_RECYCLED_MATERIAL.replace("{ID}", newRecycledMaterial));
-	}
-
-	private int fuelCalc(int num)
-	{
-		if (num < 0)
-			return num=0;
-		return num;
 	}
 	
 	@Override
