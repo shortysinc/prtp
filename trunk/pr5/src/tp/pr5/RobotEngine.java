@@ -82,15 +82,15 @@ public class RobotEngine extends Observable<RobotEngineObserver> {
 	
 	
 	public void checkIsOver(){
-		
-		if(!checkFuel()){
-			this.emitEngineOff(false);
-			this.quitRequest=true;
-		} else if(this.navigationModule.atSpaceship()){
-			this.emitEngineOff(true);
-			this.quitRequest=true;
+		if(!quitRequest){
+			if(!checkFuel()){
+				this.emitEngineOff(false);
+				this.quitRequest=true;
+			} else if(this.navigationModule.atSpaceship()){
+				this.emitEngineOff(true);
+				this.quitRequest=true;
+			}
 		}
-		
 	}
 	
 	/**

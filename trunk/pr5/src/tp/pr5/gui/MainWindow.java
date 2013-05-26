@@ -139,6 +139,7 @@ public class MainWindow extends JFrame implements RobotEngineObserver{
 	@Override
 	public void communicationCompleted() {
 		this.dispose();
+		System.exit(0);
 	}
 
 	@Override
