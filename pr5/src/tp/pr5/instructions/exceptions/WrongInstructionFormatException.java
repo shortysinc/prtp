@@ -20,7 +20,7 @@ public class WrongInstructionFormatException extends Exception{
 	 */
 	public WrongInstructionFormatException(String arg0)
 	{
-		System.out.println(arg0);
+		super(arg0);
 	}
 	
 	/**
