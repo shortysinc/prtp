@@ -23,18 +23,22 @@ public class ConsoleController extends Controller {
 		
 		Scanner sc= new Scanner(System.in);
 		String cm;
-		try 
-		{
+		boolean fin=false;
+		
 			do
 			{
 				//console.robotSays(Constants.PROMPT);
 				System.out.print(Constants.PROMPT);
 				cm=sc.nextLine();
-			} while(!executeCommand(cm));
-		} catch (WrongInstructionFormatException e) 
-		{
-			this.game.requestError(Constants.MESSAGE_WHAT);
-		}
+				try 
+				{
+					fin=executeCommand(cm);
+				} catch (WrongInstructionFormatException e) 
+				{
+					this.game.requestError(Constants.MESSAGE_WHAT);
+				}
+			} while(!fin);
+		
 		sc.close();
 		
 	}
