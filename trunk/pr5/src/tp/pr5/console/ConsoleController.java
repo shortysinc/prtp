@@ -33,8 +33,7 @@ public class ConsoleController extends Controller {
 				try 
 				{
 					fin=executeCommand(cm);
-				} catch (WrongInstructionFormatException e) 
-				{
+				} catch (WrongInstructionFormatException e) {
 					this.game.requestError(Constants.MESSAGE_WHAT);
 				}
 			} while(!fin);
