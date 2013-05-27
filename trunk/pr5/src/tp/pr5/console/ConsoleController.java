@@ -11,14 +11,10 @@ import tp.pr5.instructions.exceptions.WrongInstructionFormatException;
 
 public class ConsoleController extends Controller {
 
-	private Console console= new Console();
 	
 	public ConsoleController(RobotEngine game) 
 	{
 		super(game);
-		this.registerEngineObserver(console);
-		this.registerItemContainerObserver(console);
-		this.registerRobotObserver(console);
 		this.game.requestStart();
 	}
 
