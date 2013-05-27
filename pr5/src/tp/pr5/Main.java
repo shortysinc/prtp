@@ -16,6 +16,7 @@ import org.apache.commons.cli.Options;
 
 import tp.pr5.cityLoader.CityLoaderFromTxtFile;
 import tp.pr5.cityLoader.cityLoaderExceptions.WrongCityFormatException;
+import tp.pr5.console.Console;
 import tp.pr5.console.ConsoleController;
 import tp.pr5.gui.GUIController;
 import tp.pr5.gui.MainWindow;
@@ -110,6 +111,7 @@ public class Main
 				GUIController gc;
 				MainWindow mainWindow;
 				ConsoleController cc;
+				Console console;
 								
 				switch (i.toUpperCase()) {
 				
@@ -120,15 +122,26 @@ public class Main
 						break;
 	
 					case "CONSOLE":
+						console= new Console();
 						cc = new ConsoleController(engine);
+						
+						cc.registerEngineObserver(console);
+						cc.registerItemContainerObserver(console);
+						cc.registerRobotObserver(console);
 						cc.startController();
 						break;
 						
 					case "BOTH":
+						console= new Console();
 						gc = new GUIController(engine);
 						mainWindow = new MainWindow(gc);
-						gc.startController();
+						
 						cc = new ConsoleController(engine);
+						cc.registerEngineObserver(console);
+						cc.registerItemContainerObserver(console);
+						cc.registerRobotObserver(console);
+						gc.startController();
+						
 						
 						break;
 						default:
