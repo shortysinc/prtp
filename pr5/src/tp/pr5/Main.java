@@ -124,10 +124,11 @@ public class Main
 					case "CONSOLE":
 						console= new Console();
 						cc = new ConsoleController(engine);
-						cc.startController();
 						cc.registerEngineObserver(console);
 						cc.registerItemContainerObserver(console);
 						cc.registerRobotObserver(console);
+						cc.startController();
+						
 						
 						break;
 						
